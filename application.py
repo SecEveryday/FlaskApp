@@ -1,3 +1,10 @@
+import sys
+old_stdout = sys.stdout
+
+log_file = open("message.log","a")
+
+sys.stdout = log_file
+
 from flask import Flask, flash, request, redirect, url_for, render_template,jsonify
 app = Flask(__name__)
 
