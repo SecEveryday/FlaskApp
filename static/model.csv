@@ -1,0 +1,66 @@
+,Tracker,Assignee,Component,Average Time Spent
+0,Komalpreet Kaur,Analysis,WFC,2.75
+1,Komalpreet Kaur,Analysis,IS,0.75
+2,Komalpreet Kaur,Analysis,QC,1.25
+3,Komalpreet Kaur,Bug,WFC,4.0
+4,Komalpreet Kaur,Bug,IS,4.5
+5,Komalpreet Kaur,Bug,QC,8.075
+6,Komalpreet Kaur,Feedback,WFC,4.0
+7,Komalpreet Kaur,Feature,WFC,32.8
+8,Komalpreet Kaur,Feature,IS,7.0
+9,Komalpreet Kaur,Support,QC,4.25
+10,Komalpreet Kaur,FCH,IS,23.166666666666668
+11,Keshab Chandra Nayak,Analysis,WFC,4.0
+12,Keshab Chandra Nayak,Analysis,IS,0.0
+13,Keshab Chandra Nayak,Analysis,QC,4.0
+14,Keshab Chandra Nayak,Bug,IS,33.75
+15,Keshab Chandra Nayak,Bug,QC,16.666666666666668
+16,Keshab Chandra Nayak,Feedback,IS,17.0
+17,Keshab Chandra Nayak,Feedback,QC,7.0
+18,Keshab Chandra Nayak,Feature,WFC,9.0
+19,Keshab Chandra Nayak,Feature,IS,11.366666666666667
+20,Keshab Chandra Nayak,Feature,QC,10.120000000000001
+21,Koushik Sridhar,Analysis,WFC,14.583333333333334
+22,Koushik Sridhar,Analysis,QC,0.5
+23,Koushik Sridhar,Bug,WFC,10.6
+24,Koushik Sridhar,Bug,IS,2.0
+25,Koushik Sridhar,Bug,QC,12.5
+26,Koushik Sridhar,Feedback,WFC,14.0
+27,Koushik Sridhar,Feedback,IS,0.0
+28,Koushik Sridhar,Feature,WFC,30.8
+29,Arvind Mohan,Analysis,IS,0.0
+30,Arvind Mohan,Analysis,QC,1.0
+31,Arvind Mohan,Documentation,IS,13.5
+32,Arvind Mohan,Support,WFC,1.6
+33,Arvind Mohan,Support,IS,1.0
+34,Arvind Mohan,Support,QC,10.5
+35,Arvind Mohan,FCH,QC,5.5
+36,Shwetha Shekhar,Bug,WFC,62.0
+37,Shwetha Shekhar,Bug,IS,43.5
+38,Shwetha Shekhar,Bug,QC,16.0
+39,Shwetha Shekhar,Feedback,QC,4.5
+40,Shwetha Shekhar,Feature,QC,55.1
+41,Shwetha Shekhar,Support,WFC,2.0
+42,Swathi Natarajan,Analysis,IS,6.566666666666666
+43,Swathi Natarajan,Analysis,QC,1.5
+44,Swathi Natarajan,Bug,QC,2.0
+45,Swathi Natarajan,Feature,WFC,168.9
+46,Swathi Natarajan,Support,WFC,1.5
+47,Swathi Natarajan,Support,IS,1.0
+48,Swathi Natarajan,FCH,QC,54.5
+49,Subham Hansraj,Analysis,WFC,2.0
+50,Subham Hansraj,Analysis,IS,3.6666666666666665
+51,Subham Hansraj,Bug,WFC,8.0
+52,Subham Hansraj,Feature,IS,5.0
+53,Subham Hansraj,Support,QC,5.0
+54,Subham Hansraj,FCH,WFC,3.8200000000000003
+55,Kumaresan Thangavel,Analysis,WFC,0.0
+56,Kumaresan Thangavel,Analysis,IS,5.75
+57,Kumaresan Thangavel,Analysis,QC,0.0
+58,Kumaresan Thangavel,Bug,WFC,5.75
+59,Kumaresan Thangavel,Feature,WFC,3.0
+60,Kumaresan Thangavel,Feature,QC,29.400000000000002
+61,Kumaresan Thangavel,Support,WFC,1.0
+62,Kumaresan Thangavel,Support,IS,1.0
+63,Kumaresan Thangavel,Support,QC,2.0
+64,Kumaresan Thangavel,FCH,WFC,0.0

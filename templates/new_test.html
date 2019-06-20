@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type='text/javascript' src="{{
+		url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="{{
+			url_for('static', filename='css/bootstrap.min.css') }}">
+			<script src="{{
+			url_for('static', filename='js/bootstrap.min.js') }}"></script>
+		</head>
+		<script type='text/javascript'>
+		$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+		</script>
+<script type="text/javascript">
+$(function() {
+$('a#calculate').bind('click', function() {
+//alert('HEY')
+var formData = new FormData($('#contactForm1')[0]);
+$.ajax({
+url: "{{url_for('predict_out') }}",
+data: formData,
+type: 'POST',
+contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+processData: false, // NEEDED, DON'T OMIT THIS
+success : function(data){
+$('#Contentdiv').html("Sucess Fully added");
+}
+// ... Other options like success and etc
+})})});
+</script>
+<body>
+	<form method='POST' id ='contactForm1'>
+		<div class="container table-custom" >
+			<div class="row">
+				<div class="col-sm-4">
+					<h6>Please Input the id :</h6>
+					<input type="number" name="id" values="Id"/>
+				</div>
+				<div class="col-sm-4">
+					<h6>Please Input the id :</h6>
+					<input type="number" name="id" values="Id"/>
+				</div>
+				<div class="col-sm-4 ">
+					<p><a href='#' id='calculate' class="btn btn-primary table-custom">Submit</a></p>
+				</div>
+			</div>
+		</div>
+	</form>
+	<br>
+	<div 	>
+	
+	<div class = "row">
+				<div id = 'Contentdiv' class='col-sm-6 container-fluid' style="margin-top: 60px"></div>
+			
+	
+				<div id = 'imgalign' class='col-sm-6'>
+				<img id = 'my_image' style="height:6in ; width: 9in" class="table-custom" hidden='true' />
+				</div>
+	</div>
+	</div>
+</body>
+</html>
+</html>
