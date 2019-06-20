@@ -8,3 +8,16 @@ def hello():
 @app.route("/you")
 def youprint():
     return "Hello You!"
+@app.route("/predict_out",methods=['POST','GET'])
+def predict_out():
+	id_user = request.form['id']
+	name = request.form['name']
+	import dbaccesslib as dba
+	return_val = dba.write_ontoDB(id_user,name)
+	return 203,OK
+@app.route("/GetDBContents", method =['POST','GET'])
+def GetDBContents():
+	import dbaccesslib as dba
+	return_val = dba.read_fromDB()
+	return return_val
+
