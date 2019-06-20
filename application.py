@@ -19,5 +19,5 @@ def predict_out():
 def GetDBContents():
 	import dbaccesslib as dba
 	return_val = dba.read_fromDB()
-	print return_val
+	print(return_val)
 	return jsonify(return_val)
