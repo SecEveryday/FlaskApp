@@ -19,6 +19,7 @@ def predict_out():
 def GetDBContents():
 	import dbaccesslib as dba
 	return_val = dba.read_fromDB()
+	print return_val
 	return jsonify(return_val)
 if __name__ == '__main__':
         app.run("0.0.0.0",debug = True)
