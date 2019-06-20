@@ -14,11 +14,11 @@ def predict_out():
 	name = request.form['name']
 	import dbaccesslib as dba
 	return_val = dba.write_ontoDB(id_user,name)
-	return 203,OK
+	return 200,
 @app.route("/GetDBContents", methods=['POST','GET'])
 def GetDBContents():
 	import dbaccesslib as dba
 	return_val = dba.read_fromDB()
-	return return_val
+	return jsonify(return_val)
 if __name__ == '__main__':
         app.run("0.0.0.0",debug = True)
