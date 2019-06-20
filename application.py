@@ -15,7 +15,7 @@ def predict_out():
 	import dbaccesslib as dba
 	return_val = dba.write_ontoDB(id_user,name)
 	return 203,OK
-@app.route("/GetDBContents", method =['POST','GET'])
+@app.route("/GetDBContents", methods =['POST','GET'])
 def GetDBContents():
 	import dbaccesslib as dba
 	return_val = dba.read_fromDB()
