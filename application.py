@@ -19,6 +19,8 @@ def youprint():
 def predict_out():
 	id_user = request.form['id']
 	name = request.form['name']
+	print(id_user)
+	print(name)
 	import dbaccesslib as dba
 	return_val = dba.write_ontoDB(id_user,name)
 	return jsonify(return_val)
