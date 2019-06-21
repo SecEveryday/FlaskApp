@@ -7,7 +7,7 @@ sys.stdout = log_file
 sys.stderr = log_file
 import sqlite3
 def write_ontoDB(id_user,name):
-	conn = sqlite3.connect("newDB.db")
+	conn = sqlite3.connect("newnewDB.db")
 	sqlquery = "Insert into Test_id Values(" + str(id_user) +",'"+ str(name) + "');"
 	print(sqlquery)
 	conn.execute(sqlquery)
