@@ -16,6 +16,7 @@
 <script type="text/javascript">
 $(function() {
 $('a#calculate').bind('click', function() {
+alert("Hey1");
 //alert('HEY')
 var formData = new FormData($('#contactForm1')[0]);
 $.ajax({
@@ -25,6 +26,7 @@ type: 'POST',
 contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
 processData: false, // NEEDED, DON'T OMIT THIS
 success : function(data){
+alert("Hey2");
 $('#Contentdiv').html("Sucess Fully added");
 }
 // ... Other options like success and etc
