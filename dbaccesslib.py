@@ -18,5 +18,6 @@ def read_fromDB():
 	sqlquery = "Select * from Test_id;"
 	values = conn.execute(sqlquery)
 	values = values.fetchall()
+	conn.commit()
 	conn.close()
 	return values
