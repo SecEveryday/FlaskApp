@@ -15,6 +15,7 @@ def write_ontoDB(id_user,name):
 		conn.commit()
 		conn.close()
 	except:
+		print("Exeception occured")
 		conn.close()
 def read_fromDB():
 	conn = sqlite3.connect("newnewDB1.db")

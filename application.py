@@ -21,7 +21,7 @@ def predict_out():
 	name = request.form['name']
 	import dbaccesslib as dba
 	return_val = dba.write_ontoDB(id_user,name)
-	return 200,
+	return jsonify(return_val)
 @app.route("/GetDBContents", methods=['POST','GET'])
 def GetDBContents():
 	import dbaccesslib as dba
