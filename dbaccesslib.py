@@ -14,7 +14,7 @@ def write_ontoDB(id_user,name):
 	conn.commit()
 	conn.close()
 def read_fromDB():
-	conn = sqlite3.connect("newDB.db")
+	conn = sqlite3.connect("newnewDB.db")
 	sqlquery = "Select * from Test_id;"
 	values = conn.execute(sqlquery)
 	values = values.fetchall()
