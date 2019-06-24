@@ -1,3 +1,5 @@
+
+from bson.json_util import dumps
 import sys
 old_stdout = sys.stdout
 
@@ -14,4 +16,4 @@ mydb = client.test
 def write_ontoDB(id_user,name):
 	mydb.my_collection.insert({'user_id':id_user , 'name':name})	
 def read_fromDB():
-	return mydb.my_collection.find().pretty()
+	return dumps(mydb.my_collection.find())
