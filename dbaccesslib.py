@@ -16,4 +16,4 @@ mydb = client.test
 def write_ontoDB(id_user,name):
 	mydb.my_collection.insert({'user_id':id_user , 'name':name})	
 def read_fromDB():
-	return dumps(mydb.my_collection.find({},{user_id:1,name:1,_id : 0}))
+	return dumps(mydb.my_collection.find({},{'user_id':1,'name':1,_id : 0}))
