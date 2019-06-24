@@ -5,26 +5,16 @@ log_file = open("message.log","a")
 
 sys.stdout = log_file
 sys.stderr = log_file
-import sqlite3
+import pymongo
+uri = "mongodb://6824f101-0ee0-4-231-b9ee:sTZfIFjKnQC0CNWcSLj7WSlBgs3gsN9m49bImfnxNLxMtGzu6ETyXHQ8X7NlrsFm5sPW1qYjjLEM2FxBjcJm0Q==@6824f101-0ee0-4-231-b9ee.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
+client = pymongo.MongoClient(uri)
+print("Obtained the client")
+mydb = myclient.test
+
 def write_ontoDB(id_user,name):
-	conn = sqlite3.connect("newnewDB1.db")
-	sqlquery = "Insert into Test_id Values(" + str(id_user) +",'"+ str(name) + "');"
-	print(sqlquery)
-	try:
-		conn.execute(sqlquery)
-		conn.commit()
-		conn.close()
-	except:
-		print("Exeception occured")
-		conn.close()
+	mydb.my_collection.insert({'id':id_user , 'name':name})	
 def read_fromDB():
-	conn = sqlite3.connect("newnewDB1.db")
-	sqlquery = "Select * from Test_id;"
-	try:
-		values = conn.execute(sqlquery)
-		values = values.fetchall()
-		conn.commit()
-		conn.close()
-	except:
-		conn.close()
-	return values
+	retu_list = list()
+	for item in mydb.my_collection.find():
+		retu_list.append(item)
+	return retu_list
