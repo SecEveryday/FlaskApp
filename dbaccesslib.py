@@ -12,7 +12,7 @@ print("Obtained the client")
 mydb = client.test
 
 def write_ontoDB(id_user,name):
-	mydb.my_collection.insert({'id':id_user , 'name':name})	
+	mydb.my_collection.insert({'user_id':id_user , 'name':name})	
 def read_fromDB():
 	retu_list = list()
 	for item in mydb.my_collection.find():
