@@ -1,6 +1,6 @@
 import sys
 old_stdout = sys.stdout
-
+import dbaccesslib as dba
 log_file = open("message.log","a")
 
 sys.stdout = log_file
@@ -25,12 +25,11 @@ def predict_out():
 	name = request.form['name']
 	print(id_user)
 	print(name)
-	import dbaccesslib as dba
+	
 	return_val = dba.write_ontoDB(id_user,name)
 	return jsonify(return_val)
 @app.route("/GetDBContents", methods=['POST','GET'])
 def GetDBContents():
-	import dbaccesslib as dba
 	return_val = dba.read_fromDB()
 	print(return_val)
 	return return_val
