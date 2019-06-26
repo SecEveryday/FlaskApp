@@ -1,0 +1,77 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 375, in __init__
+    self._ensure_connected(True)
+  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 940, in _ensure_connected
+    self.__ensure_member()
+  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 814, in __ensure_member
+    member, nodes = self.__find_node()
+  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 905, in __find_node
+    raise AutoReconnect(', '.join(errors))
+pymongo.errors.AutoReconnect: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/test/FlaskAPP/dbaccesslib.py", line 12, in <module>
+    client = pymongo.MongoClient(uri)
+  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 378, in __init__
+    raise ConnectionFailure(str(e))
+pymongo.errors.ConnectionFailure: timed out
+
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'dbaccesslib' is not defined
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'dbaccesslib' is not defined
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'dbaccesslib' is not defined
+
+KeyboardInterrupt
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 375, in __init__
+    self._ensure_connected(True)
+  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 940, in _ensure_connected
+    self.__ensure_member()
+  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 814, in __ensure_member
+    member, nodes = self.__find_node()
+  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 905, in __find_node
+    raise AutoReconnect(', '.join(errors))
+pymongo.errors.AutoReconnect: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/test/FlaskAPP/dbaccesslib.py", line 12, in <module>
+    client = pymongo.MongoClient(uri)
+  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 378, in __init__
+    raise ConnectionFailure(str(e))
+pymongo.errors.ConnectionFailure: timed out
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'dbaccesslib' is not defined
+
+KeyboardInterrupt
+
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+10.188.103.150 - - [26/Jun/2019 15:41:32] "[37mGET / HTTP/1.1[0m" 200 -
+10.188.103.150 - - [26/Jun/2019 15:41:32] "[36mGET /static/js/jquery-3.4.1.min.js HTTP/1.1[0m" 304 -
+10.188.103.150 - - [26/Jun/2019 15:41:32] "[36mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+10.188.103.150 - - [26/Jun/2019 15:41:32] "[36mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+10.188.103.150 - - [26/Jun/2019 15:41:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+10.188.103.150 - - [26/Jun/2019 15:41:58] "[1m[35mGET /GetDBContents HTTP/1.1[0m" 500 -
+10.188.103.150 - - [26/Jun/2019 15:42:18] "[1m[35mGET /GetDBContents HTTP/1.1[0m" 500 -
+10.188.103.150 - - [26/Jun/2019 15:42:18] "[37mGET /GetDBContents?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+10.188.103.150 - - [26/Jun/2019 15:42:18] "[37mGET /GetDBContents?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+10.188.103.150 - - [26/Jun/2019 15:42:18] "[37mGET /GetDBContents?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+10.188.103.150 - - [26/Jun/2019 15:42:18] "[37mGET /GetDBContents?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
+10.188.103.150 - - [26/Jun/2019 15:42:18] "[37mGET /GetDBContents?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+10.188.103.150 - - [26/Jun/2019 15:42:18] "[37mGET /GetDBContents?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -

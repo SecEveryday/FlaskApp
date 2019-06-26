@@ -11,7 +11,11 @@ app = Flask(__name__)
 @app.route("/")
 def hello():
     return render_template("new_test.html")
-
+#Production Level Testing code
+@app.route("/clearDB")
+def clearDB():
+	return dba.clear_DB()
+#
 @app.route("/you")
 def youprint():
     return "Hello You!"
@@ -30,5 +34,18 @@ def GetDBContents():
 	return_val = dba.read_fromDB()
 	print(return_val)
 	return return_val
+@app.route("/queryFromDatabase",methods=['GET'])
+def queryFromDatabase():
+	name = request.form['name']
+	return_val = dba.read_fromDB(name)
+@app.route("/getConfig",methods=['GET'])
+def getConfig():	
+    return dba.read_fromDB()
+@app.route("/addUser",methods=['POST'])
+def addUser():
+	return dba.add_usertoDB(request.JsonData)
+@app.route("/deleteUser",methods=['POST'])
+def deleteUser():
+	return dba.delete_userfromDB(request.JsonData)
 if __name__ == '__main__':
-        app.run("0.0.0.0",debug = True)
+    app.run("0.0.0.0",debug = True)

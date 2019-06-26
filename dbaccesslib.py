@@ -11,9 +11,16 @@ import pymongo
 uri = "mongodb://6824f101-0ee0-4-231-b9ee:sTZfIFjKnQC0CNWcSLj7WSlBgs3gsN9m49bImfnxNLxMtGzu6ETyXHQ8X7NlrsFm5sPW1qYjjLEM2FxBjcJm0Q==@6824f101-0ee0-4-231-b9ee.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
 client = pymongo.MongoClient(uri)
 print("Obtained the client")
-mydb = client.test
-
-def write_ontoDB(id_user,name):
-	mydb.my_collection.insert({'user_id':id_user , 'name':name})	
+mydb = client.test	
 def read_fromDB():
-	return dumps(mydb.my_collection.find({},{'user_id':1,'name':1,'_id' : 0}))
+	return dumps(mydb.userInfo.find({},{'_id' : 0}))
+def add_usertoDB(jsonData):
+	mydb.userInfo.insert(jsonData)
+	return {"status": "Success","statusreason": "addSuccess"}
+def delete_userfromDB(jsonData):
+	mydb.userInfo.remove({"name":jsonData["name"]})
+	return {"status": "Success","statusreason": "deleteSuccess"}
+def clear_DB():
+	mydb.userInfo.drop()
+	mydb.userMailInfo.drop()
+	return {"status": "Success","statusreason": "deleteSuccess"}
