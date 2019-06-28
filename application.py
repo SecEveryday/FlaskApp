@@ -16,10 +16,10 @@ def hello():
 def clearDB():
 	return dba.clear_DB()
 #
-@app.route("/queryFromDatabase",methods=['GET'])
+@app.route("/queryFromDatabase",methods=['POST'])
 def queryFromDatabase():
-	name = request.json
-	return_val = dba.read_fromDB(name)
+	jsonData = request.json
+	return dba.read_fromDBSpecfic(jsonData)
 @app.route("/getConfig",methods=['GET'])
 def getConfig():	
     return dba.read_fromDB()
@@ -32,6 +32,7 @@ def addUser():
 	return dba.add_usertoDB(jsonData)
 @app.route("/deleteUser",methods=['POST'])
 def deleteUser():
-	return dba.delete_userfromDB(request.json)
+	jsonData = request.json
+	return dba.delete_userfromDB(jsonData)
 if __name__ == '__main__':
     app.run("0.0.0.0",debug = True)

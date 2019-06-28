@@ -14,7 +14,9 @@ client = pymongo.MongoClient(uri)
 print("Obtained the client")
 mydb = client.test	
 def read_fromDB():
-	return json.dumps(list(mydb.userInfo.find({},{'_id' : 0})), default=json_util.default)
+	return json.dumps(list(mydb.userInfo.find({},{'_id' : 0,'user_id':0})), default=json_util.default)
+def read_fromDBSpecfic(jsonData):
+	return json.dumps(list(mydb.userInfo.find({'name':{'$regex':".*"+jsonData["name"]+".*",'$options':'i'}},{'_id' : 0,'user_id':0})),default=json_util.default)
 def add_usertoDB(jsonData):
 	mydb.userInfo.insert({'name':jsonData['name'],'department':jsonData['department'],'building':jsonData['building'],'division':jsonData['division'],"user_id":jsonData["user_id"]})
 	print("Sucessfully added")
@@ -22,8 +24,7 @@ def add_usertoDB(jsonData):
 def delete_userfromDB(jsonData):
 	a = mydb.userInfo.find_one({"name":jsonData["name"]})
 	newDbref = DBRef("mydb.userInfo",a["_id"])
-	newname = str(jsonData["name"])+"(User Deleted)"
-	mydb.userMailInfo.update({"otherdbref":newDbref},{"$set":{"name":newname}})
+	mydb.userMailInfo.update({"otherdbref":newDbref},{"$set":{"userDeleted":True}})
 	mydb.userInfo.remove({"name":jsonData["name"]})
 	return json.dumps({"status": "Success","statusreason": "deleteSuccess"})
 #Production Level Testing code
