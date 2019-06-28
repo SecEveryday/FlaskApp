@@ -1,77 +1,252 @@
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 375, in __init__
-    self._ensure_connected(True)
-  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 940, in _ensure_connected
-    self.__ensure_member()
-  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 814, in __ensure_member
-    member, nodes = self.__find_node()
-  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 905, in __find_node
-    raise AutoReconnect(', '.join(errors))
-pymongo.errors.AutoReconnect: timed out
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "/home/test/FlaskAPP/dbaccesslib.py", line 12, in <module>
-    client = pymongo.MongoClient(uri)
-  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 378, in __init__
-    raise ConnectionFailure(str(e))
-pymongo.errors.ConnectionFailure: timed out
-
-KeyboardInterrupt
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'dbaccesslib' is not defined
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'dbaccesslib' is not defined
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'dbaccesslib' is not defined
-
-KeyboardInterrupt
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 375, in __init__
-    self._ensure_connected(True)
-  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 940, in _ensure_connected
-    self.__ensure_member()
-  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 814, in __ensure_member
-    member, nodes = self.__find_node()
-  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 905, in __find_node
-    raise AutoReconnect(', '.join(errors))
-pymongo.errors.AutoReconnect: timed out
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "/home/test/FlaskAPP/dbaccesslib.py", line 12, in <module>
-    client = pymongo.MongoClient(uri)
-  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 378, in __init__
-    raise ConnectionFailure(str(e))
-pymongo.errors.ConnectionFailure: timed out
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'dbaccesslib' is not defined
-
-KeyboardInterrupt
-
- * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+HEY___________________
+ImmutableMultiDict([('{"division": "TTEC", "department": "TTEC_SL", "name": "Arvind", "building": "Essae Vaishnavi Solitaire"}', '')])
+127.0.0.1 - - [28/Jun/2019 11:37:51] "[1m[31mPOST /addUser HTTP/1.1[0m" 400 -
+ * Detected change in '/home/test/FlaskAPP/application.py', reloading
  * Restarting with stat
+Obtained the client
  * Debugger is active!
  * Debugger PIN: 120-406-930
-10.188.103.150 - - [26/Jun/2019 15:41:32] "[37mGET / HTTP/1.1[0m" 200 -
-10.188.103.150 - - [26/Jun/2019 15:41:32] "[36mGET /static/js/jquery-3.4.1.min.js HTTP/1.1[0m" 304 -
-10.188.103.150 - - [26/Jun/2019 15:41:32] "[36mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 304 -
-10.188.103.150 - - [26/Jun/2019 15:41:32] "[36mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
-10.188.103.150 - - [26/Jun/2019 15:41:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
-10.188.103.150 - - [26/Jun/2019 15:41:58] "[1m[35mGET /GetDBContents HTTP/1.1[0m" 500 -
-10.188.103.150 - - [26/Jun/2019 15:42:18] "[1m[35mGET /GetDBContents HTTP/1.1[0m" 500 -
-10.188.103.150 - - [26/Jun/2019 15:42:18] "[37mGET /GetDBContents?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
-10.188.103.150 - - [26/Jun/2019 15:42:18] "[37mGET /GetDBContents?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
-10.188.103.150 - - [26/Jun/2019 15:42:18] "[37mGET /GetDBContents?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
-10.188.103.150 - - [26/Jun/2019 15:42:18] "[37mGET /GetDBContents?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
-10.188.103.150 - - [26/Jun/2019 15:42:18] "[37mGET /GetDBContents?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
-10.188.103.150 - - [26/Jun/2019 15:42:18] "[37mGET /GetDBContents?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+ * Detected change in '/home/test/FlaskAPP/application.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+HEY___________________
+{'name': 'Arvind', 'building': 'Essae Vaishnavi Solitaire', 'division': 'TTEC', 'department': 'TTEC_SL'}
+Sucessfully added
+127.0.0.1 - - [28/Jun/2019 11:53:24] "[37mPOST /addUser HTTP/1.1[0m" 200 -
+HEY___________________
+{'department': 'TTEC_SL', 'division': 'TTEC', 'name': 'Koushik', 'building': 'Essae Vaishnavi Solitaire'}
+Sucessfully added
+127.0.0.1 - - [28/Jun/2019 11:53:51] "[37mPOST /addUser HTTP/1.1[0m" 200 -
+ * Detected change in '/home/test/FlaskAPP/application.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+HEY___________________
+ImmutableMultiDict([])
+127.0.0.1 - - [28/Jun/2019 12:01:59] "[1m[31mPOST /addUser HTTP/1.1[0m" 400 -
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+HEY___________________
+ImmutableMultiDict([])
+127.0.0.1 - - [28/Jun/2019 12:02:43] "[1m[31mPOST /addUser HTTP/1.1[0m" 400 -
+ * Detected change in '/home/test/FlaskAPP/application.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/application.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/application.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+HEY___________________
+{'division': 'TTEC', 'building': 'Essae Vaishnavi Solitaire', 'name': 'Koushik', 'department': 'TTEC_SL'}
+Sucessfully added
+127.0.0.1 - - [28/Jun/2019 12:03:48] "[1m[35mPOST /addUser HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1740, in make_response
+    rv = self.response_class.force_type(rv, request.environ)
+  File "/usr/local/lib/python3.5/dist-packages/werkzeug/wrappers/base_response.py", line 269, in force_type
+    response = BaseResponse(*_run_wsgi_app(response, environ))
+  File "/usr/local/lib/python3.5/dist-packages/werkzeug/wrappers/base_response.py", line 26, in _run_wsgi_app
+    return _run_wsgi_app(*args)
+  File "/usr/local/lib/python3.5/dist-packages/werkzeug/test.py", line 1119, in run_wsgi_app
+    app_rv = app(environ, start_response)
+TypeError: 'dict' object is not callable
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+HEY___________________
+{'division': 'TTEC', 'building': 'Essae Vaishnavi Solitaire', 'name': 'Koushik', 'department': 'TTEC_SL'}
+Sucessfully added
+127.0.0.1 - - [28/Jun/2019 12:04:09] "[37mPOST /addUser HTTP/1.1[0m" 200 -
+HEY___________________
+{'division': 'TTEC', 'building': 'Essae Vaishnavi Solitaire', 'name': 'Koushik', 'department': 'TTEC_SL'}
+Sucessfully added
+127.0.0.1 - - [28/Jun/2019 12:04:27] "[37mPOST /addUser HTTP/1.1[0m" 200 -
+HEY___________________
+{'division': 'TTEC', 'building': 'Essae Vaishnavi Solitaire', 'name': 'Koushik', 'department': 'TTEC_SL'}
+Sucessfully added
+127.0.0.1 - - [28/Jun/2019 12:07:34] "[37mPOST /addUser HTTP/1.1[0m" 200 -
+HEY___________________
+{'division': 'TTEC', 'department': 'TTEC_SL', 'name': 'Koushik', 'building': 'Essae Vaishnavi Solitaire'}
+Sucessfully added
+127.0.0.1 - - [28/Jun/2019 12:07:46] "[37mPOST /addUser HTTP/1.1[0m" 200 -
+ * Detected change in '/home/test/FlaskAPP/application.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/application.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/application.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/application.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/application.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/application.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/application.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+HEY___________________
+{'name': 'Shwetha', 'department': 'TTEC-SL', 'building': 'Essae', 'division': 'TTEC'}
+Sucessfully added
+127.0.0.1 - - [28/Jun/2019 12:25:23] "[37mPOST /addUser HTTP/1.1[0m" 200 -
+HEY___________________
+{'name': 'ksks', 'department': 'ksjk', 'building': 'ksk', 'division': 'jsakld'}
+Sucessfully added
+127.0.0.1 - - [28/Jun/2019 12:26:04] "[37mPOST /addUser HTTP/1.1[0m" 200 -
+HEY___________________
+{'name': 'jskd', 'department': 'jsk', 'building': 'jsk', 'division': 'jsk'}
+Sucessfully added
+127.0.0.1 - - [28/Jun/2019 12:26:33] "[37mPOST /addUser HTTP/1.1[0m" 200 -
+127.0.0.1 - - [28/Jun/2019 12:28:02] "[37mGET /clearDB HTTP/1.1[0m" 200 -
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Obtained the client
+ * Debugger is active!
+ * Debugger PIN: 120-406-930
+ * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
+ * Restarting with stat
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 375, in __init__
+    self._ensure_connected(True)
+  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 940, in _ensure_connected
+    self.__ensure_member()
+  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 814, in __ensure_member
+    member, nodes = self.__find_node()
+  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 905, in __find_node
+    raise AutoReconnect(', '.join(errors))
+pymongo.errors.AutoReconnect: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/test/FlaskAPP/application.py", line 3, in <module>
+    import dbaccesslib as dba
+  File "/home/test/FlaskAPP/dbaccesslib.py", line 13, in <module>
+    client = pymongo.MongoClient(uri)
+  File "/usr/local/lib/python3.5/dist-packages/pymongo/mongo_client.py", line 378, in __init__
+    raise ConnectionFailure(str(e))
+pymongo.errors.ConnectionFailure: timed out

@@ -1,5 +1,6 @@
-
-from bson.json_util import dumps
+import json
+from bson.dbref import DBRef
+from bson import json_util
 import sys
 old_stdout = sys.stdout
 
@@ -13,14 +14,21 @@ client = pymongo.MongoClient(uri)
 print("Obtained the client")
 mydb = client.test	
 def read_fromDB():
-	return dumps(mydb.userInfo.find({},{'_id' : 0}))
+	return json.dumps(list(mydb.userInfo.find({},{'_id' : 0})), default=json_util.default)
 def add_usertoDB(jsonData):
-	mydb.userInfo.insert(jsonData)
-	return {"status": "Success","statusreason": "addSuccess"}
+	mydb.userInfo.insert({'name':jsonData['name'],'department':jsonData['department'],'building':jsonData['building'],'division':jsonData['division']})
+	print("Sucessfully added")
+	return json.dumps({"status": "Success","statusreason": "addSuccess"})
 def delete_userfromDB(jsonData):
+	a = mydb.userInfo.find_one({"name":jsonData["name"]})
+	newDbref = DBRef("mydb.userInfo",a["_id"])
+	newname = str(jsonData["name"])+"(User Deleted)"
+	mydb.userMailInfo.update({"otherdbref":newDbref},{"$set":{"name":newname}})
 	mydb.userInfo.remove({"name":jsonData["name"]})
-	return {"status": "Success","statusreason": "deleteSuccess"}
+	return json.dumps({"status": "Success","statusreason": "deleteSuccess"})
+#Production Level Testing code
 def clear_DB():
 	mydb.userInfo.drop()
 	mydb.userMailInfo.drop()
-	return {"status": "Success","statusreason": "deleteSuccess"}
+	return json.dumps({"status": "Success","statusreason": "deleteSuccess"})
+#

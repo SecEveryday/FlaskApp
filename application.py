@@ -1,10 +1,10 @@
-import sys
-old_stdout = sys.stdout
+#import sys
+#old_stdout = sys.stdout
 import dbaccesslib as dba
-log_file = open("message.log","a")
+#log_file = open("message.log","a")
 
-sys.stdout = log_file
-sys.stderr = log_file
+#sys.stdout = log_file
+#sys.stderr = log_file
 from flask import Flask, flash, request, redirect, url_for, render_template,jsonify
 app = Flask(__name__)
 
@@ -16,35 +16,22 @@ def hello():
 def clearDB():
 	return dba.clear_DB()
 #
-@app.route("/you")
-def youprint():
-    return "Hello You!"
-@app.route("/predict_out",methods=['POST','GET'])
-def predict_out():
-	id_user = request.form['id']
-	name = request.form['name']
-	print(id_user)
-	print(name)
-	
-	return_val = dba.write_ontoDB(id_user,name)
-	return jsonify(return_val)
-@app.route("/GetDBContents", methods=['POST','GET'])
-def GetDBContents():
-	return_val = dba.read_fromDB()
-	print(return_val)
-	return return_val
 @app.route("/queryFromDatabase",methods=['GET'])
 def queryFromDatabase():
-	name = request.form['name']
+	name = request.json
 	return_val = dba.read_fromDB(name)
 @app.route("/getConfig",methods=['GET'])
 def getConfig():	
     return dba.read_fromDB()
 @app.route("/addUser",methods=['POST'])
 def addUser():
-	return dba.add_usertoDB(request.JsonData)
+	#jsonData = request.get_json()#.decode('utf-8')
+	jsonData = request.json
+	print("HEY___________________")
+	print(jsonData)
+	return dba.add_usertoDB(jsonData)
 @app.route("/deleteUser",methods=['POST'])
 def deleteUser():
-	return dba.delete_userfromDB(request.JsonData)
+	return dba.delete_userfromDB(request.json)
 if __name__ == '__main__':
     app.run("0.0.0.0",debug = True)
