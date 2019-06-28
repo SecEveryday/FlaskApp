@@ -20,7 +20,7 @@ alert("Hey1");
 //alert('HEY')
 var formData = new FormData($('#contactForm1')[0]);
 $.ajax({
-url: "{{url_for('predict_out') }}",
+url: "{{url_for('clearDB') }}",
 data: formData,
 type: 'POST',
 contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
