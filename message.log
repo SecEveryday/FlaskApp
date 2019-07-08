@@ -1,183 +1,107 @@
-Obtained the client
- * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/test/FlaskAPP/application.py", line 44, in generateReport
+    return dbaUMI.read_fromDB()
+  File "/home/test/FlaskAPP/dbaccesslibUserMailInfo.py", line 36, in read_fromDB
+    dall.update(newjson)
+TypeError: 'NoneType' object is not iterable
+{'userDeleted': True, 'otherdbref': DBRef('mydb.userInfo', ObjectId('5d15ecfd926fc4678bc9db99')), 'scan_date': datetime.datetime(2019, 7, 1, 14, 43, 12, 821000), 'end_date': datetime.datetime(2019, 7, 11, 14, 43, 12, 821000), 'code': '1234'}
+127.0.0.1 - - [01/Jul/2019 15:16:05] "[1m[35mGET /generateReport HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/test/FlaskAPP/application.py", line 44, in generateReport
+    return dbaUMI.read_fromDB()
+  File "/home/test/FlaskAPP/dbaccesslibUserMailInfo.py", line 36, in read_fromDB
+    dall.update(newjson)
+TypeError: 'NoneType' object is not iterable
+ * Detected change in '/home/test/FlaskAPP/dbaccesslibUserMailInfo.py', reloading
  * Restarting with stat
 Obtained the client
  * Debugger is active!
  * Debugger PIN: 120-406-930
-127.0.0.1 - - [28/Jun/2019 15:14:05] "[1m[35mPOST /queryFromDatabase HTTP/1.1[0m" 500 -
 Obtained the client
- * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: module 'dbaccesslibUserMailInfo' has no attribute 'clearDB'
+
+KeyboardInterrupt
+
+{'scan_date': datetime.datetime(2019, 7, 1, 14, 43, 12, 821000), 'code': '1234', 'otherdbref': DBRef('mydb.userInfo', ObjectId('5d15ecfd926fc4678bc9db99')), 'userDeleted': True, 'end_date': datetime.datetime(2019, 7, 11, 14, 43, 12, 821000)}
+127.0.0.1 - - [01/Jul/2019 15:18:03] "[1m[35mGET /generateReport HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/test/FlaskAPP/application.py", line 44, in generateReport
+    return dbaUMI.read_fromDB()
+  File "/home/test/FlaskAPP/dbaccesslibUserMailInfo.py", line 36, in read_fromDB
+    dall.update(newjson)
+TypeError: 'NoneType' object is not iterable
+127.0.0.1 - - [01/Jul/2019 15:19:39] "[37mGET /generateReport HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Jul/2019 15:19:44] "[37mGET /getConfig HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Jul/2019 15:19:53] "[37mPOST /addToUserMailInfo HTTP/1.1[0m" 200 -
+{'code': '123545', 'scan_date': datetime.datetime(2019, 7, 1, 15, 19, 53, 844000), 'end_date': datetime.datetime(2019, 7, 11, 15, 19, 53, 844000), 'userDeleted': False, 'otherdbref': DBRef('mydb.userInfo', ObjectId('5d19d631926fc41b01ab280c'))}
+{'scan_date': datetime.datetime(2019, 7, 1, 15, 19, 53, 844000), 'department': 'TTEC_SL', 'userDeleted': False, 'end_date': datetime.datetime(2019, 7, 11, 15, 19, 53, 844000), 'code': '123545', 'building': 'Essae', 'division': 'TTEC', 'name': 'Arvind Mohan'}
+127.0.0.1 - - [01/Jul/2019 15:19:56] "[37mGET /generateReport HTTP/1.1[0m" 200 -
+ * Detected change in '/home/test/FlaskAPP/dbaccesslibUserMailInfo.py', reloading
+Obtained the client
  * Restarting with stat
 Obtained the client
  * Debugger is active!
  * Debugger PIN: 120-406-930
-127.0.0.1 - - [28/Jun/2019 15:57:39] "[37mPOST /queryFromDatabase HTTP/1.1[0m" 200 -
-HEY___________________
-{'building': 'Essae', 'user_id': 2, 'division': 'TTEC', 'name': 'Arvind', 'department': 'SL'}
-Sucessfully added
-127.0.0.1 - - [28/Jun/2019 15:57:53] "[37mPOST /addUser HTTP/1.1[0m" 200 -
-127.0.0.1 - - [28/Jun/2019 15:57:59] "[37mPOST /queryFromDatabase HTTP/1.1[0m" 200 -
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
 Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
-127.0.0.1 - - [28/Jun/2019 15:59:53] "[37mPOST /queryFromDatabase HTTP/1.1[0m" 200 -
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
-127.0.0.1 - - [28/Jun/2019 16:02:12] "[37mPOST /queryFromDatabase HTTP/1.1[0m" 200 -
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
-127.0.0.1 - - [28/Jun/2019 16:03:00] "[37mPOST /queryFromDatabase HTTP/1.1[0m" 200 -
-HEY___________________
-{'division': 'TTEC', 'department': 'TTEC-SL', 'user_id': 2, 'building': 'Essae', 'name': 'ArvindMohan'}
-Sucessfully added
-127.0.0.1 - - [28/Jun/2019 16:03:33] "[37mPOST /addUser HTTP/1.1[0m" 200 -
-127.0.0.1 - - [28/Jun/2019 16:03:41] "[37mPOST /queryFromDatabase HTTP/1.1[0m" 200 -
-127.0.0.1 - - [28/Jun/2019 16:06:10] "[1m[31mGET /getConfig HTTP/1.1[0m" 405 -
- * Detected change in '/home/test/FlaskAPP/application.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/application.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
-127.0.0.1 - - [28/Jun/2019 16:06:32] "[37mGET /getConfig HTTP/1.1[0m" 200 -
- * Detected change in '/home/test/FlaskAPP/application.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
- * Detected change in '/home/test/FlaskAPP/dbaccesslib.py', reloading
- * Restarting with stat
-Obtained the client
- * Debugger is active!
- * Debugger PIN: 120-406-930
-127.0.0.1 - - [28/Jun/2019 16:19:50] "[37mPOST /deleteUser HTTP/1.1[0m" 200 -
-127.0.0.1 - - [28/Jun/2019 16:19:56] "[37mGET /getConfig HTTP/1.1[0m" 200 -
-127.0.0.1 - - [28/Jun/2019 16:20:12] "[37mPOST /deleteUser HTTP/1.1[0m" 200 -
-127.0.0.1 - - [28/Jun/2019 16:20:21] "[37mGET /getConfig HTTP/1.1[0m" 200 -
-HEY___________________
-{'user_id': 2, 'name': 'K S Koushik', 'department': 'TTEC_SL', 'building': 'Essae Vaishnavi Solitaire', 'division': 'TTEC'}
-Sucessfully added
-127.0.0.1 - - [28/Jun/2019 16:21:31] "[37mPOST /addUser HTTP/1.1[0m" 200 -
-127.0.0.1 - - [28/Jun/2019 16:21:38] "[37mGET /getConfig HTTP/1.1[0m" 200 -

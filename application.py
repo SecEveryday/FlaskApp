@@ -1,6 +1,7 @@
 #import sys
 #old_stdout = sys.stdout
-import dbaccesslib as dba
+import dbaccesslibUserInfo as dbaUI
+import dbaccesslibUserMailInfo as dbaUMI
 #log_file = open("message.log","a")
 
 #sys.stdout = log_file
@@ -14,25 +15,32 @@ def hello():
 #Production Level Testing code
 @app.route("/clearDB")
 def clearDB():
-	return dba.clear_DB()
+	return dbaUI.clear_DB()
 #
 @app.route("/queryFromDatabase",methods=['POST'])
 def queryFromDatabase():
 	jsonData = request.json
-	return dba.read_fromDBSpecfic(jsonData)
+	return dbaUI.read_fromDBSpecfic(jsonData)
 @app.route("/getConfig",methods=['GET'])
 def getConfig():	
-    return dba.read_fromDB()
+    return dbaUI.read_fromDB()
 @app.route("/addUser",methods=['POST'])
 def addUser():
 	#jsonData = request.get_json()#.decode('utf-8')
 	jsonData = request.json
 	print("HEY___________________")
 	print(jsonData)
-	return dba.add_usertoDB(jsonData)
+	return dbaUI.add_usertoDB(jsonData)
 @app.route("/deleteUser",methods=['POST'])
 def deleteUser():
 	jsonData = request.json
-	return dba.delete_userfromDB(jsonData)
+	return dbaUI.delete_userfromDB(jsonData)
+@app.route("/addToUserMailInfo",methods=['POST'])
+def addToUserMailInfo():
+	jsonData = request.json
+	return dbaUMI.addEntry(jsonData)
+@app.route("/generateReport",methods=['GET'])
+def generateReport():
+    return dbaUMI.read_fromDB()
 if __name__ == '__main__':
     app.run("0.0.0.0",debug = True)
