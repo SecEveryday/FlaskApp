@@ -9,6 +9,8 @@ import dbaccesslibUserMailInfo as dbaUMI
 from flask import Flask, flash, request, redirect, url_for, render_template,jsonify
 app = Flask(__name__)
 
+UPLOAD_FOLDER = 'uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route("/")
 def hello():
     return render_template("new_test.html")
@@ -42,5 +44,11 @@ def addToUserMailInfo():
 @app.route("/generateReport",methods=['GET'])
 def generateReport():
     return dbaUMI.read_fromDB()
+@app.route("/do_ocr",methods=['POST'])
+def do_ocr():
+	file = request.files['filename']
+	file.save(os.path.join(app.config['UPLOAD_FOLDER'], "testocr.png"))
+	import ocr as to
+	return to.execute()
 if __name__ == '__main__':
     app.run("0.0.0.0",debug = True)

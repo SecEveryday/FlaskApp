@@ -20,14 +20,14 @@ alert("Hey1");
 //alert('HEY')
 var formData = new FormData($('#contactForm1')[0]);
 $.ajax({
-url: "{{url_for('clearDB') }}",
+url: "{{url_for('do_ocr') }}",
 data: formData,
 type: 'POST',
 contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
 processData: false, // NEEDED, DON'T OMIT THIS
 success : function(data){
 alert("Hey2");
-$('#Contentdiv').html("Sucess Fully added");
+$('#Contentdiv').html("<p>"+data+"</p>");
 }
 // ... Other options like success and etc
 })})});
@@ -36,20 +36,15 @@ $('#Contentdiv').html("Sucess Fully added");
 	<form method='POST' id ='contactForm1'>
 		<div class="container table-custom" >
 			<div class="row">
-				<div class="col-sm-4">
-					<h6>Please Input the id :</h6>
-					<input type="number" name="id" values="Id"/>
-				</div>
-				<div class="col-sm-4">
-					<h6>Please Input the Name :</h6>
-					<input type="text" name="name" values="Name"/>
-				</div>
-				<div class="col-sm-4 ">
+				<div class="col-sm-6 ">
 					<p><a href='#' id='calculate' class="btn btn-primary table-custom">Submit</a></p>
+				</div>
+				<div class="col-sm-6">
+					<input type="file" accept="image/*" capture="environment" name="ocr.png">
 				</div>
 			</div>
 		</div>
-		<input type="file" accept="image/*" capture="environment">
+		
 	</form>
 	<br>
 	<div>
