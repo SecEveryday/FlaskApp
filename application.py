@@ -1,11 +1,11 @@
-#import sys
-#old_stdout = sys.stdout
+import sys
+old_stdout = sys.stdout
 import dbaccesslibUserInfo as dbaUI
 import dbaccesslibUserMailInfo as dbaUMI
-#log_file = open("message.log","a")
+log_file = open("message.log","a")
 
-#sys.stdout = log_file
-#sys.stderr = log_file
+sys.stdout = log_file
+sys.stderr = log_file
 from flask import Flask, flash, request, redirect, url_for, render_template,jsonify
 app = Flask(__name__)
 
