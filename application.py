@@ -9,7 +9,7 @@ sys.stderr = log_file
 from flask import Flask, flash, request, redirect, url_for, render_template,jsonify
 app = Flask(__name__)
 
-UPLOAD_FOLDER = './uploads'
+UPLOAD_FOLDER = '/home/site/wwwroot/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route("/")
 def hello():
