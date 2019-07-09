@@ -1,3 +1,4 @@
+import os
 import sys
 old_stdout = sys.stdout
 import dbaccesslibUserInfo as dbaUI
@@ -9,7 +10,7 @@ sys.stderr = log_file
 from flask import Flask, flash, request, redirect, url_for, render_template,jsonify
 app = Flask(__name__)
 
-UPLOAD_FOLDER = '/home/site/wwwroot/uploads'
+UPLOAD_FOLDER = './uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route("/")
 def hello():
@@ -46,8 +47,10 @@ def generateReport():
     return dbaUMI.read_fromDB()
 @app.route("/do_ocr",methods=['POST'])
 def do_ocr():
+	print("Hey reached Start of OCR")
 	file = request.files['filename']
-	file.save(os.path.join(app.config['UPLOAD_FOLDER'], "testocr.png"))
+	print(file)
+	file.save(os.path.join("uploads", "testocr.png"))
 	import ocr as to
 	return to.execute()
 if __name__ == '__main__':
