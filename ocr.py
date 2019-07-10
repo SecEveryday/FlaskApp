@@ -10,7 +10,12 @@ import requests
 #import matplotlib.pyplot as plt
 from PIL import Image
 from io import BytesIO
+import sys
+old_stdout = sys.stdout
+log_file = open("message.log","a")
 
+sys.stdout = log_file
+sys.stderr = log_file
 # Replace <Subscription Key> with your valid subscription key.
 def execute():
     subscription_key = "b438bb34e3a144508eb427e71fadc72b"
