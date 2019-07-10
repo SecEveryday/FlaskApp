@@ -50,7 +50,7 @@ def do_ocr():
 	print("Hey reached Start of OCR")
 	file = request.files['filename']
 	print(file)
-	file.save(os.path.join("uploads", "testocr"))
+	file.save(os.path.join("./uploads", "testocr.jpg"))
 	import ocr as to
 	return to.execute()
 if __name__ == '__main__':

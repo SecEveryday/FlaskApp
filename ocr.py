@@ -28,7 +28,7 @@ def execute():
     analyze_url = vision_base_url + "ocr"
 
     # Set image_path to the local path of an image that you want to analyze.
-    image_path = "uploads/testocr"
+    image_path = "uploads/testocr.jpg"
 
     # Read the image into a byte array
     image_data = open(image_path, "rb").read()
