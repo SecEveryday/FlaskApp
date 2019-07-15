@@ -18,7 +18,7 @@ def read_fromDB():
 def read_fromDBSpecfic(jsonData):
 	return json.dumps(list(mydb.userInfo.find({'name':{'$regex':".*"+jsonData["name"]+".*",'$options':'i'}},{'_id' : 0,'user_id':0})),default=json_util.default)
 def add_usertoDB(jsonData):
-	mydb.userInfo.insert({'name':jsonData['name'],'department':jsonData['department'],'building':jsonData['building'],'division':jsonData['division'],"user_id":jsonData["user_id"]})
+	mydb.userInfo.insert({'name':jsonData['name'],'department':jsonData['department'],'building':jsonData['building'],'division':jsonData['division'],'email':jsonData['emailaddress'],'floor':jsonData['floor'],'cubicle':jsonData['cubicle'],"user_id":jsonData["user_id"]})
 	print("Sucessfully added")
 	return json.dumps({"status": "Success","statusreason": "addSuccess"})
 def delete_userfromDB(jsonData):
