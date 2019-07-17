@@ -22,7 +22,7 @@ def add_usertoDB(jsonData):
 	print("Sucessfully added")
 	return json.dumps({"status": "Success","statusreason": "addSuccess"})
 def delete_userfromDB(jsonData):
-	mydb.userInfo.update({"name":jsonData["name"]},{"$set":{"userDeleted":True}})
+	mydb.userInfo.update({"name":jsonData["name"]},{"$set":{"userDeleted":True}},multi=True)
 	return json.dumps({"status": "Success","statusreason": "deleteSuccess"})
 #Production Level Testing code
 def clear_DB():
