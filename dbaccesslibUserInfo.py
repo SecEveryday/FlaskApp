@@ -23,7 +23,7 @@ def add_usertoDB(jsonData):
 	return json.dumps({"status": "Success","statusreason": "addSuccess"})
 def delete_userfromDB(jsonData):
 	founduser = mydb.userInfo.find_one({"userDeleted":False,"name":jsonData["name"]},{"_id":1})
-	mydb.userInfo.update({"_id":founduser["_id"]},{"$set":{"userDeleted":True}})
+	mydb.userInfo.update_many({"_id":founduser["_id"]},{"$set":{"userDeleted":True}})
 	return json.dumps({"status": "Success","statusreason": "deleteSuccess"})
 #Production Level Testing code
 def clear_DB():
