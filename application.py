@@ -24,9 +24,10 @@ def clearDB():
 def queryFromDatabase():
 	jsonData = request.json
 	return dbaUI.read_fromDBSpecfic(jsonData)
-@app.route("/getConfig",methods=['GET'])
-def getConfig():	
-    return dbaUI.read_fromDB()
+@app.route("/getConfig",methods=['POST'])
+def getConfig():
+    jsonData = request.jsonData
+    return dbaUI.read_fromDB(jsonData)
 @app.route("/addUser",methods=['POST'])
 def addUser():
 	#jsonData = request.get_json()#.decode('utf-8')
