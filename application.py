@@ -26,7 +26,7 @@ def queryFromDatabase():
 	return dbaUI.read_fromDBSpecfic(jsonData)
 @app.route("/getConfig",methods=['POST'])
 def getConfig():
-    jsonData = request.jsonData
+    jsonData = request.json
     return dbaUI.read_fromDB(jsonData)
 @app.route("/addUser",methods=['POST'])
 def addUser():
