@@ -13,8 +13,10 @@ uri = "mongodb://6824f101-0ee0-4-231-b9ee:sTZfIFjKnQC0CNWcSLj7WSlBgs3gsN9m49bImf
 client = pymongo.MongoClient(uri)
 print("Obtained the client")
 mydb = client.test	
-def read_fromDB():
-	return json.dumps(list(mydb.userInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0})), default=json_util.default)
+def read_fromDB(jsonData):
+	num = (int)jsonData["page"]
+	skips = 10 * (num - 1)
+	return json.dumps(list(mydb.userInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}).skip(skips).limit(10)), default=json_util.default)
 def read_fromDBSpecfic(jsonData):
 	return json.dumps(list(mydb.userInfo.find({'name':{'$regex':".*"+jsonData["name"]+".*",'$options':'i'},"userDeleted":False},{'_id' : 0,'user_id':0})),default=json_util.default)
 def add_usertoDB(jsonData):
