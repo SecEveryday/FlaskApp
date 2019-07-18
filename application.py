@@ -35,6 +35,10 @@ def addUser():
 	print("HEY___________________")
 	print(jsonData)
 	return dbaUI.add_usertoDB(jsonData)
+@app.route("/updateUser",methods=['POST'])
+def updateUser():
+	jsonData = request.json
+	return dbaUI.update_user(jsonData)
 @app.route("/deleteUser",methods=['POST'])
 def deleteUser():
 	jsonData = request.json
