@@ -14,7 +14,7 @@ client = pymongo.MongoClient(uri)
 print("Obtained the client")
 mydb = client.test	
 def read_fromDB(jsonData):
-	num = (int)jsonData["page"]
+	num = int(jsonData['page'])
 	skips = 10 * (num - 1)
 	return json.dumps(list(mydb.userInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}).skip(skips).limit(10)), default=json_util.default)
 def read_fromDBSpecfic(jsonData):
