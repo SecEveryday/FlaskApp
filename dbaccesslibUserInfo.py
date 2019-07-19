@@ -18,7 +18,11 @@ def read_fromDB(jsonData):
 	skips = 10 * (num - 1)
 	return json.dumps(list(mydb.userInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}).skip(skips).limit(10)), default=json_util.default)
 def read_fromDBSpecfic(jsonData):
-	return json.dumps(list(mydb.userInfo.find({'name':{'$regex':".*"+jsonData["name"]+".*",'$options':'i'},"userDeleted":False},{'_id' : 0,'user_id':0})),default=json_util.default)
+	for item in jsonData:
+		foundUser = mydb.userInfo.find({'name':{'$regex':".*"+item+".*",'$options':'i'},"userDeleted":False},{'_id' : 0,'user_id':0})
+		if(foundUser.count() >= 1):
+			return json.dumps(list(foundUser),default=json_util.default)
+	return json.dumps({},default=json_util.default)
 def add_usertoDB(jsonData):
 	mydb.userInfo.insert({'name':jsonData['name'],'department':jsonData['department'],'building':jsonData['building'],'division':jsonData['division'],'email':jsonData['emailaddress'],'floor':jsonData['floor'],'cubicle':jsonData['cubicle'],"user_id":jsonData["user_id"],"userDeleted":False})
 	print("Sucessfully added")
