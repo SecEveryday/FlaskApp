@@ -214,6 +214,7 @@ $("#AppToApp_startScan").on("change", function () {
 		$('#retresponse').val("Scanning is in progress");		
 		move(1,20,0)
         var formData = new FormData($('#contactForm1')[0]);
+        alert("Hey 1");
 $.ajax({
 url: "{{url_for('do_ocr') }}",
 data: formData,
