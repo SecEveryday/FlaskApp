@@ -61,8 +61,10 @@
 					<tbody>						
 						<tr>
 							<td class="w3-center">								
-								<div style="padding: 1px; margin: 20px; border: 1px; dashed #333333; border-radius: 1px;">									
-									<button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="AppToApp_startScan" >Start Scan</button>
+								<div style="padding: 1px; margin: 20px; border: 1px; dashed #333333; border-radius: 1px;">
+                                    <form method='POST' id ='contactForm1' enctype = "multipart/form-data">  
+									<input class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="AppToApp_startScan" type="file" accept="image/*" capture="environment">Capture Image</button>
+                                    </form>
 									<button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="AppToApp_report" >Generate Report</button>
 									<textarea class="w3-section w3-input w3-border w3-padding w3-right w3-center w3-margin-left" id="retresponse" type="text" name="Message" rows="8" cols="40" readonly> Place postal mail on Glass Bed and press "Start Scan" button </textarea>									
 									<div class="progress w3-border">
@@ -177,6 +179,7 @@
 </body>
 <script type="text/javascript">
 $(function() {
+/*
 $('a#calculate').bind('click', function() {
 alert("Hey1");
 //alert('HEY')
@@ -192,6 +195,64 @@ alert("Hey2");
 $('#Contentdiv').html("<p>"+data+"</p>");
 }
 // ... Other options like success and etc
-})})});
+});
+
+});
+*/
+
+$("#AppToApp_startScan").on("change", function () {		
+		console.log("Start job entry");
+		$('#AppToApp_startScan').prop('disabled',true);		
+		$('#AppToApp_report').prop('disabled',true);		
+		$('.progress-bar').removeClass('w3-hide').addClass('w3-show');
+		//$('#startjob').empty();		
+		$('#retresponse').val("Scanning is in progress");		
+		move(1,20,0)
+        var formData = new FormData($('#contactForm1')[0]);
+$.ajax({
+url: "{{url_for('do_ocr') }}",
+data: formData,
+type: 'POST',
+contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+processData: false, // NEEDED, DON'T OMIT THIS
+success : function(data){
+alert("Hey2");
+$('#Contentdiv').html("<p>"+data+"</p>");
+}
+// ... Other options like success and etc
+});
+
+});
+
+
+var move = function(width, interval, error) {
+	  var elem = document.getElementById("progress-bar");   
+	  //var width = 1;
+	  if(error)
+	  {
+		  console.log("move::entered error")	
+		  console.log($('.progress-bar').attr.value);
+		  $('.progress-bar').css('width', 0).attr('aria-valuenow', 0);   
+		  
+		  return true;
+	  }
+	  else {
+		  console.log("move::entered ok")	
+		  var id = setInterval(frame, 100);
+		  function frame() {
+			if (width >= interval) {
+			  clearInterval(id);
+			} else {
+			  width++; 
+			//  elem.style.width = width + '%'; 
+			  $('.progress-bar').css('width', width+'%').attr('aria-valuenow', width);    
+			  
+			}
+		  }				  
+		  return true;
+	  }
+	};
+
+});
 </script>
 </html>
