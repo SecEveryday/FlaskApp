@@ -2,15 +2,20 @@
 <!DOCTYPE html>
 <!--Declare document type-->
 <html lang="en">
-
+{{
+		url_for('static', filename='js/jquery-3.4.1.min.js') }}
 <head>
     <meta charset="utf-8">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">		
-	<link rel="stylesheet" href="css/w3.css">	
-	<link rel="stylesheet" href="css/fontawesome-all.min.css">
-	<link rel="stylesheet" href="css/fontawesome-all.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css">  
+	<link rel="stylesheet" href="{{
+		url_for('static', filename='css/w3.css')}}">	
+	<link rel="stylesheet" href="{{
+		url_for('static', filename='css/fontawesome-all.min.css')}}">
+	<link rel="stylesheet" href="{{
+		url_for('static', filename='css/fontawesome-all.css')}}">
+	<link rel="stylesheet" href="{{
+		url_for('static', filename='css/bootstrap.min.css')}}">  
     	
 	<title>Intelligent Postal mail Segregator Engine</title>
 	<style>	
@@ -165,11 +170,16 @@
 	</div>	
 
     <!--<script src="js/jquery-1.7.2.min.js"></script>	-->
-	<script src="js/jquery-3.4.1.min.js"></script>		
-	<script src="js/bootstrap.min.js"></script>     	   
-	<script src="js/apptoapp.js"></script>       	
-	<script type="text/javascript" src="js/jquery-qrcode-0.17.0.js"></script>
-	<script type="text/javascript" src="js/qrcode.js"></script>	
+	<script src="{{
+		url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>		
+	<script src="{{
+		url_for('static', filename='js/bootstrap.min.js') }}"></script>     	   
+	<script src="{{
+		url_for('static', filename='js/apptoapp.js') }}"></script>       	
+	<script type="text/javascript" src="{{
+		url_for('static', filename='js/jquery-qrcode-0.17.0.js') }}"></script>
+	<script type="text/javascript" src="{{
+		url_for('static', filename='js/qrcode.js') }}"></script>	
 </body>
 <script type="text/javascript">
 $(function() {
