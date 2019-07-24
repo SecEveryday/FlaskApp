@@ -1,0 +1,117 @@
+/* Copyright 2017 TOSHIBA TEC CORPORATION All rights reserved */
+
+
+/* Size */
+
+* {
+    box-sizing: border-box;
+    font-size: 10px;
+}
+
+html {
+    font-weight: 300;
+    font-size: 10px;
+}
+
+html,
+body,
+table,
+div {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    font-size: 10px;
+    color: #ffffff;
+}
+
+
+/* Background */
+
+body {
+    background: #f4f8f8;
+    font-family: Meiryo;
+}
+
+
+/* Container */
+
+div.container {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #000000;
+}
+
+
+/* font-size */
+
+input {
+    margin: 5px;
+    font-size: 10px;
+}
+
+table {
+    table-layout: fixed;
+}
+
+.headingColor {
+    background-color: #3f4df4;
+}
+
+.headingRow {
+    height: 5%;
+}
+
+.row {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.row {
+    zoom: 1;
+    margin-bottom: 10px;
+    /* For IE 6/7 (trigger hasLayout) */
+}
+
+.row:before,
+.row:after {
+    content: "";
+    display: table;
+}
+
+.row:after {
+    clear: both;
+}
+
+.borderStyle {
+    border-style: groove;
+}
+
+.aligning {
+    align-content: center;
+}
+
+.forStatus {
+    height: 30px;
+}
+
+.forEvents {
+    height: 240px;
+    overflow: scroll;
+}
+
+#clearConsole {
+    position: absolute; 
+    right: 0;
+    bottom: 0;
+}
+
+
+p {
+    margin: 7px;
+    margin-top: 1px;
+    font-size: 12px;
+    white-space: pre;
+}
