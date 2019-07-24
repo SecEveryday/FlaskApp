@@ -18,7 +18,7 @@ sys.stdout = log_file
 sys.stderr = log_file
 # Replace <Subscription Key> with your valid subscription key.
 def execute():
-    subscription_key = "b438bb34e3a144508eb427e71fadc72b"
+    subscription_key = "d72255025e3f4524bc768ef41b370249"
     assert subscription_key
 
     # You must use the same region in your REST call as you used to get your
@@ -28,7 +28,7 @@ def execute():
     # Free trial subscription keys are generated in the "westcentralus" region.
     # If you use a free trial subscription key, you shouldn't need to change
     # this region.
-    vision_base_url = "https://ocrprocesserflaskapp.cognitiveservices.azure.com/vision/v2.0/"
+    vision_base_url = "https://ocrflaskapp.cognitiveservices.azure.com/vision/v2.0/"
 
     analyze_url = vision_base_url + "ocr"
 
