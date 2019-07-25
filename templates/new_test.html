@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
 	<meta charset="UTF-8">
-	 <meta name="viewport" content="initial-scale=1,width = device-width">		
+	 <meta name="viewport" content="initial-scale=1,height = device-height">		
 	<link rel="stylesheet" href="{{
 		url_for('static', filename='css/w3.css')}}">	
 	<link rel="stylesheet" href="{{
@@ -49,28 +49,28 @@
 </head>
 
 <body>
-	<div class="w3-container w3-center  w3-indigo">				
-		<div class="w3-container w3-center  w3-bar w3-indigo">
+	<div class="w3-container w3-center w3-padding-16 w3-bar w3-indigo">				
+		<div class="w3-container w3-center w3-padding-16 w3-bar w3-indigo">
 			<div class="w3-center w3-container">
 				<h1 class="w3-center w3-xlarge w3-show-inline-block">Intelligent  Postal  Mail  Processor  Engine</h1>
 			</div>
 		</div>   
-    <div class="w3-container w3-center ">		
-        <div class="">						
-			<div class="w3-container w3-center  w3-show" id="scanapptable">				
-				<table class=" w3-table-all">
+    <div class="w3-container w3-center w3-padding-16 w3-bar w3-indigo">		
+        <div class="w3-padding-16">						
+			<div class="w3-container w3-center w3-padding-16 w3-show" id="scanapptable">				
+				<table class="w3-border w3-table-all">
 					<tbody>						
 						<tr>
 							<td class="w3-center">								
 								<div style="padding: 1px; margin: 20px; border: 1px; dashed #333333; border-radius: 1px;">
-                                <button class="w3-section w3-button   w3-center  w3-round-xlarge w3-light-green">
+                                <button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green">
                                 <form method='POST' id ='contactForm1' enctype = "multipart/form-data"> 
      <input name="filename" id="AppToApp_startScan" type="file" accept="image/*" capture="environment"/>
      </form></button>
-                                    <button class="w3-section w3-button   w3-center  w3-round-xlarge w3-light-green"  id="ApptoApp_submitScan" >Submit Image</button>
-									<button class="w3-section w3-button   w3-center  w3-round-xlarge w3-light-green"  id="AppToApp_report" >Generate Report</button>
-									<textarea class="w3-section w3-input   w3-right w3-center " id="retresponse" type="text" name="Message" readonly> Place postal mail on Glass Bed and press "Start Scan" button </textarea>									
-									<div class="progress ">
+                                    <button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="ApptoApp_submitScan" >Submit Image</button>
+									<button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="AppToApp_report" >Generate Report</button>
+									<textarea class="w3-section w3-input w3-border w3-padding w3-right w3-center w3-margin-left" id="retresponse" type="text" name="Message" rows="8" cols="40" readonly> Place postal mail on Glass Bed and press "Start Scan" button </textarea>									
+									<div class="progress w3-border">
 										<div class="progress-bar progress-bar-striped active w3-light-green" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="progress-bar">										  
 										</div>
 									</div>
@@ -86,7 +86,7 @@
 						<h4 id='dialogHeading'></h4>
 						<p id='dialogContent' ></p>
 						<div class="w3-hide" id="userinfotable">							
-							<table class=" w3-table-all">
+							<table class="w3-border w3-table-all">
 								<tbody>														
 									<tr>
 										<td>Name</td>
@@ -94,7 +94,7 @@
 											<p type="text" id="Name"> </p>
 										</td>
 										<td  rowspan='6' class="w3-center">																		
-											<div id="output" class="w3-container w3-center   "> </div>
+											<div id="output" class="w3-container w3-center w3-border w3-margin w3-padding-16"> </div>
 										</td>												
 									</tr>
 									<tr>
@@ -139,7 +139,7 @@
 								</tbody>
 							</table>									
 						</div>	
-						<button class="w3-button  -top w3-white w3-round-large -bottom" id="dialogCloseButton">Close</button>
+						<button class="w3-button w3-border w3-margin-top w3-white w3-round-large w3-margin-bottom" id="dialogCloseButton">Close</button>
 					</div>
 				</div>
 			</div>
@@ -149,18 +149,18 @@
 						<h4 id='popUpHeading'></h4>
 						<p id='popUpContent' ></p>
 						<div>							
-							<table class=" w3-table-all">
+							<table class="w3-border w3-table-all">
 							<tbody>														
 								<tr class="w3-center">
 									<td class="w3-center">
-										<button class="w3-section w3-button  w3-medium  w3-center  w3-round-xlarge w3-light-green"  id="todayreport" >Today's Report</button>
-										<button class="w3-section w3-button  w3-medium  w3-center  w3-round-xlarge w3-light-green"  id="allreport" >All Report</button>
+										<button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="todayreport" >Today's Report</button>
+										<button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="allreport" >All Report</button>
 									</td>									
 								</tr>															
 							</tbody>
 						</table>									
 						</div>	
-						<button class="w3-button  -top w3-white w3-round-large -bottom" id="popUpCloseButton">Close</button>
+						<button class="w3-button w3-border w3-margin-top w3-white w3-round-large w3-margin-bottom" id="popUpCloseButton">Close</button>
 					</div>
 				</div>
 			</div>
