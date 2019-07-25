@@ -57,9 +57,6 @@
 			</div>
 		</div>
 	</header>		
-	 <form method='POST' id ='contactForm1' enctype = "multipart/form-data" style="visibility:hidden;"> 
-     <input name="filename" id="AppToApp_startScan" type="file" accept="image/*" capture="environment" style="visibility:hidden;"/>
-     </form>
     <div id="container">		
         <div class="w3-padding-16">						
 			<div class="w3-container w3-padding-16 w3-show" id="scanapptable">				
@@ -68,9 +65,13 @@
 						<tr>
 							<td class="w3-center">								
 								<div style="padding: 1px; margin: 20px; border: 1px; dashed #333333; border-radius: 1px;">
+                                <form method='POST' id ='contactForm1' enctype = "multipart/form-data" style="visibility:hidden;"> 
+     <input name="filename" id="AppToApp_startScan" type="file" accept="image/*" capture="environment" style="visibility:hidden;"/>
+     
 									<button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"><label for="AppToApp_startScan" >Capture Image</label></button>
-                                    <button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="ApptoApp_submitScan" >Generate Report</button>
+                                    <button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="ApptoApp_submitScan" >Submit Image</button>
 									<button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="AppToApp_report" >Generate Report</button>
+                                    </form>
 									<textarea class="w3-section w3-input w3-border w3-padding w3-right w3-center w3-margin-left" id="retresponse" type="text" name="Message" rows="8" cols="40" readonly> Place postal mail on Glass Bed and press "Start Scan" button </textarea>									
 									<div class="progress w3-border">
 										<div class="progress-bar progress-bar-striped active w3-light-green" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="progress-bar">										  
