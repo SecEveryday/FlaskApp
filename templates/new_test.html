@@ -56,10 +56,7 @@
 				<!--<img class="w3-left w3-margin w3-margin-top w3-hover-opacity" style="width:100px;height:40px;" src="img/toshibalogo.png" id="home"></img>-->
 			</div>
 		</div>
-	</header>
-<form method='POST' id ='contactForm1' enctype = "multipart/form-data"> 
-     <input name="filename" id="AppToApp_startScan" type="file" accept="image/*" capture="environment"/>
-     </form>    
+	</header>    
     <div id="container">		
         <div class="w3-padding-16">						
 			<div class="w3-container w3-padding-16 w3-show" id="scanapptable">				
@@ -68,6 +65,10 @@
 						<tr>
 							<td class="w3-center">								
 								<div style="padding: 1px; margin: 20px; border: 1px; dashed #333333; border-radius: 1px;">
+                                <button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green">
+                                <form method='POST' id ='contactForm1' enctype = "multipart/form-data"> 
+     <input name="filename" id="AppToApp_startScan" type="file" accept="image/*" capture="environment"/>
+     </form></button>
                                     <button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="ApptoApp_submitScan" >Submit Image</button>
 									<button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="AppToApp_report" >Generate Report</button>
 									<textarea class="w3-section w3-input w3-border w3-padding w3-right w3-center w3-margin-left" id="retresponse" type="text" name="Message" rows="8" cols="40" readonly> Place postal mail on Glass Bed and press "Start Scan" button </textarea>									
@@ -205,7 +206,7 @@ $('#Contentdiv').html("<p>"+data+"</p>");
 
 $("#ApptoApp_submitScan").on("click", function () {		
 		console.log("Start job entry");
-		$('#AppToApp_startScan').prop('disabled',true);		
+		$('#ApptoApp_submitScan').prop('disabled',true);		
 		$('#AppToApp_report').prop('disabled',true);		
 		$('.progress-bar').removeClass('w3-hide').addClass('w3-show');
 		//$('#startjob').empty();		
@@ -244,7 +245,7 @@ error: function(jqXhr, textStatus, errorMessage){
 		
 		$('#progress-bar').css('width', 0).attr('aria-valuenow', 0); 		
 		
-		$('#AppToApp_startScan').prop('disabled',false);		
+		$('#ApptoApp_submitScan').prop('disabled',false);		
 		$('#AppToApp_report').prop('disabled',false);		
 		
 		$('#userinfotable').removeClass('w3-show').addClass('w3-hide');
