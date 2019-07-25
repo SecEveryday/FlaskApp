@@ -222,6 +222,12 @@ processData: false, // NEEDED, DON'T OMIT THIS
 success : function(data){
 alert("Hey2");
 $('#Contentdiv').html("<p>"+data+"</p>");
+},
+error: function(jqXhr, textStatus, errorMessage){
+    $('#progress-bar').css('width', 0).attr('aria-valuenow', 0); 		
+		$('#retresponse').val(errorMessage);
+		$('#AppToApp_startScan').prop('disabled',false);		
+		$('#AppToApp_report').prop('disabled',false);
 }
 // ... Other options like success and etc
 });
