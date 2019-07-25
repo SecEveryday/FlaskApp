@@ -223,18 +223,40 @@ success : function(data){
 alert("Hey2");
 $('#Contentdiv').html("<p>"+data+"</p>");
 },
-error: function(jqXhr, textStatus, errorMessage){
-    $('#progress-bar').css('width', 0).attr('aria-valuenow', 0); 		
+error: function(jqXhr, textStatus, errorMessage){ 		
 		$('#retresponse').val(errorMessage);
-		$('#AppToApp_startScan').prop('disabled',false);		
-		$('#AppToApp_report').prop('disabled',false);
+    _initialDisplay();
 }
 // ... Other options like success and etc
 });
 
 });
 
-
+	var _initialDisplay = function () {    
+		console.log("Initial Display")
+		
+		img="";
+		
+		$('#retresponse').val('Place postal mail on Glass Bed and press "Start Scan" button');
+		
+		//$('.progress-bar').css('width', 0).attr('aria-valuenow', 0); 		
+		//$('#progress-bar').removeClass('w3-show').addClass('w3-hide')
+		
+		$('#progress-bar').css('width', 0).attr('aria-valuenow', 0); 		
+		
+		$('#AppToApp_startScan').prop('disabled',false);		
+		$('#AppToApp_report').prop('disabled',false);		
+		
+		$('#userinfotable').removeClass('w3-show').addClass('w3-hide');
+		
+		App.jobStatus=''
+		
+		// Empty the output contents
+		$('#output').empty()
+						
+		$('#progress-bar').removeClass('w3-hide').addClass('w3-show')
+		//window.location="index.html"		
+    }
 var move = function(width, interval, error) {
 	  var elem = document.getElementById("progress-bar");   
 	  //var width = 1;
