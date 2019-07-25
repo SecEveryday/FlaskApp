@@ -223,6 +223,7 @@ processData: false, // NEEDED, DON'T OMIT THIS
 success : function(data){
 alert("Hey2");
 $('#Contentdiv').html("<p>"+data+"</p>");
+_initialDisplay();
 },
 error: function(jqXhr, textStatus, errorMessage){ 		
 		$('#retresponse').val(errorMessage);
