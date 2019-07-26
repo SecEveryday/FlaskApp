@@ -11,7 +11,7 @@ sys.stdout = log_file
 sys.stderr = log_file
 import pymongo
 uri = "mongodb://56a41323-0ee0-4-231-b9ee:G9c804dv0gVufeDcqrJ0sTJklu0Nw3keGEZbITc5lqU8WZQUup4i9nr7OQf84s8XeLFs7quTKeyO7z6U9Y5g6A==@56a41323-0ee0-4-231-b9ee.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
-client = pymongo.MongoClient()
+client = pymongo.MongoClient(uri)
 print("Obtained the client")
 mydb = client.test	
 def addEntry(jsonData):
