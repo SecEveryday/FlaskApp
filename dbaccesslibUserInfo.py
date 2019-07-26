@@ -23,9 +23,11 @@ def read_fromDB(jsonData):
 	skips = 10 * (num - 1)
 	return json.dumps(list(mydb.userInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}).skip(skips).limit(10)), default=json_util.default)
 def read_fromDBSpecfic(jsonData):
+    logger.debug("This is the JsonData")
+    logger.debug(jsonData)
 	for item in jsonData:
 		foundUser = mydb.userInfo.find({'name':{'$regex':".*"+item+"\s.*",'$options':'i'},"userDeleted":False},{'_id' : 0,'user_id':0})
-		if(foundUser.count() >= 1):
+		if(foundUser.count({'user_id':0}) >= 1):
 			return json.dumps(list(foundUser),default=json_util.default)
 	return json.dumps({},default=json_util.default)
 def add_usertoDB(jsonData):

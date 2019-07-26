@@ -6,7 +6,7 @@ import dbaccesslibUserMailInfo as dbaUMI
 import logging 
   
 #Create and configure logger 
-logging.basicConfig(filename="newfile.log", 
+logging.basicConfig(filename="dbaccessUserInfo.log", 
                     format='%(asctime)s %(message)s', 
                     filemode='a')
 #Creating an object 
