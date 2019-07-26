@@ -19,7 +19,7 @@ def read_fromDB(jsonData):
 	return json.dumps(list(mydb.userInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}).skip(skips).limit(10)), default=json_util.default)
 def read_fromDBSpecfic(jsonData):
 	for item in jsonData:
-		foundUser = mydb.userInfo.find({'name':{'$regex':".*"+item+".*",'$options':'i'},"userDeleted":False},{'_id' : 0,'user_id':0})
+		foundUser = mydb.userInfo.find({'name':{'$regex':".*"+item+"\s.*",'$options':'i'},"userDeleted":False},{'_id' : 0,'user_id':0})
 		if(foundUser.count() >= 1):
 			return json.dumps(list(foundUser),default=json_util.default)
 	return json.dumps({},default=json_util.default)
