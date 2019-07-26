@@ -217,8 +217,7 @@ type: 'POST',
 contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
 processData: false, // NEEDED, DON'T OMIT THIS
 success : function(data){
-console.log(data);
-alert(JSON.stringify(data));
+alert("Name: "+data["name"]+"department: " + data["department"]+"Building: "+data["building"]+"Division: "+data["division"]+"emailaddress :"+data["emailaddress"]);
 },
 error: function(jqXhr, textStatus, errorMessage){ 		
 		$('#retresponse').val(errorMessage);
