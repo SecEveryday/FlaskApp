@@ -207,7 +207,7 @@ $("#AppToApp_startScan").on("change", function () {
 		$('.progress-bar').removeClass('w3-hide').addClass('w3-show');
 		//$('#startjob').empty();		
 		$('#retresponse').val("Processing the Image");		
-		move(1,20,0)
+		move(1,20,0);
         var formData = new FormData($('#contactForm1')[0]);
         alert("Hey 1");
 $.ajax({
@@ -217,8 +217,12 @@ type: 'POST',
 contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
 processData: false, // NEEDED, DON'T OMIT THIS
 success : function(data){
-alert(data);
 //alert("Name: "+data["name"]+"department: " + data["department"]+"Building: "+data["building"]+"Division: "+data["division"]+"emailaddress :"+data["emailaddress"]);
+colorCode = generateColorCode(data)			
+						// Empty the output contents
+						//$('#output').empty()
+						// Generate the QR Code
+						//$('#output').qrcode({width: 100,height: 100,text: colorCode});
 },
 error: function(jqXhr, textStatus, errorMessage){ 		
 		$('#retresponse').val(errorMessage);
@@ -228,7 +232,54 @@ error: function(jqXhr, textStatus, errorMessage){
 });
 
 });
-
+	var generateColorCode = function(data){
+		console.log("Received data for generating color code = "+JSON.stringify(data))
+		// Logic for generating color code
+		
+		var ilocation=1
+		var today = new Date();
+		var date = today.getFullYear()+':'+(today.getMonth()+1)+':'+today.getDate();
+		var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+		var dateTime = date+':'+time;
+		console.log("Current Datetime - "+dateTime)
+		
+	//	dateTime = ""+(today.getMonth()+1)+"."+today.getDate()+"."+today.getHours()+"."+today.getMinutes()+"."+today.getSeconds();
+		
+		dateTime = ""+(today.getMonth()+1)+today.getDate()+today.getHours()+today.getMinutes()+today.getSeconds();
+		console.log("Unique Code - "+dateTime)
+		
+		/*
+		data ={
+			'name':'arvind',
+		    'division':'TTEC',
+			'department':'TTEC-SL',
+			'building':'Essae Vaishnavi Solitaire',
+			'email':'arvind.mohan@toshiba-tsip.com',
+			'floor':'3',
+			'cubicle':85
+		}
+		
+		console.log("Division:"+jsonCode["building"]["Essae Vaishnavi Solitaire"]["division"]["ss"]["id"])		
+		console.log("Department:"+jsonCode["building"]["Essae Vaishnavi Solitaire"]["division"]["ss"]["dept"]["semicon"]["id"])
+		console.log("Floor:"+jsonCode["building"]["Essae Vaishnavi Solitaire"]["division"]["ss"]["dept"]["semicon"]["floor"]["1"])
+		console.log(jsonCode["building"][data.building]["division"][data.division]["id"])
+		*/
+		
+		if(parseInt(data.cubicle)>25 && parseInt(data.cubicle)<=50)
+			ilocation=2
+		else if(parseInt(data.cubicle)>50 && parseInt(data.cubicle)<=75)
+			ilocation=3
+		else
+			ilocation=4
+		colorCode=jsonCode["building"][data.building]["id"]+':'+jsonCode["building"][data.building]["division"][data.division]["id"]+':'+jsonCode["building"][data.building]["division"][data.division]["dept"][data.department]["id"]+':'+jsonCode["building"][data.building]["division"][data.division]["dept"][data.department]["floor"][data.floor]+'F:'+ilocation+'L:'+dateTime
+		console.log("ColorCode - "+colorCode)
+	
+	//	colorCode="A1-D4-03F1-85"
+	
+		console.log("generateColorCode:: ColorCode value ="+colorCode)
+		return colorCode;
+	}
+    
 	var _initialDisplay = function () {    
 		console.log("Initial Display")
 		
