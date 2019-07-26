@@ -395,6 +395,7 @@ processData: false, // NEEDED, DON'T OMIT THIS
 success : function(data){
 //alert("Name: "+data["name"]+"department: " + data["department"]+"Building: "+data["building"]+"Division: "+data["division"]+"emailaddress :"+data["emailaddress"]);
 console.log(typeof(data));
+data = JSON.stringify(data);
 colorCode = generateColorCode(data)			
 						// Empty the output contents
 						//$('#output').empty()
