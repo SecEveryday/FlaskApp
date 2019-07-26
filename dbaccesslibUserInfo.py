@@ -2,16 +2,21 @@ import json
 from bson.dbref import DBRef
 from bson import json_util
 import sys
-old_stdout = sys.stdout
-
-log_file = open("message.log","a")
-
-sys.stdout = log_file
-sys.stderr = log_file
 import pymongo
+import logging 
+  
+#Create and configure logger 
+logging.basicConfig(filename="dbaccessUserInfo.log", 
+                    format='%(asctime)s %(message)s', 
+                    filemode='a')
+                    #Creating an object 
+logger=logging.getLogger() 
+  
+#Setting the threshold of logger to DEBUG 
+logger.setLevel(logging.DEBUG) 
 uri = "mongodb://56a41323-0ee0-4-231-b9ee:G9c804dv0gVufeDcqrJ0sTJklu0Nw3keGEZbITc5lqU8WZQUup4i9nr7OQf84s8XeLFs7quTKeyO7z6U9Y5g6A==@56a41323-0ee0-4-231-b9ee.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
 client = pymongo.MongoClient(uri)
-print("Obtained the client")
+logger.debug("Obtained the client")
 mydb = client.test	
 def read_fromDB(jsonData):
 	num = int(jsonData['page'])
@@ -25,7 +30,7 @@ def read_fromDBSpecfic(jsonData):
 	return json.dumps({},default=json_util.default)
 def add_usertoDB(jsonData):
 	mydb.userInfo.insert({'name':jsonData['name'],'department':jsonData['department'],'building':jsonData['building'],'division':jsonData['division'],'email':jsonData['emailaddress'],'floor':jsonData['floor'],'cubicle':jsonData['cubicle'],"user_id":jsonData["user_id"],"userDeleted":False})
-	print("Sucessfully added")
+	logger.debug("Sucessfully added")
 	return json.dumps({"status": "Success","statusreason": "addSuccess"})
 def delete_userfromDB(jsonData):
 	founduser = mydb.userInfo.find_one({"userDeleted":False,"name":jsonData["name"]},{"_id":1})
