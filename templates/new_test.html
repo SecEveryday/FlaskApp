@@ -217,6 +217,7 @@ type: 'POST',
 contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
 processData: false, // NEEDED, DON'T OMIT THIS
 success : function(data){
+console.log(data);
 alert("Hey2");
 var res = data.split(" ");
 res = JSON.stringify(res);

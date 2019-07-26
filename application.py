@@ -57,6 +57,12 @@ def do_ocr():
 	print(file)
 	file.save(os.path.join("./uploads", "testocr.jpg"))
 	import ocr as to
-	return to.execute()
+	ocredText = to.execute()
+    print("Before Splitting:")
+    print(ocredText)
+    ocredText = ocredText.split()
+    print("After Splitting:")
+    print(ocredText)
+    return dbaUI.read_fromDBSpecfic(ocredText)
 if __name__ == '__main__':
     app.run("0.0.0.0",debug = True)
