@@ -52,12 +52,12 @@ def generateReport():
     return dbaUMI.read_fromDB()
 @app.route("/do_ocr",methods=['POST'])
 def do_ocr():
-	print("Hey reached Start of OCR")
-	file = request.files['filename']
-	print(file)
-	file.save(os.path.join("./uploads", "testocr.jpg"))
-	import ocr as to
-	ocredText = to.execute()
+    print("Hey reached Start of OCR")
+    file = request.files['filename']
+    print(file)
+    file.save(os.path.join("./uploads", "testocr.jpg"))
+    import ocr as to
+    ocredText = to.execute()
     print("Before Splitting:")
     print(ocredText)
     ocredText = ocredText.split()
