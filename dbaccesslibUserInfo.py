@@ -29,7 +29,7 @@ def read_fromDBSpecfic(jsonData):
         logger.debug("Item name is:")
         logger.debug(item)
         try:
-            foundUser = mydb.userInfo.find_one({'name':{'$regex':str(item)+"\s.*",'$options':'i'},"userDeleted":False},{'_id' : 0,'user_id':0})
+            foundUser = list(mydb.userInfo.find({'name':{'$regex':str(item)+"\s.*",'$options':'i'},"userDeleted":False},{'_id' : 0,'user_id':0}))
         except TypeError:
             continue
         if(len(foundUser) >= 1):
