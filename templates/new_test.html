@@ -449,6 +449,7 @@ error: function(jqXhr, textStatus, errorMessage){
 			ilocation=3
 		else
 			ilocation=4
+        console.log(data.building)
 		colorCode=jsonCode["building"][data.building]["id"]+':'+jsonCode["building"][data.building]["division"][data.division]["id"]+':'+jsonCode["building"][data.building]["division"][data.division]["dept"][data.department]["id"]+':'+jsonCode["building"][data.building]["division"][data.division]["dept"][data.department]["floor"][data.floor]+'F:'+ilocation+'L:'+dateTime
 		console.log("ColorCode - "+colorCode)
 	
