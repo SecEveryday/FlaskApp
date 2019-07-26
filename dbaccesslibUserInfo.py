@@ -26,8 +26,12 @@ def read_fromDBSpecfic(jsonData):
     logger.debug("This is the JsonData")
     logger.debug(jsonData)
     for item in jsonData:
-        logger.debug("Item name is:",item)
-        foundUser = list(mydb.userInfo.find_one({'name':{'$regex':str(item)+"\s.*",'$options':'i'},"userDeleted":False},{'_id' : 0,'user_id':0}))
+        logger.debug("Item name is:")
+        logger.debug(item)
+        try:
+            foundUser = list(mydb.userInfo.find_one({'name':{'$regex':str(item)+"\s.*",'$options':'i'},"userDeleted":False},{'_id' : 0,'user_id':0}))
+        except TypeError:
+            continue
         if(len(foundUser) >= 1):
             return json.dumps(foundUser,default=json_util.default)
     return json.dumps({},default=json_util.default)
