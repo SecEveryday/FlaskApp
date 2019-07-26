@@ -49,6 +49,9 @@
 </head>
 
 <body>
+                                <form method='POST' id ='contactForm1' enctype = "multipart/form-data" style="visibility:hidden;"> 
+     <input name="filename" id="AppToApp_startScan" type="file" accept="image/*" capture="environment" style="visibility:hidden;"/>
+     </form>
 	<div class="w3-center">				
 		<div class="w3-center w3-indigo">
 			<div class="w3-center">
@@ -63,11 +66,7 @@
 						<tr>
 							<td class="w3-center" style="padding:0px;">								
 								<div style="padding: 1px; margin: 5px; border: 1px; dashed #333333; border-radius: 1px;">
-                                <button class="w3-section w3-button w3-border w3-small w3-center w3-margin w3-round-xlarge w3-light-green">
-                                <form method='POST' id ='contactForm1' enctype = "multipart/form-data"> 
-     <input name="filename" id="AppToApp_startScan" type="file" accept="image/*" capture="environment"/>
-     </form></button>
-                                    <button class="w3-section w3-button w3-border w3-small w3-center w3-margin w3-round-xlarge w3-light-green"  id="ApptoApp_submitScan" >Submit Image</button>
+                                    <button class="w3-section w3-button w3-border w3-small w3-center w3-margin w3-round-xlarge w3-light-green"> <label for = "AppToApp_startScan">Submit Image</label></button>
 									<button class="w3-section w3-button w3-border w3-small w3-center w3-margin w3-round-xlarge w3-light-green"  id="AppToApp_report" >Generate Report</button>
 									<textarea class="w3-center w3-section w3-input w3-border" id="retresponse" type="text" name="Message" rows="4" cols="10" readonly> Upload the image and Click on Submit Image</textarea>									
 									<div class="progress w3-border">
@@ -202,10 +201,8 @@ $('#Contentdiv').html("<p>"+data+"</p>");
 });
 */
 
-$("#ApptoApp_submitScan").on("click", function () {		
-		console.log("Start job entry");
-        $('#AppToApp_startScan').prop('disabled',true);
-		$('#ApptoApp_submitScan').prop('disabled',true);		
+$("#AppToApp_startScan").on("change", function () {		
+		console.log("Start job entry");		
 		$('#AppToApp_report').prop('disabled',true);		
 		$('.progress-bar').removeClass('w3-hide').addClass('w3-show');
 		//$('#startjob').empty();		
