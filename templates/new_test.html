@@ -218,23 +218,7 @@ contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
 processData: false, // NEEDED, DON'T OMIT THIS
 success : function(data){
 console.log(data);
-alert("Hey2");
-var res = data.split(" ");
-res = JSON.stringify(res);
-$.ajax({
-url: "{{url_for('queryFromDatabase') }}",
-data: res,
-type: 'POST',
-contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
-processData: false, // NEEDED, DON'T OMIT THIS
-success: function(data){
 alert(data);
-},
-error:function(jqXhr, textStatus, errorMessage){ 		
-		$('#retresponse').val(errorMessage);
-    _initialDisplay();
-}
-});
 },
 error: function(jqXhr, textStatus, errorMessage){ 		
 		$('#retresponse').val(errorMessage);
