@@ -26,9 +26,9 @@ def read_fromDBSpecfic(jsonData):
     logger.debug("This is the JsonData")
     logger.debug(jsonData)
     for item in jsonData:
-        foundUser = mydb.userInfo.find({'name':{'$regex':".*"+item+"\s.*",'$options':'i'},"userDeleted":False},{'_id' : 0,'user_id':0})
-        if(foundUser.count() >= 1):
-            return json.dumps(list(foundUser),default=json_util.default)
+        foundUser = list(mydb.userInfo.find_one({'name':{'$regex':".*"+item+"\s.*",'$options':'i'},"userDeleted":False},{'_id' : 0,'user_id':0}))
+        if(len(foundUser) >= 1):
+            return json.dumps(foundUSer,default=json_util.default)
     return json.dumps({},default=json_util.default)
 def add_usertoDB(jsonData):
     mydb.userInfo.insert({'name':jsonData['name'],'department':jsonData['department'],'building':jsonData['building'],'division':jsonData['division'],'email':jsonData['emailaddress'],'floor':jsonData['floor'],'cubicle':jsonData['cubicle'],"user_id":jsonData["user_id"],"userDeleted":False})
