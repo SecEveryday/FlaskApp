@@ -22,7 +22,7 @@ def execute(emailAddress,qrcode,file):
     file.save(os.path.join(qrcode, "testocr.jpg"))
     filename = qrcode+"/testocr.jpg"  # In same directory as script
 
-    # Open PDF file in binary mode
+    ## Open PDF file in binary mode
     with open(filename, "rb") as attachment:
         # Add file as application/octet-stream
         # Email client can usually download this automatically as attachment
