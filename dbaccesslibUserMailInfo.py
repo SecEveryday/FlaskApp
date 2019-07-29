@@ -211,7 +211,7 @@ def generateqrcode(jsonData):
         ilocation=3
     else:
         ilocation=4
-    logger.debug(json["building"])
+    logger.debug(jsonData["building"])
     colorCode=jsonCode["building"][jsonData["building"]]["id"]+':'+jsonCode["building"][jsonData["building"]]["division"][jsonData["division"]]["id"]+':'+jsonCode["building"][jsonData["building"]]["division"][jsonData["division"]]["dept"][jsonData["department"]]["id"]+':'+jsonCode["building"][jsonData["building"]]["division"][jsonData["division"]]["dept"][jsonData["department"]]["floor"][jsonData["floor"]]+'F:'+ilocation+'L:'+dateTimeNow
     logger.debug("ColorCode - "+colorCode)
     logger.debug("generateColorCode:: ColorCode value ="+colorCode)
