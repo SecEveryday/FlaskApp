@@ -199,11 +199,11 @@ def generateqrcode(jsonData):
     logger.debug(jsonData)
     ilocation=1
     today = datetime.datetime.now()
-    date = today.year+':'+(today.month)+':'+today.day;
-    time = today.hour + ":" + today.minute + ":" + today.second()+":"+today.microsecond;
+    date = str(today.year)+':'+str(today.month)+':'+str(today.day);
+    time = str(today.hour) + ":" + str(today.minute) + ":" + str(today.second)+":"+str(today.microsecond);
     dateTimeNow = date+':'+time;
     logger.debug("Current Datetime - "+dateTimeNow)
-    dateTimeNow = ""+(today.month)+today.day+today.hour()+today.minute+today.second+today.microsecond;
+    dateTimeNow = ""+str(today.month)+str(today.day)+str(today.hour)+str(today.minute)+str(today.second)+str(today.microsecond);
     logger.debug("Unique Code - "+dateTimeNow)
     if(int(jsonData.cubicle)>25 and int(jsonData.cubicle)<=50):
         ilocation=2
