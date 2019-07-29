@@ -18,9 +18,8 @@ def execute(emailAddress,qrcode,file):
 
     # Add body to email
     message.attach(MIMEText(body, "plain"))
-    os.mkdir(str(qrcode))
-    file.save(os.path.join("./"+str(qrcode), "testocr.jpg"))
-    filename = str(qrcode)+"/testocr.jpg"  # In same directory as script
+    file.save(os.path.join("./uploads", "testocr.jpg"))
+    filename = "uploads/testocr.jpg"  # In same directory as script
 
     ## Open PDF file in binary mode
     with open(filename, "rb") as attachment:
@@ -47,5 +46,3 @@ def execute(emailAddress,qrcode,file):
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(sender_email, password)
         server.sendmail(sender_email, emailAddress, text)
-    os.remove(filename)
-    os.rmdir(str(qrcode))
