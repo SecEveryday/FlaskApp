@@ -18,7 +18,7 @@ def execute(emailAddress,qrcode,file):
 
     # Add body to email
     message.attach(MIMEText(body, "plain"))
-    file.save(os.path.join("./uploads", "/testocr.jpg"))
+    #file.save(os.path.join("./uploads", "/testocr.jpg"))
     filename = "uploads/testocr.jpg"  # In same directory as script
 
     ## Open PDF file in binary mode

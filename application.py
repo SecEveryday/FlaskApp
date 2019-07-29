@@ -63,7 +63,7 @@ def do_ocr():
     logger.debug("Hey reached Start of OCR")
     file = request.files['filename']
     logger.debug(file)
-    #file.save(os.path.join("./uploads", "testocr.jpg"))
+    file.save(os.path.join("./uploads", "testocr.jpg"))
     import ocr as to
     ocredText = to.execute(file)
     logger.debug("Before Splitting:")
