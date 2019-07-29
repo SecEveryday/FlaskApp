@@ -4,7 +4,7 @@ from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-def execute(emailAddress):
+def execute(emailAddress,filenameJPG):
     subject = "An email with attachment from Python"
     body = "This is an email with attachment sent from Python"
     sender_email = "koushik.rjn@gmail.com"
@@ -19,7 +19,7 @@ def execute(emailAddress):
     # Add body to email
     message.attach(MIMEText(body, "plain"))
 
-    filename = "uploads/testocr.jpg"  # In same directory as script
+    filename = "uploads/"+str(filenameJPG)  # In same directory as script
 
     # Open PDF file in binary mode
     with open(filename, "rb") as attachment:

@@ -17,7 +17,7 @@ log_file = open("message.log","a")
 sys.stdout = log_file
 sys.stderr = log_file
 # Replace <Subscription Key> with your valid subscription key.
-def execute():
+def execute(filename):
     subscription_key = "d72255025e3f4524bc768ef41b370249"
     assert subscription_key
 
@@ -33,7 +33,7 @@ def execute():
     analyze_url = vision_base_url + "ocr"
 
     # Set image_path to the local path of an image that you want to analyze.
-    image_path = "uploads/testocr.jpg"
+    image_path = "uploads/"+str(filename)
 
     # Read the image into a byte array
     image_data = open(image_path, "rb").read()
