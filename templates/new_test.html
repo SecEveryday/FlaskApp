@@ -404,7 +404,7 @@ colorCode = generateColorCode(data)
 						//$('#output').qrcode({width: 100,height: 100,text: colorCode});
 },
 error: function(jqXhr, textStatus, errorMessage){ 	
-        data = JSON.parse(textStatus);	
+        data = JSON.stringify(textStatus);	
 		$('#retresponse').val(data);
         
         alert(data);
