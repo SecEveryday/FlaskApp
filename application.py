@@ -71,7 +71,7 @@ def do_ocr():
     logger.debug("After Splitting:")
     logger.debug(ocredText)
     response = dbaUI.read_fromDBSpecfic(ocredText)
-    if(response=={}):
+    if(response=='{}'):
         logger.warning("Response is empty")
         return {"status" : "Failed","statusreason" : "user not found"}
     logger.debug(type(response))
