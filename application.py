@@ -65,7 +65,6 @@ def do_ocr():
     logger.debug(file)
     import ocr as to
     ocredText = to.execute(file)
-    file.save(os.path.join("./uploads", "testocr.jpg"))
     logger.debug("Before Splitting:")
     logger.debug(ocredText)
     ocredText = ocredText.split()
@@ -76,7 +75,8 @@ def do_ocr():
         logger.warning("Response is empty")
         return json.dumps({"status" : "Failed","statusreason" : "user not found"},default=json_util.default),500
     logger.debug(type(response))
-    dbaUMI.generateqrcode(response,file)
+    newFile = request.files['filename']
+    dbaUMI.generateqrcode(response,newFile)
     return json.dumps(response,default=json_util.default)
 if __name__ == '__main__':
     app.run("0.0.0.0",debug = True)
