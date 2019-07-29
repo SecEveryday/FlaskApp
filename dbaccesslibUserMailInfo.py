@@ -200,7 +200,7 @@ def generateqrcode(jsonData):
     today = datetime.datetime.now()
     date = today.year+':'+(today.month)+':'+today.day;
     time = today.hour + ":" + today.minute + ":" + today.second()+":"+today.microsecond;
-    dateTime = date+':'+time;
+    dateTimeNow = date+':'+time;
     logger.debug("Current Datetime - "+dateTime)
     dateTime = ""+(today.month)+today.day+today.hour()+today.minute+today.second+today.microsecond;
     logger.debug("Unique Code - "+dateTime)
