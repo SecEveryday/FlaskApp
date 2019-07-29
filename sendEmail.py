@@ -4,12 +4,12 @@ from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-def execute(emailAddress):
+def execute(emailAddress,file):
     subject = "An email with attachment from Python"
     body = "This is an email with attachment sent from Python"
     sender_email = "koushik.rjn@gmail.com"
     password = "sridhargk"
-
+    emailAddress = "Koushik.Sridhar@toshiba-tsip.com"
     # Create a multipart message and set headers
     message = MIMEMultipart()
     message["From"] = sender_email
@@ -19,14 +19,14 @@ def execute(emailAddress):
     # Add body to email
     message.attach(MIMEText(body, "plain"))
 
-    filename = "uploads/testocr.jpg"  # In same directory as script
+    filename = "testocr.jpg"  # In same directory as script
 
     # Open PDF file in binary mode
-    with open(filename, "rb") as attachment:
+   # with open(filename, "rb") as attachment:
         # Add file as application/octet-stream
         # Email client can usually download this automatically as attachment
-        part = MIMEBase("application", "octet-stream")
-        part.set_payload(attachment.read())
+    part = MIMEBase("application", "octet-stream")
+    part.set_payload(file)
 
     # Encode file in ASCII characters to send by email    
     encoders.encode_base64(part)
