@@ -18,9 +18,9 @@ def execute(emailAddress,qrcode,file):
 
     # Add body to email
     message.attach(MIMEText(body, "plain"))
-    os.mkdir(qrcode)
-    file.save(os.path.join(qrcode, "testocr.jpg"))
-    filename = qrcode+"/testocr.jpg"  # In same directory as script
+    os.mkdir(str(qrcode))
+    file.save(os.path.join("./"+str(qrcode), "testocr.jpg"))
+    filename = str(qrcode)+"/testocr.jpg"  # In same directory as script
 
     ## Open PDF file in binary mode
     with open(filename, "rb") as attachment:
@@ -48,4 +48,4 @@ def execute(emailAddress,qrcode,file):
         server.login(sender_email, password)
         server.sendmail(sender_email, emailAddress, text)
     os.remove(filename)
-    os.rmdir(qrcode)
+    os.rmdir(str(qrcode))
