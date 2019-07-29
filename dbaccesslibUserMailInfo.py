@@ -201,9 +201,9 @@ def generateqrcode(jsonData):
     date = today.year+':'+(today.month)+':'+today.day;
     time = today.hour + ":" + today.minute + ":" + today.second()+":"+today.microsecond;
     dateTimeNow = date+':'+time;
-    logger.debug("Current Datetime - "+dateTime)
-    dateTime = ""+(today.month)+today.day+today.hour()+today.minute+today.second+today.microsecond;
-    logger.debug("Unique Code - "+dateTime)
+    logger.debug("Current Datetime - "+dateTimeNow)
+    dateTimeNow = ""+(today.month)+today.day+today.hour()+today.minute+today.second+today.microsecond;
+    logger.debug("Unique Code - "+dateTimeNow)
     if(int(jsonData.cubicle)>25 and int(jsonData.cubicle)<=50):
         ilocation=2
     elif(int(jsonData.cubicle)>50 and int(jsonData.cubicle)<=75):
@@ -211,7 +211,7 @@ def generateqrcode(jsonData):
     else:
         ilocation=4
     logger.debug(data.building)
-    colorCode=jsonCode["building"][jsonData.building]["id"]+':'+jsonCode["building"][jsonData.building]["division"][jsonData.division]["id"]+':'+jsonCode["building"][jsonData.building]["division"][jsonData.division]["dept"][jsonData.department]["id"]+':'+jsonCode["building"][jsonData.building]["division"][jsonData.division]["dept"][jsonData.department]["floor"][jsonData.floor]+'F:'+ilocation+'L:'+dateTime
+    colorCode=jsonCode["building"][jsonData.building]["id"]+':'+jsonCode["building"][jsonData.building]["division"][jsonData.division]["id"]+':'+jsonCode["building"][jsonData.building]["division"][jsonData.division]["dept"][jsonData.department]["id"]+':'+jsonCode["building"][jsonData.building]["division"][jsonData.division]["dept"][jsonData.department]["floor"][jsonData.floor]+'F:'+ilocation+'L:'+dateTimeNow
     logger.debug("ColorCode - "+colorCode)
     logger.debug("generateColorCode:: ColorCode value ="+colorCode)
     return colorCode;
