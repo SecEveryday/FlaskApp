@@ -405,6 +405,7 @@ colorCode = generateColorCode(data)
 },
 error: function(jqXhr, textStatus, errorMessage){ 		
 		$('#retresponse').val(errorMessage);
+        alert(errorMessage);
     _initialDisplay();
 }
 // ... Other options like success and etc
