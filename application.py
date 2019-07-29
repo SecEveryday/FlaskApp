@@ -4,7 +4,8 @@ old_stdout = sys.stdout
 import dbaccesslibUserInfo as dbaUI
 import dbaccesslibUserMailInfo as dbaUMI
 import logging 
-  
+import json
+from bson import json_util 
 #Create and configure logger 
 logging.basicConfig(filename="server.log", 
                     format='%(asctime)s %(message)s', 
@@ -73,7 +74,7 @@ def do_ocr():
     response = dbaUI.read_fromDBSpecfic(ocredText)
     if(response=='{}'):
         logger.warning("Response is empty")
-        return {"status" : "Failed","statusreason" : "user not found"}
+        return json.dumps({"status" : "Failed","statusreason" : "user not found"},default=json_util.default),500
     logger.debug(type(response))
     return response
 if __name__ == '__main__':
