@@ -194,7 +194,7 @@ uri = "mongodb://56a41323-0ee0-4-231-b9ee:G9c804dv0gVufeDcqrJ0sTJklu0Nw3keGEZbIT
 client = pymongo.MongoClient(uri)
 print("Obtained the client")
 mydb = client.test
-def generateqrcode(jsonData,file):
+def generateqrcode(jsonData):
     logger.debug("Received data for generating color code = ")
     logger.debug(jsonData)
     ilocation=1
@@ -216,7 +216,7 @@ def generateqrcode(jsonData,file):
     logger.debug("ColorCode - "+colorCode)
     logger.debug("generateColorCode:: ColorCode value ="+colorCode)
     import sendEmail as se
-    se.execute(str(jsonData["email"]),file)
+    se.execute(str(jsonData["email"]))
     return colorCode;
 def addEntry(jsonData):
 	a = mydb.userInfo.find_one({"name":jsonData["name"]})
