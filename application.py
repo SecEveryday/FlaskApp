@@ -74,7 +74,7 @@ def do_ocr():
     if(response=={}):
         logger.warning("Response is empty")
         return {"status" : "Failed","statusreason" : "user not found"}
-    logger.debug(response)
+    logger.debug(type(response))
     return response
 if __name__ == '__main__':
     app.run("0.0.0.0",debug = True)
