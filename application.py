@@ -70,6 +70,7 @@ def do_ocr():
     ocredText = ocredText.split()
     logger.debug("After Splitting:")
     logger.debug(ocredText)
-    return dbaUI.read_fromDBSpecfic(ocredText)
+    response = dbaUI.read_fromDBSpecfic(ocredText)
+    print(response)
 if __name__ == '__main__':
     app.run("0.0.0.0",debug = True)
