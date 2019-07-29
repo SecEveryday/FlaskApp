@@ -205,9 +205,9 @@ def generateqrcode(jsonData):
     logger.debug("Current Datetime - "+dateTimeNow)
     dateTimeNow = ""+str(today.month)+str(today.day)+str(today.hour)+str(today.minute)+str(today.second)+str(today.microsecond);
     logger.debug("Unique Code - "+dateTimeNow)
-    if(int(jsonData.cubicle)>25 and int(jsonData.cubicle)<=50):
+    if(int(jsonData["cubicle"])>25 and int(jsonData["cubicle"])<=50):
         ilocation=2
-    elif(int(jsonData.cubicle)>50 and int(jsonData.cubicle)<=75):
+    elif(int(jsonData["cubicle"])>50 and int(jsonData["cubicle"])<=75):
         ilocation=3
     else:
         ilocation=4
