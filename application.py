@@ -6,7 +6,7 @@ import dbaccesslibUserMailInfo as dbaUMI
 import logging 
   
 #Create and configure logger 
-logging.basicConfig(filename="dbaccessUserInfo.log", 
+logging.basicConfig(filename="server.log", 
                     format='%(asctime)s %(message)s', 
                     filemode='a')
 #Creating an object 
@@ -71,7 +71,7 @@ def do_ocr():
     logger.debug("After Splitting:")
     logger.debug(ocredText)
     response = dbaUI.read_fromDBSpecfic(ocredText)
-    if( not response):
+    if(response=={}):
         logger.warning("Response is empty")
         return {"status" : "Failed","statusreason" : "user not found"}
     logger.debug(response)

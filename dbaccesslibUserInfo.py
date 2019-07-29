@@ -6,7 +6,7 @@ import pymongo
 import logging 
   
 #Create and configure logger 
-logging.basicConfig(filename="dbaccessUserInfo.log", 
+logging.basicConfig(filename="server.log", 
                     format='%(asctime)s %(message)s', 
                     filemode='a')
                     #Creating an object 
