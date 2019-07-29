@@ -213,7 +213,7 @@ def generateqrcode(jsonData):
     logger.debug(data.building)
     colorCode=jsonCode["building"][jsonData.building]["id"]+':'+jsonCode["building"][jsonData.building]["division"][jsonData.division]["id"]+':'+jsonCode["building"][jsonData.building]["division"][jsonData.division]["dept"][jsonData.department]["id"]+':'+jsonCode["building"][jsonData.building]["division"][jsonData.division]["dept"][jsonData.department]["floor"][jsonData.floor]+'F:'+ilocation+'L:'+dateTime
     logger.debug("ColorCode - "+colorCode)
-	logger.debug("generateColorCode:: ColorCode value ="+colorCode)
+    logger.debug("generateColorCode:: ColorCode value ="+colorCode)
 	return colorCode;
 def addEntry(jsonData):
 	a = mydb.userInfo.find_one({"name":jsonData["name"]})
