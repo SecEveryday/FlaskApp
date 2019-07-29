@@ -195,7 +195,8 @@ client = pymongo.MongoClient(uri)
 print("Obtained the client")
 mydb = client.test
 def generateqrcode(jsonData):
-    logger.debug("Received data for generating color code = "+jsonData)
+    logger.debug("Received data for generating color code = ")
+    logger.debug(jsonData)
     ilocation=1
     today = datetime.datetime.now()
     date = today.year+':'+(today.month)+':'+today.day;
