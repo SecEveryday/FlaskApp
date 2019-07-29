@@ -26,7 +26,7 @@ def execute(emailAddress,file):
         # Add file as application/octet-stream
         # Email client can usually download this automatically as attachment
     part = MIMEBase("application", "octet-stream")
-    part.set_payload(file)
+    part.set_payload(file.read())
 
     # Encode file in ASCII characters to send by email    
     encoders.encode_base64(part)
