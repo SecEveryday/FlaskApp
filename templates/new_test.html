@@ -403,10 +403,12 @@ colorCode = generateColorCode(data)
 						// Generate the QR Code
 						//$('#output').qrcode({width: 100,height: 100,text: colorCode});
 },
-error: function(jqXhr, textStatus, errorMessage){ 		
-		$('#retresponse').val(textStatus);
-        alert(textStatus);
-    _initialDisplay();
+error: function(jqXhr, textStatus, errorMessage){ 	
+        data = JSON.parse(textStatus);	
+		$('#retresponse').val(data);
+        
+        alert(data);
+        _initialDisplay();
 }
 // ... Other options like success and etc
 });
