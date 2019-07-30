@@ -20,7 +20,7 @@ def execute(emailAddress,filenameJPG,qrcode,img):
     message.attach(MIMEText(body, "plain"))
 
     filename = "uploads/"+str(filenameJPG)  # In same directory as script
-    filename = "qrcode.jpg"
+    filename1 = "qrcode.jpg"
     # Open PDF file in binary mode
     with open(filename, "rb") as attachment:
         # Add file as application/octet-stream
@@ -44,7 +44,7 @@ def execute(emailAddress,filenameJPG,qrcode,img):
     # Add header as key/value pair to attachment part
     part2.add_header(
         "Content-Disposition",
-        f"attachment; filename= {filename}",
+        f"attachment; filename= {filename1}",
         
     )
     # Add attachment to message and convert message to string
