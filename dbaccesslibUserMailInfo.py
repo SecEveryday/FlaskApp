@@ -231,10 +231,7 @@ def addEntry(jsonData):
     scan_date = str(scan_date)
     end_date = str(end_date)
     mydb.userMailInfo.insert({"code":jsonData["code"],"scan_date":scan_date,"end_date":end_date,"otherdbref":newDbref,"userDeleted":False,"user_id":1})
-    
-    return json.dumps({    
-        "status": "Success",
-        "statusreason": "WriteToDBSuccess"})
+    return json.dumps({"status": "Success","statusreason": "WriteToDBSuccess"})
 def read_fromDB():
     new_list = list()
     for item in mydb.userMailInfo.find({},{"_id":0,"user_id":0}):
