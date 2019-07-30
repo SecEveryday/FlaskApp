@@ -28,7 +28,6 @@ def hello():
 @app.route("/clearDB")
 def clearDB():
     return dbaUI.clear_DB()
-#
 @app.route("/queryFromDatabase",methods=['POST'])
 def queryFromDatabase():
     jsonData = request.json

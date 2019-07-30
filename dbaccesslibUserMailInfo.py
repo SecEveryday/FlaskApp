@@ -194,6 +194,7 @@ uri = "mongodb://56a41323-0ee0-4-231-b9ee:G9c804dv0gVufeDcqrJ0sTJklu0Nw3keGEZbIT
 client = pymongo.MongoClient(uri)
 print("Obtained the client")
 mydb = client.test
+
 def generateqrcode(jsonData,filenameJPG):
     logger.debug("Received data for generating color code = ")
     logger.debug(jsonData)
@@ -221,15 +222,17 @@ def generateqrcode(jsonData,filenameJPG):
     se.execute(str(jsonData["email"]),filenameJPG,str(colorCode),img)
     return colorCode;
 def addEntry(jsonData):
-	a = mydb.userInfo.find_one({"name":jsonData["name"]})
-	newDbref = DBRef("mydb.userInfo",a["_id"])
-	scan_date = datetime.datetime.today()
-	end_date = scan_date + datetime.timedelta(days=10)
-	mydb.userMailInfo.insert({"code":jsonData["code"],"scan_date":scan_date,"end_date":end_date,"otherdbref":newDbref,"userDeleted":False})
-	return json.dumps({    
+    a = mydb.userInfo.find_one({"name":jsonData["name"]})
+    newDbref = DBRef("mydb.userInfo",a["_id"])
+    scan_date = datetime.datetime.today()
+    end_date = scan_date + datetime.timedelta(days=10)
+    scan_date = str(scan_date)
+    end_date = str(end_date)
+    mydb.userMailInfo.insert({"code":jsonData["code"],"scan_date":scan_date,"end_date":end_date,"otherdbref":newDbref,"userDeleted":False})
+	
+    return json.dumps({    
         "status": "Success",
-        "statusreason": "WriteToDBSuccess"
-    })
+        "statusreason": "WriteToDBSuccess"})
 def read_fromDB():
 	new_list = list()
 	for item in mydb.userMailInfo.find({},{"_id":0,"user_id":0}):

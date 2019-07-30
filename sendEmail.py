@@ -16,15 +16,23 @@ logger=logging.getLogger()
 #Setting the threshold of logger to DEBUG 
 logger.setLevel(logging.DEBUG) 
 def execute(emailAddress,filenameJPG,qrcode,img):
-    subject = qrcode
-    body = "This is an email with attachment sent from Python"
+    subject='[New Mail Received][Code:'+qrcode+'] New Postal Mail reception notification';
+    body = '\
+Dear Sir/Madam,\n \
+A new postal mail intended to you has been recieved and placed in the reception.\n \
+Please show the below QR code to reception and collect the mail.\n \n \
+If you want to keep the mail, then reply to this mail ID by adding [Keep] in the subject.\n \
+If you do not want to keep the mail, then reply to this mail ID by adding [Trash] in the subject.\n \n \
+Note: The mail will be kept in the reception for a period of 10 days.\n \n \
+Regards,\n \
+Admin';
     sender_email = "koushik.rjn@gmail.com"
     password = "sridhargk"
     # Create a multipart message and set headers
     message = MIMEMultipart()
     message["From"] = sender_email
     message["To"] = emailAddress
-    message["Cc"] = "Koushik.Sridhar@toshiba-tsip.com"
+    message["cc"] = "Koushik.Sridhar@toshiba-tsip.com"
     message["Subject"] = subject
 
     # Add body to email
