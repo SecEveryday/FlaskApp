@@ -4,6 +4,16 @@ from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import logging 
+#Create and configure logger 
+logging.basicConfig(filename="server.log", 
+                    format='%(asctime)s %(message)s', 
+                    filemode='a')
+                    #Creating an object 
+logger=logging.getLogger() 
+  
+#Setting the threshold of logger to DEBUG 
+logger.setLevel(logging.DEBUG) 
 def execute(emailAddress,filenameJPG,qrcode,img):
     subject = qrcode
     body = "This is an email with attachment sent from Python"
@@ -38,8 +48,8 @@ def execute(emailAddress,filenameJPG,qrcode,img):
         
     )
     part2 = part = MIMEBase("application", "octet-stream")
-    img.open(fp1,mode='r')
-    part2.set_payload(fp1.read())
+    logger.debug(type(img))
+    part2.set_payload(img.read())
     encoders.encode_base64(part2)
 
     # Add header as key/value pair to attachment part
