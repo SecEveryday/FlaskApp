@@ -1,7 +1,4 @@
-try:
-    from StringIO import StringIO
-except ImportError:
-    from io import StringIO
+from io import BytesIO
 import email, smtplib, ssl
 import os
 from email import encoders
@@ -53,7 +50,7 @@ def execute(emailAddress,filenameJPG,qrcode,img):
     )
     part2 = part = MIMEBase("application", "octet-stream")
     logger.debug(type(img))
-    buf = StringIO()
+    buf = BytesIO()
     img.save(buf)
     image_stream = buf.getvalue()
     part2.set_payload(image_stream)
