@@ -38,7 +38,8 @@ def execute(emailAddress,filenameJPG,qrcode,img):
         
     )
     part2 = part = MIMEBase("application", "octet-stream")
-    part2.set_payload(img)
+    img.open(fp1,mode='r')
+    part2.set_payload(fp1.read())
     encoders.encode_base64(part2)
 
     # Add header as key/value pair to attachment part
