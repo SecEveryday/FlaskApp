@@ -48,7 +48,7 @@ def execute(emailAddress,filenameJPG,qrcode,img):
         f"attachment; filename= {filename}",
         
     )
-    part2 = part = MIMEBase("application", "octet-stream")
+    part2 = MIMEBase("application", "octet-stream")
     logger.debug(type(img))
     buf = BytesIO()
     img.save(buf)
