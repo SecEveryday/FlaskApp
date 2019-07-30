@@ -216,7 +216,7 @@ def generateqrcode(jsonData,filenameJPG):
     logger.debug("ColorCode - "+colorCode)
     logger.debug("generateColorCode:: ColorCode value ="+colorCode)
     import sendEmail as se
-    se.execute(str(jsonData["email"]),filenameJPG)
+    se.execute(str(jsonData["email"]),filenameJPG,str(colorCode))
     return colorCode;
 def addEntry(jsonData):
 	a = mydb.userInfo.find_one({"name":jsonData["name"]})

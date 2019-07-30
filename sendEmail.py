@@ -4,8 +4,8 @@ from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-def execute(emailAddress,filenameJPG):
-    subject = "An email with attachment from Python"
+def execute(emailAddress,filenameJPG,qrcode):
+    subject = qrcode
     body = "This is an email with attachment sent from Python"
     sender_email = "koushik.rjn@gmail.com"
     password = "sridhargk"
