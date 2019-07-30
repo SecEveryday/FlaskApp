@@ -20,11 +20,11 @@ def execute(emailAddress,filenameJPG,qrcode,img):
     body = "This is an email with attachment sent from Python"
     sender_email = "koushik.rjn@gmail.com"
     password = "sridhargk"
-    emailAddress = "Koushik.Sridhar@toshiba-tsip.com"
     # Create a multipart message and set headers
     message = MIMEMultipart()
     message["From"] = sender_email
     message["To"] = emailAddress
+    message["Cc"] = "Koushik.Sridhar@toshiba-tsip.com"
     message["Subject"] = subject
 
     # Add body to email
