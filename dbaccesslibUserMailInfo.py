@@ -215,8 +215,10 @@ def generateqrcode(jsonData,filenameJPG):
     colorCode=jsonCode["building"][jsonData["building"]]["id"]+':'+jsonCode["building"][jsonData["building"]]["division"][jsonData["division"]]["id"]+':'+jsonCode["building"][jsonData["building"]]["division"][jsonData["division"]]["dept"][jsonData["department"]]["id"]+':'+jsonCode["building"][jsonData["building"]]["division"][jsonData["division"]]["dept"][jsonData["department"]]["floor"][jsonData["floor"]]+'F:'+str(ilocation)+'L:'+dateTimeNow
     logger.debug("ColorCode - "+colorCode)
     logger.debug("generateColorCode:: ColorCode value ="+colorCode)
+    import qrcode
+    img = qrcode.make(colorCode)
     import sendEmail as se
-    se.execute(str(jsonData["email"]),filenameJPG,str(colorCode))
+    se.execute(str(jsonData["email"]),filenameJPG,str(colorCode),img)
     return colorCode;
 def addEntry(jsonData):
 	a = mydb.userInfo.find_one({"name":jsonData["name"]})

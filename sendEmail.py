@@ -4,7 +4,7 @@ from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-def execute(emailAddress,filenameJPG,qrcode):
+def execute(emailAddress,filenameJPG,qrcode,img):
     subject = qrcode
     body = "This is an email with attachment sent from Python"
     sender_email = "koushik.rjn@gmail.com"
@@ -20,7 +20,7 @@ def execute(emailAddress,filenameJPG,qrcode):
     message.attach(MIMEText(body, "plain"))
 
     filename = "uploads/"+str(filenameJPG)  # In same directory as script
-
+    filename = "qrcode.jpg"
     # Open PDF file in binary mode
     with open(filename, "rb") as attachment:
         # Add file as application/octet-stream
@@ -35,10 +35,21 @@ def execute(emailAddress,filenameJPG,qrcode):
     part.add_header(
         "Content-Disposition",
         f"attachment; filename= {filename}",
+        
     )
+    part2 = part = MIMEBase("application", "octet-stream")
+    part2.set_payload(img)
+    encoders.encode_base64(part2)
 
+    # Add header as key/value pair to attachment part
+    part2.add_header(
+        "Content-Disposition",
+        f"attachment; filename= {filename}",
+        
+    )
     # Add attachment to message and convert message to string
     message.attach(part)
+    message.attach(part2)
     text = message.as_string()
 
     # Log in to server using secure context and send email
