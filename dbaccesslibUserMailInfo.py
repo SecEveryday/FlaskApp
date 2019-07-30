@@ -4,182 +4,182 @@ import datetime
 from bson import json_util
 import logging 
 jsonCode ={
-		"building":{
-			"Essae Vaishnavi Solitaire": {
-				"id": "B1",	
-				"division": {
-					"SS": {
-						"id": "D1",
-						"dept":{
-							"Semicon":{
-							"id":"DEP1",
-							"floor":{"0":"0",
-								"1":"1",
-								"2":"2",
-								"3":"3",
-								"4":"4",
-								"5":"5",
-								"6":"6"	
-								}
-							},
-							"RND":{
-							"id":"DEP2",
-							"floor":{"0":"0",
-								"1":"1",
-								"2":"2",
-								"3":"3",
-								"4":"4",
-								"5":"5",
-								"6":"6"						
-								}
-							},
-							"Mobile":{
-							"id":"DEP3",
-							"floor":{"0":"0",						
-								"1":"1",
-								"2":"2",
-								"3":"3",
-								"4":"4",
-								"5":"5",
-								"6":"6"	
-								}
-							}					
-						}
-					},
-					"TTEC": {
-						"id": "D2",
-						"dept":{
-							"TTEC-AL":{
-							"id":"DEP1",
-							"floor":{"0":"0",
-								"1":"1",
-								"2":"2",
-								"3":"3",
-								"4":"4",
-								"5":"5",
-								"6":"6"						
-								}
-							},
-							"TTEC-SL":{
-							"id":"DEP2",
-							"floor":{"0":"0",
-								"1":"1",
-								"2":"2",
-								"3":"3",
-								"4":"4",
-								"5":"5",
-								"6":"6"									
-								}
-							},
-							"TTEC-DL":{
-							"id":"DEP3",
-							"floor":{"0":"0",						
-								"1":"1",
-								"2":"2",
-								"3":"3",
-								"4":"4",
-								"5":"5",
-								"6":"6"	
-								}
-							},					
-							"TTEC-CI":{
-							"id":"DEP4",
-							"floor":{"0":"0",						
-								"1":"1",
-								"2":"2",
-								"3":"3",
-								"4":"4",
-								"5":"5",
-								"6":"6"	
-								}
-							}
-						}
-					}
-				}				
-			},
-			"Fortune Summit": {
-				"id": "B2",	
-				"division": {
-					"TMSC": {
-						"id": "D1",
-						"dept":{
-							"Medical":{
-							"id":"DEP1",
-							"floor":{"0":"0",
-								"1":"1",
-								"2":"2",
-								"3":"3",
-								"4":"4",
-								"5":"5",
-								"6":"6"	
-								}
-							},
-							"RND":{
-							"id":"DEP2",
-							"floor":{"0":"0",
-								"1":"1",
-								"2":"2",
-								"3":"3",
-								"4":"4",
-								"5":"5",
-								"6":"6"						
-								}
-							},
-							"Imaging":{
-							"id":"DEP3",
-							"floor":{"0":"0",						
-								"1":"1",
-								"2":"2",
-								"3":"3",
-								"4":"4",
-								"5":"5",
-								"6":"6"	
-								}
-							}					
-						}
-					},
-					"tmc": {
-						"id": "D2",
-						"dept":{
-							"tmc-1":{
-							"id":"DEP1",
-							"floor":{"0":"0",
-								"1":"1",
-								"2":"2",
-								"3":"3",
-								"4":"4",
-								"5":"5",
-								"6":"6"							
-								}
-							},
-							"tmc-2":{
-							"id":"DEP2",
-							"floor":{"0":"0",
-								"1":"1",
-								"2":"2",
-								"3":"3",
-								"4":"4",
-								"5":"5",
-								"6":"6"							
-								}
-							},
-							"tmc-3":{
-							"id":"DEP3",
-							"floor":{"0":"0",						
-								"1":"1",
-								"2":"2",
-								"3":"3",
-								"4":"4",
-								"5":"5",
-								"6":"6"	
-								}
-							}
-						}
-					}
-				}				
-			}
-		}
-	}
+        "building":{
+            "Essae Vaishnavi Solitaire": {
+                "id": "B1", 
+                "division": {
+                    "SS": {
+                        "id": "D1",
+                        "dept":{
+                            "Semicon":{
+                            "id":"DEP1",
+                            "floor":{"0":"0",
+                                "1":"1",
+                                "2":"2",
+                                "3":"3",
+                                "4":"4",
+                                "5":"5",
+                                "6":"6" 
+                                }
+                            },
+                            "RND":{
+                            "id":"DEP2",
+                            "floor":{"0":"0",
+                                "1":"1",
+                                "2":"2",
+                                "3":"3",
+                                "4":"4",
+                                "5":"5",
+                                "6":"6"                     
+                                }
+                            },
+                            "Mobile":{
+                            "id":"DEP3",
+                            "floor":{"0":"0",                       
+                                "1":"1",
+                                "2":"2",
+                                "3":"3",
+                                "4":"4",
+                                "5":"5",
+                                "6":"6" 
+                                }
+                            }                   
+                        }
+                    },
+                    "TTEC": {
+                        "id": "D2",
+                        "dept":{
+                            "TTEC-AL":{
+                            "id":"DEP1",
+                            "floor":{"0":"0",
+                                "1":"1",
+                                "2":"2",
+                                "3":"3",
+                                "4":"4",
+                                "5":"5",
+                                "6":"6"                     
+                                }
+                            },
+                            "TTEC-SL":{
+                            "id":"DEP2",
+                            "floor":{"0":"0",
+                                "1":"1",
+                                "2":"2",
+                                "3":"3",
+                                "4":"4",
+                                "5":"5",
+                                "6":"6"                                 
+                                }
+                            },
+                            "TTEC-DL":{
+                            "id":"DEP3",
+                            "floor":{"0":"0",                       
+                                "1":"1",
+                                "2":"2",
+                                "3":"3",
+                                "4":"4",
+                                "5":"5",
+                                "6":"6" 
+                                }
+                            },                  
+                            "TTEC-CI":{
+                            "id":"DEP4",
+                            "floor":{"0":"0",                       
+                                "1":"1",
+                                "2":"2",
+                                "3":"3",
+                                "4":"4",
+                                "5":"5",
+                                "6":"6" 
+                                }
+                            }
+                        }
+                    }
+                }               
+            },
+            "Fortune Summit": {
+                "id": "B2", 
+                "division": {
+                    "TMSC": {
+                        "id": "D1",
+                        "dept":{
+                            "Medical":{
+                            "id":"DEP1",
+                            "floor":{"0":"0",
+                                "1":"1",
+                                "2":"2",
+                                "3":"3",
+                                "4":"4",
+                                "5":"5",
+                                "6":"6" 
+                                }
+                            },
+                            "RND":{
+                            "id":"DEP2",
+                            "floor":{"0":"0",
+                                "1":"1",
+                                "2":"2",
+                                "3":"3",
+                                "4":"4",
+                                "5":"5",
+                                "6":"6"                     
+                                }
+                            },
+                            "Imaging":{
+                            "id":"DEP3",
+                            "floor":{"0":"0",                       
+                                "1":"1",
+                                "2":"2",
+                                "3":"3",
+                                "4":"4",
+                                "5":"5",
+                                "6":"6" 
+                                }
+                            }                   
+                        }
+                    },
+                    "tmc": {
+                        "id": "D2",
+                        "dept":{
+                            "tmc-1":{
+                            "id":"DEP1",
+                            "floor":{"0":"0",
+                                "1":"1",
+                                "2":"2",
+                                "3":"3",
+                                "4":"4",
+                                "5":"5",
+                                "6":"6"                         
+                                }
+                            },
+                            "tmc-2":{
+                            "id":"DEP2",
+                            "floor":{"0":"0",
+                                "1":"1",
+                                "2":"2",
+                                "3":"3",
+                                "4":"4",
+                                "5":"5",
+                                "6":"6"                         
+                                }
+                            },
+                            "tmc-3":{
+                            "id":"DEP3",
+                            "floor":{"0":"0",                       
+                                "1":"1",
+                                "2":"2",
+                                "3":"3",
+                                "4":"4",
+                                "5":"5",
+                                "6":"6" 
+                                }
+                            }
+                        }
+                    }
+                }               
+            }
+        }
+    }
 #Create and configure logger 
 logging.basicConfig(filename="server.log", 
                     format='%(asctime)s %(message)s', 
@@ -220,6 +220,8 @@ def generateqrcode(jsonData,filenameJPG):
     img = qrcode.make(colorCode)
     import sendEmail as se
     se.execute(str(jsonData["email"]),filenameJPG,str(colorCode),img)
+    newjsonData = {"name":jsonData["name"],"code":colorCode}
+    addEntry(newjsonData)
     return colorCode;
 def addEntry(jsonData):
     a = mydb.userInfo.find_one({"name":jsonData["name"]})
@@ -228,24 +230,28 @@ def addEntry(jsonData):
     end_date = scan_date + datetime.timedelta(days=10)
     scan_date = str(scan_date)
     end_date = str(end_date)
-    mydb.userMailInfo.insert({"code":jsonData["code"],"scan_date":scan_date,"end_date":end_date,"otherdbref":newDbref,"userDeleted":False})
-	
+    mydb.userMailInfo.insert({"code":jsonData["code"],"scan_date":scan_date,"end_date":end_date,"otherdbref":newDbref,"userDeleted":False,"user_id":1})
+    
     return json.dumps({    
         "status": "Success",
         "statusreason": "WriteToDBSuccess"})
 def read_fromDB():
-	new_list = list()
-	for item in mydb.userMailInfo.find({},{"_id":0,"user_id":0}):
-		print(item)
-		otherdbref = item["otherdbref"]
-		newjson = mydb.userInfo.find_one({"_id":otherdbref.id},{"_id":0,"user_id":0})
-		dall = {}
-		item.pop("otherdbref")
-		dall.update(item)
-		dall.update(newjson)
-		print(dall)
-		new_list.append(dall)
-	return json.dumps(new_list,default=json_util.default)
+    new_list = list()
+    for item in mydb.userMailInfo.find({},{"_id":0,"user_id":0}):
+        print(item)
+        otherdbref = item["otherdbref"]
+        newjson = mydb.userInfo.find_one({"_id":otherdbref.id},{"_id":0,"user_id":0})
+        dall = {}
+        item.pop("otherdbref")
+        dall.update(item)
+        dall.update(newjson)
+        print(dall)
+        new_list.append(dall)
+    return json.dumps(new_list,default=json_util.default)
+def update_DB(jsonData):
+    foundmail = mydb.userMailInfo.find_one({"code":jsonData["code"]},{"_id":1})
+    mydb.userInfo.update_many({"_id":foundmail["_id"],"user_id":1},{"$set":{'end_date':str(jsonData['end_date']}})
+    return json.dumps({"status": "Success","statusreason": "updateSucess"})
 #Clear DB only for testing
 def clear_db():
-	mydb.userMailInfo.remove({})
+    mydb.userMailInfo.remove({})
