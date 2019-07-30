@@ -1,3 +1,7 @@
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
 import email, smtplib, ssl
 import os
 from email import encoders
@@ -49,7 +53,10 @@ def execute(emailAddress,filenameJPG,qrcode,img):
     )
     part2 = part = MIMEBase("application", "octet-stream")
     logger.debug(type(img))
-    part2.set_payload(img.read())
+    buf = StringIO()
+    img.save(buf)
+    image_stream = buf.getvalue()
+    part2.set_payload(image_stream)
     encoders.encode_base64(part2)
 
     # Add header as key/value pair to attachment part
