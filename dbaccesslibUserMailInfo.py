@@ -247,7 +247,7 @@ def read_fromDB():
     return json.dumps(new_list,default=json_util.default)
 def update_DB(jsonData):
     foundmail = mydb.userMailInfo.find_one({"code":jsonData["code"]},{"_id":1})
-    mydb.userInfo.update_many({"_id":foundmail["_id"],"user_id":1},{"$set":{'end_date':str(jsonData['end_date']}})
+    mydb.userInfo.update_many({"_id":foundmail["_id"],"user_id":1},{"$set":{'end_date':str(jsonData['end_date'])}})
     return json.dumps({"status": "Success","statusreason": "updateSucess"})
 #Clear DB only for testing
 def clear_db():
