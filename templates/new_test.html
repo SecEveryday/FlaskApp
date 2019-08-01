@@ -513,7 +513,79 @@ var move = function(width, interval, error) {
 		  return true;
 	  }
 	};
-
+var showPopUp = function(){
+		console.log("showDialog::Entered showPopUp");
+		
+		$('#popUpHeading').removeClass('alert-error').addClass('alert-success').text("Generate Report");					
+		$('#popUpContent').text("Please select the following \n <1> Print report for today \n <2> Print report for all days");
+		
+		sleep(100);
+		$('#popUp').css('display','block');		
+	}
+$("#todayreport").on("click", function () {
+		console.log("todayreport click")	
+		$("#popUp").css("display", "none");	
+		generateReport("today")
+	});
+var generateReport = function(action){
+		console.log("generateReport::Entered generateReport, action - "+action);
+		// Setting jobStatus as AppPrint
+		$('#retresponse').val("Querying the information from the database");		
+		move(1,15,0)
+		App.Util.serverRequest('/server/' + App.appId + "/generateReport", "POST", true, function (response) {
+			if (response) {
+				console.log("AppToApp_report Response- "+JSON.stringify(response));							
+				move(15,30,0)
+				if (response.status =="NoReportForToday"){
+					$('#retresponse').val("No Pending Report for today");	
+					showDialog("success","No Pending Report for today");
+				}
+				else if(response.status == "Failed" ){
+					$('#retresponse').val("Error in Generate Report");	
+					showDialog("error","Error in Generate Report");
+				}	
+				else{
+					var reportName = response.value
+					console.log("AppToApp_report::Name of the file is "+reportName)				
+					AppToApp_appPrint(reportName)
+				}
+			}				
+			else {
+				console.log("Error at generateReport");
+				$('#retresponse').val("Error in Generate Report");	
+				showDialog("error","Error in Generate Report");
+			}
+		}, {		
+		"name": action
+		});				
+	}
+$("#AppToApp_report").on("click", function () {	
+		$('#AppToApp_startScan').prop('disabled',true);		
+		$('#AppToApp_report').prop('disabled',true);		
+		$('.progress-bar').removeClass('w3-hide').addClass('w3-show');	
+		
+		showPopUp()
+	/*	
+		$('#retresponse').val("Querying the information from the database");		
+		move(1,25,0)
+		App.Util.serverRequest('/server/' + App.appId + "/generateReport", "POST", true, function (response) {
+			if (response) {
+				console.log("AppToApp_report Response- "+JSON.stringify(response));							
+				move(25,50,0)
+				var reportName = response.value
+				console.log("AppToApp_report::Name of the file is "+reportName)				
+				AppToApp_appPrint(reportName)
+			}				
+			else {
+				console.log("Error at generateReport");
+				$('#retresponse').val("Error in GenerateReport");	
+				showDialog("error","Error in Generate Report");
+			}
+		}, {		
+		"name": "all"
+		});		
+	*/
+	});
 });
 </script>
 </html>
