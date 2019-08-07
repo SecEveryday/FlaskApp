@@ -162,6 +162,28 @@
 						<button class="w3-button w3-border w3-margin-top w3-white w3-round-large w3-margin-bottom" id="popUpCloseButton">Close</button>
 					</div>
 				</div>
+                <section id="usertablelist" class="w3-hide">		
+								<div class="tablelist w3-padding w3-border w3-left" style="width:100%">	
+									<p class="w3-margin w3-center w3-medium">User Details</p>
+									<table id="user_table" class="w3-border w3-table-all w3-hoverable">
+										<thead>						
+											<th>Code</th>
+											<th>Scan_date</th>
+											<th>Thrash_date</th>                          
+										</thead>
+										<tbody>													
+										</tbody>
+									</table>	
+									<!-- Pagination -->
+									<div class="w3-center w3-padding-16">
+										<div class="w3-bar" id="paginationInfo">						  
+											<a href="#" class="w3-bar-item w3-button" id='previousPage'><<</a>
+											<a href="#" class="w3-bar-item w3-button w3-blue" id="homePage">1</a>
+											<a href="#" class="w3-bar-item w3-button" id='nextPage'>>></a>
+										</div>
+									</div>	
+								</div>
+				</section>
 			</div>
 		
 			</div>
@@ -200,6 +222,8 @@ $('#Contentdiv').html("<p>"+data+"</p>");
 
 });
 */
+var currentAction =""
+var CurrentPage = 1;
 var jsonCode ={
 		"building":{
 			"Essae Vaishnavi Solitaire": {
@@ -467,6 +491,7 @@ error: function(jqXhr, textStatus, errorMessage){
 		console.log("Initial Display")
 		
 		img="";
+        currentAction="";
 		
 		$('#retresponse').val('Place postal mail on Glass Bed and press "Start Scan" button');
 		
@@ -527,37 +552,18 @@ $("#todayreport").on("click", function () {
 		$("#popUp").css("display", "none");	
 		generateReport("today")
 	});
+$("#allreport").on("click", function () {	
+		console.log("allreport click")	
+		$("#popUp").css("display", "none");	
+		generateReport("all")
+	});
 var generateReport = function(action){
 		console.log("generateReport::Entered generateReport, action - "+action);
 		// Setting jobStatus as AppPrint
 		$('#retresponse').val("Querying the information from the database");		
 		move(1,15,0)
-		App.Util.serverRequest('/server/' + App.appId + "/generateReport", "POST", true, function (response) {
-			if (response) {
-				console.log("AppToApp_report Response- "+JSON.stringify(response));							
-				move(15,30,0)
-				if (response.status =="NoReportForToday"){
-					$('#retresponse').val("No Pending Report for today");	
-					showDialog("success","No Pending Report for today");
-				}
-				else if(response.status == "Failed" ){
-					$('#retresponse').val("Error in Generate Report");	
-					showDialog("error","Error in Generate Report");
-				}	
-				else{
-					var reportName = response.value
-					console.log("AppToApp_report::Name of the file is "+reportName)				
-					AppToApp_appPrint(reportName)
-				}
-			}				
-			else {
-				console.log("Error at generateReport");
-				$('#retresponse').val("Error in Generate Report");	
-				showDialog("error","Error in Generate Report");
-			}
-		}, {		
-		"name": action
-		});				
+        currentAction = action;
+        getUsers(1,action);    
 	}
 $("#AppToApp_report").on("click", function () {	
 		$('#AppToApp_startScan').prop('disabled',true);		
@@ -595,5 +601,90 @@ function sleep(milliseconds) {
 		}
 	  }
 	}
+$('#popUpCloseButton').on('click', function(){			
+		console.log("Popup close button click");
+		
+		_initialDisplay();	
+		// hide the dialog
+		$("#popUp").css("display", "none");
+	});
+    
+    	/* ----------------------------------------- Pagination navigation---------------------------------------- */	
+$('#previousPage').on('click', function(){			
+			CurrentPage--;
+			if(CurrentPage < 1)
+				CurrentPage = 1			
+			console.log("Current Page ="+CurrentPage);			
+			getUsers(CurrentPage,currentAction);
+		});
+		
+		$('#nextPage').on('click', function(){
+			CurrentPage++;
+			console.log("Current Page ="+CurrentPage);			
+			getUsers(CurrentPage,currentAction);
+		});		
+		
+		$('#homePage').on('click', function(){
+			CurrentPage=$(this).text();
+			console.log("Current Page ="+CurrentPage);		
+			getUsers(CurrentPage,currentAction);
+		});
+    
+    
+    function getUsers(currPage,currentAction){
+			console.log("getUsers Entry")
+			selectedUserIndex=0;
+			userId='';
+			
+			// Display loading
+	//		$('#loading').removeClass('w3-hide');				
+
+			// Hide all the tables
+			$('#usertablelist').removeClass('w3-hide').addClass('w3-show');
+			
+			// Disable the Update/Delete User
+			
+			$('#user_table > tbody').empty();
+			
+		//	$('#user_table > tbody').append('<tr><td>' + "Arvind" + '</td><td>' + "TTEC" + '</td><td>' + "TTEC-SL" + '</td><td>'+ "Essae Vaishnavi Solitaire" + '</td><td>'+ "arvind@toshiba.com" + '</td><td>'+ "3" + '</td><td>'+ "85" + '</td></tr>');
+
+			
+			jsonGetData = {
+			  "page": currPage,
+              "action": currentAction
+			}			
+		   console.log("Test 123456789"); 
+            $.ajax({
+                type: "POST",                            
+                url: "{{url_for('getUserMailInfo') }}",    
+                async: false,
+                dataType: "json",    	
+				data: JSON.stringify(jsonGetData),					
+                cache: false,                     
+                success: function(jsonData){                    
+                                        
+                    jsonData = $.parseJSON(jsonData.data);
+                    if(typeof jsonData != "undefined"){
+						console.log("Received User Info ="+jsonData)
+						if(jsonData.length == 0){
+							CurrentPage--;
+							return;
+						}
+						jsonData.forEach(function(obj) { 
+							console.log("Name = "+obj.name+",Division = "+obj.division+",Department = "+",Building = "+obj.building+",EmailID = "+obj.email+",Floor = "+obj.floor+",Cubicle = "+obj.cubicle); 
+						});
+						$.each(jsonData, function (index, value) {
+							$('#user_table > tbody').append('<tr><td>' + value.name + '</td><td>' + value.division + '</td><td>' + value.department + '</td><td>'+ value.building + '</td><td>'+ value.email + '</td><td>'+ value.floor + '</td><td>'+ value.cubicle + '</td></tr>');				
+							$('#homePage').text(currPage);											
+						});
+						$('#homePage').text(currPage);	
+                    }
+                },
+                error: function() {
+                    // Failed the ajax call
+                    alert("Failed to connect.");
+                }
+            });						
+		}
 </script>
 </html>
