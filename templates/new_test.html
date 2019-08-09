@@ -510,6 +510,8 @@ error: function(jqXhr, textStatus, errorMessage){
 						
 		$('#progress-bar').removeClass('w3-hide').addClass('w3-show')
 		//window.location="index.html"		
+        $('#user_table > tbody').empty();
+        $('#usertablelist').removeClass('w3-show').addClass('w3-hide');
     }
 var move = function(width, interval, error) {
 	  var elem = document.getElementById("progress-bar");   
