@@ -649,18 +649,18 @@ $('#previousPage').on('click', function(){
 		//	$('#user_table > tbody').append('<tr><td>' + "Arvind" + '</td><td>' + "TTEC" + '</td><td>' + "TTEC-SL" + '</td><td>'+ "Essae Vaishnavi Solitaire" + '</td><td>'+ "arvind@toshiba.com" + '</td><td>'+ "3" + '</td><td>'+ "85" + '</td></tr>');
 
 			
-			jsonGetData = {
+			var jsonGetData = {
 			  "page": currPage,
               "action": currentAction
 			}			
 		   console.log("Test 123456789"); 
             console.log(jsonGetData);
             $.ajax({
-                type: "GET",                            
+                type: "POST",                            
                 url: "{{url_for('getUserMailInfo') }}",    
                 contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
                 processData: false, // NEEDED, DON'T OMIT THIS   	
-				data:JSON.stringify(jsonGetData),                     
+				data:jsonGetData,                     
                 success: function(jsonData){                    
                                         
                     jsonData = $.parseJSON(jsonData.data);

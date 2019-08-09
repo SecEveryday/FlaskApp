@@ -55,7 +55,7 @@ def deleteUser():
 def addToUserMailInfo():
     jsonData = request.json
     return dbaUMI.addEntry(jsonData)
-@app.route("/getUserMailInfo",methods=['GET'])
+@app.route("/getUserMailInfo",methods=['POST'])
 def getUserMailInfo():
     jsonData = request.json
     logger.debug(jsonData)
