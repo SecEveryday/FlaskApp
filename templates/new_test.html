@@ -673,10 +673,10 @@ $('#previousPage').on('click', function(){
 							return;
 						}
 						jsonData.forEach(function(obj) { 
-							console.log("Name = "+obj.name+",Division = "+obj.division+",Department = "+",Building = "+obj.building+",EmailID = "+obj.email+",Floor = "+obj.floor+",Cubicle = "+obj.cubicle); 
+							console.log("Code = "+obj.code+",scan_date = "+obj.scan_date+"thrash_date = "+ obj.end_date); 
 						});
 						$.each(jsonData, function (index, value) {
-							$('#user_table > tbody').append('<tr><td>' + value.name + '</td><td>' + value.division + '</td><td>' + value.department + '</td><td>'+ value.building + '</td><td>'+ value.email + '</td><td>'+ value.floor + '</td><td>'+ value.cubicle + '</td></tr>');				
+							$('#user_table > tbody').append('<tr><td>' + value.code + '</td><td>' + value.scan_date + '</td><td>' + value.end_date);				
 							$('#homePage').text(currPage);											
 						});
 						$('#homePage').text(currPage);	
