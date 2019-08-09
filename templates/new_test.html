@@ -657,10 +657,8 @@ $('#previousPage').on('click', function(){
             $.ajax({
                 type: "POST",                            
                 url: "{{url_for('getUserMailInfo') }}",    
-                async: false,
                 dataType: "json",    	
-				data: JSON.stringify(jsonGetData),					
-                cache: false,                     
+				data:jsonGetData,                     
                 success: function(jsonData){                    
                                         
                     jsonData = $.parseJSON(jsonData.data);
