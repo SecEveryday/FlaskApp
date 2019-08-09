@@ -669,7 +669,7 @@ $('#previousPage').on('click', function(){
                     if(typeof jsonData != "undefined"){
 						console.log("Received User Info ="+jsonData)
 						if(jsonData.length == 0){
-							CurrentPage--;
+							currPage--;
 							return;
 						}
 						jsonData.forEach(function(obj) { 
