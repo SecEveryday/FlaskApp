@@ -656,7 +656,7 @@ $('#previousPage').on('click', function(){
 		   console.log("Test 123456789"); 
             console.log(jsonGetData);
             $.ajax({
-                type: "POST",                            
+                type: "GET",                            
                 url: "{{url_for('getUserMailInfo') }}",    
                 contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
                 processData: false, // NEEDED, DON'T OMIT THIS   	
