@@ -663,7 +663,8 @@ $('#previousPage').on('click', function(){
                 contentType: 'application/json', // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
                 processData: false, // NEEDED, DON'T OMIT THIS   	
 				data:JSON.stringify(jsonGetData),                     
-                success: function(jsonData){                    
+                success: function(jsonData){
+                       $('#reportheading').empty();
                      $('#reportheading').append(currentAction + "Report");                 
                     jsonData = JSON.parse(jsonData);
                     console.log(jsonData);
