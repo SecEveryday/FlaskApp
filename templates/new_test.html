@@ -665,6 +665,7 @@ $('#previousPage').on('click', function(){
                 success: function(jsonData){                    
                                       
                     jsonData = $.parseJSON(jsonData);
+                    console.log(jsonData);
                     if(typeof jsonData != "undefined"){
 						console.log("Received User Info ="+jsonData)
 						if(jsonData.length == 0){
