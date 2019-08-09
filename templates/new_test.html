@@ -663,8 +663,8 @@ $('#previousPage').on('click', function(){
                 processData: false, // NEEDED, DON'T OMIT THIS   	
 				data:JSON.stringify(jsonGetData),                     
                 success: function(jsonData){                    
-                                        
-                    jsonData = $.parseJSON(jsonData.data);
+                                      
+                    jsonData = $.parseJSON(jsonData);
                     if(typeof jsonData != "undefined"){
 						console.log("Received User Info ="+jsonData)
 						if(jsonData.length == 0){
