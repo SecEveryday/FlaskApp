@@ -59,7 +59,7 @@ def addToUserMailInfo():
 def getUserMailInfo():
     jsonData = request.json
     logger.debug(jsonData)
-    dbaUMI.getspecificDate(jsonData)
+    return dbaUMI.getspecificDate(jsonData)
 @app.route("/generateReportforMFP",methods=['GET'])
 def generateReport():
     return dbaUMI.read_fromDB()
