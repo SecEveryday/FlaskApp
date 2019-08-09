@@ -228,8 +228,8 @@ def addEntry(jsonData):
     newDbref = DBRef("mydb.userInfo",a["_id"])
     scan_date = datetime.datetime.today()
     end_date = scan_date + datetime.timedelta(days=10)
-    scan_date = str(scan_date)
-    end_date = str(end_date)
+    scan_date = str(scan_date.day) + str(scan_date.month) + str(scan_date.year)
+    end_date = str(end_date.day) + str(end_date.month) + str(end_date.year)
     mydb.userMailInfo.insert({"code":jsonData["code"],"scan_date":scan_date,"end_date":end_date,"otherdbref":newDbref,"userDeleted":False,"user_id":1})
     return json.dumps({"status": "Success","statusreason": "WriteToDBSuccess"})
 def read_fromDB():
@@ -252,7 +252,8 @@ def getspecificDate(jsonData):
     if(jsonData["action"] == "all"):
         return json.dumps(list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}).skip(skips).limit(10)), default=json_util.default)
     else:
-        thrash_date = str(datetime.datetime.today())
+        thrash_date = datetime.datetime.today()
+        thrash_date = str(thrash_date.day) + str(thrash_date.month) + str(thrash_date.year) 
         return json.dumps(list(mydb.userMailInfo.find({"userDeleted":False,"end_date":thrash_date},{'_id' : 0,'user_id':0}).skip(skips).limit(10)), default=json_util.default)
 def update_DB(jsonData):
     foundmail = mydb.userMailInfo.find_one({"code":jsonData["code"]},{"_id":1})
