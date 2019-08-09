@@ -249,7 +249,7 @@ def getspecificDate(jsonData):
     logger.debug(jsonData)
     num = int(jsonData['page'])
     skips = 10 * (num - 1)
-    if(jsonData["currentaction"] == "all"):
+    if(jsonData["action"] == "all"):
         return json.dumps(list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}).skip(skips).limit(10)), default=json_util.default)
     else:
         thrash_date = str(datetime.datetime.today())
