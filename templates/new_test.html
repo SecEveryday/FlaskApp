@@ -548,13 +548,11 @@ var showPopUp = function(){
 		$('#popUp').css('display','block');		
 	}
 $("#todayreport").on("click", function () {
-		console.log("todayreport click")	
-		$("#popUp").css("display", "none");	
+		console.log("todayreport click");	
 		generateReport("today")
 	});
 $("#allreport").on("click", function () {	
-		console.log("allreport click")	
-		$("#popUp").css("display", "none");	
+		console.log("allreport click");
 		generateReport("all")
 	});
 var generateReport = function(action){
