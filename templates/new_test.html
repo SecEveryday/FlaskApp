@@ -660,7 +660,7 @@ $('#previousPage').on('click', function(){
                 url: "{{url_for('getUserMailInfo') }}",    
                 contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
                 processData: false, // NEEDED, DON'T OMIT THIS   	
-				data:jsonGetData,                     
+				data:JSON.stringify(jsonGetData),                     
                 success: function(jsonData){                    
                                         
                     jsonData = $.parseJSON(jsonData.data);
