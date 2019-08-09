@@ -246,6 +246,7 @@ def read_fromDB():
         new_list.append(dall)
     return json.dumps(new_list,default=json_util.default)
 def getspecificDate(jsonData):
+    logger.debug(jsonData)
     num = int(jsonData['page'])
     skips = 10 * (num - 1)
     if(jsonData["currentaction"] == "all"):
