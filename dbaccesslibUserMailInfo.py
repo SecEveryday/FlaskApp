@@ -245,6 +245,14 @@ def read_fromDB():
         print(dall)
         new_list.append(dall)
     return json.dumps(new_list,default=json_util.default)
+def getspecificDate(jsonData):
+    num = int(jsonData['page'])
+    skips = 10 * (num - 1)
+    if(jsonData["currentaction"] == "all"):
+        return json.dumps(list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}).skip(skips).limit(10)), default=json_util.default)
+    else:
+        thrash_date = str(datetime.datetime.today())
+        return json.dumps(list(mydb.userMailInfo.find({"userDeleted":False,"end_date":thrash_date},{'_id' : 0,'user_id':0}).skip(skips).limit(10)), default=json_util.default)
 def update_DB(jsonData):
     foundmail = mydb.userMailInfo.find_one({"code":jsonData["code"]},{"_id":1})
     mydb.userInfo.update_many({"_id":foundmail["_id"],"user_id":1},{"$set":{'end_date':str(jsonData['end_date'])}})
