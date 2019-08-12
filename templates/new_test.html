@@ -643,7 +643,7 @@ $('#previousPage').on('click', function(){
 	//		$('#loading').removeClass('w3-hide');				
 
 			// Hide all the tables
-			$('#usertablelist').removeClass('w3-hide').addClass('w3-show');
+			
 			
 			// Disable the Update/Delete User
 			
@@ -685,6 +685,7 @@ $('#previousPage').on('click', function(){
 						});
 						$('#homePage').text(currPage);	
                     }
+                $('#usertablelist').removeClass('w3-hide').addClass('w3-show');
                 },
                 error: function() {
                     // Failed the ajax call
