@@ -515,6 +515,8 @@ error: function(jqXhr, textStatus, errorMessage){
 		//window.location="index.html"		
         $('#user_table > tbody').empty();
         $('#usertablelist').removeClass('w3-show').addClass('w3-hide');
+        $('#popUpCloseButton2').css({'visibility':'hidden'});
+        $('#popUpCloseButton1').removeAttr("style");
     }
 var move = function(width, interval, error) {
 	  var elem = document.getElementById("progress-bar");   
