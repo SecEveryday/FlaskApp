@@ -194,8 +194,26 @@ uri = "mongodb://56a41323-0ee0-4-231-b9ee:G9c804dv0gVufeDcqrJ0sTJklu0Nw3keGEZbIT
 client = pymongo.MongoClient(uri)
 print("Obtained the client")
 mydb = client.test
-
-def generateqrcode(jsonData,filenameJPG):
+def checkIfAutoThrashed(jsonData,tags):
+    if(len(tags) < 3):
+        return False
+    a = mydb.userInfo.find_one({"name":jsonData["name"]})
+    newDbref = DBRef("mydb.userInfo",a["_id"])
+    foundMails = mydb.mltable.find({"otherdbref":newDbref,"status":"Thrash"})
+    if(foundMails.count() < 10):
+        return False
+    tagcount = 0
+    thrashcount = 0
+    for item in foundMails:
+        for tag in tags:
+            if(tag in item["tags"]):
+                tagcount+=1
+        if(tagcount >= 3):
+            thrashcount+=1
+    if(thrashcount >=10):
+        return True
+    return False
+def generateqrcode(jsonData,filenameJPG,tags):
     logger.debug("Received data for generating color code = ")
     logger.debug(jsonData)
     ilocation=1
@@ -218,18 +236,22 @@ def generateqrcode(jsonData,filenameJPG):
     logger.debug("generateColorCode:: ColorCode value ="+colorCode)
     import qrcode
     img = qrcode.make(colorCode)
+    autoThrashed = checkIfAutoThrashed(jsonData,tags)
     import sendEmail as se
-    se.execute(str(jsonData["email"]),filenameJPG,str(colorCode),img)
+    se.execute(str(jsonData["email"]),filenameJPG,str(colorCode),img,autoThrashed)
     newjsonData = {"name":jsonData["name"],"code":colorCode}
-    addEntry(newjsonData)
+    addEntry(newjsonData,tags)
     return colorCode;
-def addEntry(jsonData):
+def addEntry(jsonData,tags,autoThrashed):
     a = mydb.userInfo.find_one({"name":jsonData["name"]})
     newDbref = DBRef("mydb.userInfo",a["_id"])
     scan_date = datetime.datetime.today()
     end_date = scan_date + datetime.timedelta(days=10)
     scan_date = str(scan_date.day) + str(scan_date.month) + str(scan_date.year)
     end_date = str(end_date.day) + str(end_date.month) + str(end_date.year)
+    if( not autoThrashed and len(tags) >= 3):
+        mydb.mltable.insert("code":jsonData["code"],"tags": tags,"status":"Keep","user_id":1,"otherdbref":newDbref)
+        end_date = scan_date
     mydb.userMailInfo.insert({"code":jsonData["code"],"scan_date":scan_date,"end_date":end_date,"otherdbref":newDbref,"userDeleted":False,"user_id":1})
     return json.dumps({"status": "Success","statusreason": "WriteToDBSuccess"})
 def read_fromDB():
@@ -257,7 +279,9 @@ def getspecificDate(jsonData):
         return json.dumps(list(mydb.userMailInfo.find({"userDeleted":False,"end_date":thrash_date},{'_id' : 0,'user_id':0}).skip(skips).limit(10)), default=json_util.default)
 def update_DB(jsonData):
     foundmail = mydb.userMailInfo.find_one({"code":jsonData["code"]},{"_id":1})
+    foundMl = mydb.mltable.find_one({"code":jsonData["code"]},{"_id":1}
     mydb.userInfo.update_many({"_id":foundmail["_id"],"user_id":1},{"$set":{'end_date':str(jsonData['end_date'])}})
+    mydb.mltable.update_many({"_id":foundMl["_id"],"user_id":1},{"$set":{"status":"Thrash"}})
     return json.dumps({"status": "Success","statusreason": "updateSucess"})
 #Clear DB only for testing
 def clear_db():

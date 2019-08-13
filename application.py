@@ -1,4 +1,5 @@
 import os
+import re
 import sys
 old_stdout = sys.stdout
 import dbaccesslibUserInfo as dbaUI
@@ -16,6 +17,7 @@ logger=logging.getLogger()
   
 #Setting the threshold of logger to DEBUG 
 logger.setLevel(logging.DEBUG) 
+lookup_list={"credit","card","debit","confidential"}
 from flask import Flask, flash, request, redirect, url_for, render_template,jsonify
 app = Flask(__name__)
 
@@ -87,7 +89,11 @@ def do_ocr():
         logger.warning("Response is empty")
         return json.dumps({"status" : "Failed","statusreason" : "user not found"},default=json_util.default),500
     logger.debug(type(response))
-    dbaUMI.generateqrcode(response,dateTimeNow)
+    tags = list()
+    for item in ocredText:
+        if(item.lower() in lookup_list):
+            tags.append(item.lower())
+    dbaUMI.generateqrcode(response,dateTimeNow,tags)
     return json.dumps(response,default=json_util.default)
 if __name__ == '__main__':
     app.run("0.0.0.0",debug = True)

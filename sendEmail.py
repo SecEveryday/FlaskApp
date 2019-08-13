@@ -15,17 +15,12 @@ logger=logging.getLogger()
   
 #Setting the threshold of logger to DEBUG 
 logger.setLevel(logging.DEBUG) 
-def execute(emailAddress,filenameJPG,qrcode,img):
+def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed):
     subject='[New Mail Received][Code:'+qrcode+'] New Postal Mail reception notification';
-    body = '\
-Dear Sir/Madam,\n \
-A new postal mail intended to you has been recieved and placed in the reception.\n \
-Please show the below QR code to reception and collect the mail.\n \n \
-If you want to keep the mail, then reply to this mail ID by adding [Keep] in the subject.\n \
-If you do not want to keep the mail, then reply to this mail ID by adding [Trash] in the subject.\n \n \
-Note: The mail will be kept in the reception for a period of 10 days.\n \n \
-Regards,\n \
-Admin';
+    if( not autoThrashed):
+        body = "Dear Sir/Madam,\n A new postal mail intended to you has been recieved and placed in the reception.\nPlease show the below QR code to reception and collect the mail.\n \nIf you want to keep the mail, then reply to this mail ID by adding [Keep] in the subject.\nIf you do not want to keep the mail, then reply to this mail ID by adding [Trash] in the subject.\n \n Note: The mail will be kept in the reception for a period of 10 days.\n \nRegards,\nAdmin"
+    else:
+        body = "Dear Sir/Madam,\n A new postal mail intented to you has been autoThrashed based on your preferences.\n\n Regards,\n Admin"
     sender_email = "koushik.rjn@gmail.com"
     password = "sridhargk"
     # Create a multipart message and set headers
