@@ -240,7 +240,7 @@ def generateqrcode(jsonData,filenameJPG,tags):
     import sendEmail as se
     se.execute(str(jsonData["email"]),filenameJPG,str(colorCode),img,autoThrashed)
     newjsonData = {"name":jsonData["name"],"code":colorCode}
-    addEntry(newjsonData,tags)
+    addEntry(newjsonData,tags,autoThrashed)
     return colorCode;
 def addEntry(jsonData,tags,autoThrashed):
     a = mydb.userInfo.find_one({"name":jsonData["name"]})
