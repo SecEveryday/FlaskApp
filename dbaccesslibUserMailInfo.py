@@ -200,7 +200,8 @@ def checkIfAutoThrashed(jsonData,tags):
     a = mydb.userInfo.find_one({"name":jsonData["name"]})
     newDbref = DBRef("mydb.userInfo",a["_id"])
     foundMails = mydb.mltable.find({"otherdbref":newDbref,"status":"Thrash"})
-    if(foundMails.count({"user_id":1}) < 10):
+    foundMailsList = list(mydb.mltable.find({"otherdbref":newDbref,"status":"Thrash"}))
+    if(len(foundMailsList) < 10):
         return False
     tagcount = 0
     thrashcount = 0
