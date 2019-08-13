@@ -26,8 +26,8 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed):
     # Create a multipart message and set headers
     message = MIMEMultipart()
     message["From"] = sender_email
-    message["To"] = emailAddress
-    message["cc"] = "Koushik.Sridhar@toshiba-tsip.com"
+    #message["To"] = emailAddress
+    message["To"] = "Koushik.Sridhar@toshiba-tsip.com"
     message["Subject"] = subject
 
     # Add body to email
