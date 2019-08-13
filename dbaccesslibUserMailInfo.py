@@ -223,7 +223,7 @@ def generateqrcode(jsonData,filenameJPG,tags):
     time = str(today.hour) + ":" + str(today.minute) + ":" + str(today.second)+":"+str(today.microsecond);
     dateTimeNow = date+':'+time;
     logger.debug("Current Datetime - "+dateTimeNow)
-    dateTimeNow = ""+str(today.month)+str(today.day)+str(today.hour)+str(today.minute)+str(today.second)+str(today.microsecond);
+    dateTimeNow = ""+str(today.month)+str(today.day)+str(today.hour)+str(today.minute)+str(today.second)+str(today.microsecond)[:3];
     logger.debug("Unique Code - "+dateTimeNow)
     if(int(jsonData["cubicle"])>25 and int(jsonData["cubicle"])<=50):
         ilocation=2
@@ -250,8 +250,8 @@ def addEntry(jsonData,tags,autoThrashed):
     newDbref = DBRef("mydb.userInfo",a["_id"])
     scan_date = datetime.datetime.today()
     end_date = scan_date + datetime.timedelta(days=10)
-    scan_date = str(scan_date.day) + str(scan_date.month) + str(scan_date.year)
-    end_date = str(end_date.day) + str(end_date.month) + str(end_date.year)
+    scan_date = str(scan_date.day) +"-"+ str(scan_date.month)+"-" + str(scan_date.year)
+    end_date = str(end_date.day) +"-" +str(end_date.month)+"-" + str(end_date.year)
     if( not autoThrashed and len(tags) >= 3):
         #mydb.mltable.insert({"code":jsonData["code"],"tags": tags,"status":"Keep","user_id":1,"otherdbref":newDbref})  Actual Code
         mydb.mltable.insert({"code":jsonData["code"],"tags": tags,"status":"Thrash","user_id":1,"otherdbref":newDbref})#Test code to be removed
