@@ -160,7 +160,7 @@
 							</tbody>
 						</table>									
 						</div>	
-						<button class="w3-button w3-border w3-margin-top w3-white w3-round-large w3-margin-bottom" id="popUpCloseButton">Close</button>
+						<button class="w3-button w3-border w3-margin-top w3-white w3-round-large w3-margin-bottom w3-show" id="popUpCloseButton1">Close</button>
                         <section id="usertablelist" class="w3-hide">		
 								<div class="tablelist w3-padding w3-border w3-left" style="width:100%">	
 									<h6 class="w3-margin w3-center w3-medium" id="reportheading"></h6>
@@ -183,6 +183,7 @@
 									</div>	
 								</div>
 				</section>
+                    <button class="w3-button w3-border w3-margin-top w3-white w3-round-large w3-margin-bottom w3-hide" id="popUpCloseButton2">Close</button>
 					</div>
 				</div>
                 
@@ -603,7 +604,7 @@ function sleep(milliseconds) {
 		}
 	  }
 	}
-$('#popUpCloseButton').on('click', function(){			
+$('#popUpCloseButton1,#popUpCloseButton2').on('click', function(){			
 		console.log("Popup close button click");
 		
 		_initialDisplay();	
@@ -687,6 +688,8 @@ $('#previousPage').on('click', function(){
 						$('#homePage').text(currPage);	
                     }
                 $('#usertablelist').removeClass('w3-hide').addClass('w3-show');
+                $('#popUpCloseButton1').removeClass('w3-show').addClass('w3-hide');
+                $('#popUpCloseButton2').removeClass('w3-hide').addClass('w3-show');
                 },
                 error: function() {
                     // Failed the ajax call
