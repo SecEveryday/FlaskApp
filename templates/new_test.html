@@ -515,7 +515,7 @@ error: function(jqXhr, textStatus, errorMessage){
 		//window.location="index.html"		
         $('#user_table > tbody').empty();
         $('#usertablelist').removeClass('w3-show').addClass('w3-hide');
-        $('#popUpCloseButton2').css({'visibility':'hidden'});
+        $('#popUpCloseButton2').css({'display':'none'});
         $('#popUpCloseButton1').removeAttr("style");
     }
 var move = function(width, interval, error) {
@@ -690,7 +690,7 @@ $('#previousPage').on('click', function(){
 						$('#homePage').text(currPage);	
                     }
                 $('#usertablelist').removeClass('w3-hide').addClass('w3-show');
-                $('#popUpCloseButton1').css({'visibility':'hidden'});
+                $('#popUpCloseButton1').css({'display':'none'});
                 $('#popUpCloseButton2').removeAttr("style");
                 },
                 error: function() {
