@@ -14,7 +14,7 @@
 	<title>Intelligent Postal mail Segregator Engine</title>
 	<style>
 @media only screen and (max-width: 600px) {
-    table, td, th {
+    table:not(.custom-exclude), td :not(.custom-exclude), th {
         font-size : 10px;
     }
 } 	
@@ -67,10 +67,10 @@
     <div class="w3-center">		
         <div class="w3-padding-16">						
 			<div class="w3-center w3-show" id="scanapptable">				
-				<table class="w3-border w3-table-all">
+				<table class="w3-border w3-table-all custom-exclude">
 					<tbody>						
 						<tr>
-							<td class="w3-center" style="padding:0px;">								
+							<td class="w3-center custom-exclude" style="padding:0px;">								
 								<div style="padding: 1px; margin: 5px; border: 1px; dashed #333333; border-radius: 1px;">
                                     <button class="w3-section w3-button w3-border w3-small w3-center w3-margin w3-round-xlarge w3-light-green"> <label for = "AppToApp_startScan">Submit Image</label></button>
 									<button class="w3-section w3-button w3-border w3-small w3-center w3-margin w3-round-xlarge w3-light-green"  id="AppToApp_report" >Generate Report</button>
