@@ -237,6 +237,7 @@ def generateqrcode(jsonData,filenameJPG,tags):
     import qrcode
     img = qrcode.make(colorCode)
     autoThrashed = checkIfAutoThrashed(jsonData,tags)
+    logger.debug("Auto thrashed value is %d" % autoThrashed)
     import sendEmail as se
     se.execute(str(jsonData["email"]),filenameJPG,str(colorCode),img,autoThrashed)
     newjsonData = {"name":jsonData["name"],"code":colorCode}
