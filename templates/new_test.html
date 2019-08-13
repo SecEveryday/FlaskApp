@@ -183,7 +183,7 @@
 									</div>	
 								</div>
 				</section>
-                    <button class="w3-button w3-border w3-margin-top w3-white w3-round-large w3-margin-bottom " id="popUpCloseButton2">Close</button>
+                    <button class="w3-button w3-border w3-margin-top w3-white w3-round-large w3-margin-bottom " style="visibility:hidden" id="popUpCloseButton2">Close</button>
 					</div>
 				</div>
                 
@@ -688,8 +688,8 @@ $('#previousPage').on('click', function(){
 						$('#homePage').text(currPage);	
                     }
                 $('#usertablelist').removeClass('w3-hide').addClass('w3-show');
-                $('#popUpCloseButton1').removeClass('w3-show').addClass('w3-hide');
-                $('#popUpCloseButton2').removeClass('w3-hide').addClass('w3-show');
+                $('#popUpCloseButton1').css({'visibility':'hidden'};
+                $('#popUpCloseButton2').removeAttr("style");
                 },
                 error: function() {
                     // Failed the ajax call
