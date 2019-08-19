@@ -279,7 +279,7 @@ def getspecificDate(jsonData):
         return json.dumps(list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}).skip(skips).limit(10)), default=json_util.default)
     else:
         thrash_date = datetime.datetime.today()
-        thrash_date = str(thrash_date.day) + str(thrash_date.month) + str(thrash_date.year) 
+        thrash_date = str(thrash_date.day) + "-" +str(thrash_date.month)+"-" + str(thrash_date.year) 
         return json.dumps(list(mydb.userMailInfo.find({"userDeleted":False,"end_date":thrash_date},{'_id' : 0,'user_id':0}).skip(skips).limit(10)), default=json_util.default)
 def update_DB(jsonData):
     foundmail = mydb.userMailInfo.find_one({"code":jsonData["code"]},{"_id":1})
