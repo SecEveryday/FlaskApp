@@ -190,7 +190,7 @@ logger=logging.getLogger()
 #Setting the threshold of logger to DEBUG 
 logger.setLevel(logging.DEBUG) 
 import pymongo
-uri = "mongodb://56a41323-0ee0-4-231-b9ee:G9c804dv0gVufeDcqrJ0sTJklu0Nw3keGEZbITc5lqU8WZQUup4i9nr7OQf84s8XeLFs7quTKeyO7z6U9Y5g6A==@56a41323-0ee0-4-231-b9ee.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
+uri = "mongodb://6108b574-0ee0-4-231-b9ee:SAInTs4eIMxuAy2WxJtKCTf9K3bpTvpyMZsiKgrNaEqpbHPStDCV5xBC4X1EiDjhPiFBg44loIONqwVwq3PiZA==@6108b574-0ee0-4-231-b9ee.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
 client = pymongo.MongoClient(uri)
 print("Obtained the client")
 mydb = client.test
