@@ -37,7 +37,7 @@ def read_fromDBSpecfic(jsonData):
                 return json.dumps(foundUser,default=json_util.default)
     return json.dumps({},default = json_util.default)
 def add_usertoDB(jsonData):
-    mydb.userInfo.insert({'name':jsonData['name'],'department':jsonData['department'],'building':jsonData['building'],'division':jsonData['division'],'email':jsonData['emailaddress'],'floor':jsonData['floor'],'cubicle':int(jsonData['cubicle']),"user_id":jsonData["user_id"],"userDeleted":False})
+    mydb.userInfo.insert({'name':jsonData['name'],'department':jsonData['department'],'building':jsonData['building'],'division':jsonData['division'],'email':jsonData['emailaddress'],'floor':jsonData['floor'],'cubicle':jsonData['cubicle'],"user_id":jsonData["user_id"],"userDeleted":False})
     logger.debug("Sucessfully added")
     return json.dumps({"status": "Success","statusreason": "addSuccess"})
 def delete_userfromDB(jsonData):
