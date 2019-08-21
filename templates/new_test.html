@@ -502,10 +502,9 @@ error: function(jqXhr, textStatus, errorMessage){
 		//$('#progress-bar').removeClass('w3-show').addClass('w3-hide')
 		
 		$('#progress-bar').css('width', 0).attr('aria-valuenow', 0); 		
-		
-		$('#ApptoApp_submitScan').prop('disabled',false);		
+				
 		$('#AppToApp_report').prop('disabled',false);		
-		
+		$('#AppToApp_startScan').prop('disabled',false);
 		$('#userinfotable').removeClass('w3-show').addClass('w3-hide');
 		
 		// Empty the output contents
