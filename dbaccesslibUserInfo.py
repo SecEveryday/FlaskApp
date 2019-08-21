@@ -28,15 +28,12 @@ def read_fromDBSpecfic(jsonData):
     for item in jsonData:
         logger.debug("Item name is:")
         logger.debug(item)
-        for newitem in item:
-            try:
-                logger.debug("New Item name is:")
-                logger.debug(newitem)
-                foundUser = dict(mydb.userInfo.find_one({'name':{'$regex':str(newitem)+"\s.*",'$options':'i'},"userDeleted":False},{'_id' : 0,'user_id':0}))
-            except TypeError:
-                continue
-            if(len(foundUser) >= 1):
-                return json.dumps(foundUser,default=json_util.default)
+        try:
+            foundUser = dict(mydb.userInfo.find_one({'name':{'$regex':str(newitem)+"\s.*",'$options':'i'},"userDeleted":False},{'_id' : 0,'user_id':0}))
+        except TypeError:
+            continue
+        if(len(foundUser) >= 1):
+            return json.dumps(foundUser,default=json_util.default)
     return json.dumps({},default = json_util.default)
 def add_usertoDB(jsonData):
     mydb.userInfo.insert({'name':jsonData['name'],'department':jsonData['department'],'building':jsonData['building'],'division':jsonData['division'],'email':jsonData['emailaddress'],'floor':jsonData['floor'],'cubicle':jsonData['cubicle'],"user_id":jsonData["user_id"],"userDeleted":False})
