@@ -59,13 +59,14 @@ def execute(filename):
 
 
     image_caption = ""
-    for j in range(0,len(analysis["regions"][0]["lines"])):
-        for i in range(0,len(analysis["regions"][0]["lines"][j]["words"])):
-           # print("I is",i)
-            #print("J is",j)
-            #print(image_caption)
-            image_caption += " " +  str(analysis["regions"][0]["lines"][j]["words"][i]["text"].capitalize())
-        image_caption += "\n"
+    for k in range(0,len(analysis["regions"])):
+        for j in range(0,len(analysis["regions"][k]["lines"])):
+            for i in range(0,len(analysis["regions"][k]["lines"][j]["words"])):
+               # print("I is",i)
+                #print("J is",j)
+                #print(image_caption)
+                image_caption += " " +  str(analysis["regions"][k]["lines"][j]["words"][i]["text"].capitalize())
+            image_caption += "\n"
         
     print(len(analysis["regions"][0]["lines"]))
 
