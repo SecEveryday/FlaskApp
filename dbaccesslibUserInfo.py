@@ -30,6 +30,8 @@ def read_fromDBSpecfic(jsonData):
         logger.debug(item)
         for newitem in item:
             try:
+                logger.debug("New Item name is:")
+                logger.debug(newitem)
                 foundUser = dict(mydb.userInfo.find_one({'name':{'$regex':str(newitem)+"\s.*",'$options':'i'},"userDeleted":False},{'_id' : 0,'user_id':0}))
             except TypeError:
                 continue
