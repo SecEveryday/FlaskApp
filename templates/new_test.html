@@ -427,13 +427,8 @@ processData: false, // NEEDED, DON'T OMIT THIS
 success : function(data){
 //alert("Name: "+data["name"]+"department: " + data["department"]+"Building: "+data["building"]+"Division: "+data["division"]+"emailaddress :"+data["emailaddress"]);
 
-data = JSON.parse(data);
-console.log(typeof(data));
-colorCode = generateColorCode(data)			
-						// Empty the output contents
-						//$('#output').empty()
-						// Generate the QR Code
-						//$('#output').qrcode({width: 100,height: 100,text: colorCode});
+alert("Successfully Completed");
+_initialDisplay();
 },
 error: function(jqXhr, textStatus, errorMessage){ 	
         data = JSON.stringify(jqXhr);	
