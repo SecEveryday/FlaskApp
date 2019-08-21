@@ -511,7 +511,7 @@ error: function(jqXhr, textStatus, errorMessage){
 		// Empty the output contents
 		$('#output').empty()
 						
-		$('#progress-bar').removeClass('w3-hide').addClass('w3-show')
+		$('#progress-bar').removeClass('w3-hide').addClass('w3-show');
 		//window.location="index.html"		
         $('#user_table > tbody').empty();
         $('#usertablelist').removeClass('w3-show').addClass('w3-hide');
@@ -574,7 +574,7 @@ $("#AppToApp_report").on("click", function () {
 		$('#AppToApp_startScan').prop('disabled',true);		
 		$('#AppToApp_report').prop('disabled',true);		
 		$('.progress-bar').removeClass('w3-hide').addClass('w3-show');	
-		
+		$('#progress-bar').removeClass('w3-show').addClass('w3-hide');
 		showPopUp()
 	/*	
 		$('#retresponse').val("Querying the information from the database");		
