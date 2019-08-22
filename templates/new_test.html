@@ -487,7 +487,7 @@ error: function(jqXhr, textStatus, errorMessage){
 		img="";
         currentAction="";
 		
-		$('#retresponse').val('Place postal mail on Glass Bed and press "Start Scan" button');
+		$('#retresponse').val('To Upload the image please Click on Submit Image');
 		
 		//$('.progress-bar').css('width', 0).attr('aria-valuenow', 0); 		
 		//$('#progress-bar').removeClass('w3-show').addClass('w3-hide')
@@ -597,7 +597,7 @@ function sleep(milliseconds) {
 		}
 	  }
 	}
-$('#popUpCloseButton1,#popUpCloseButton2').on('click', function(){			
+$('#popUpCloseButton1,#popUpCloseButton2,#dialogCloseButton').on('click', function(){			
 		console.log("Popup close button click");
 		
 		_initialDisplay();	
