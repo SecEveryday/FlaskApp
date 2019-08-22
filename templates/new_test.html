@@ -76,8 +76,6 @@
 									<button class="w3-section w3-button w3-border w3-small w3-center w3-margin w3-round-xlarge w3-light-green"  id="AppToApp_report" >Generate Report</button>
 									<textarea class="w3-center w3-section w3-input w3-border" id="retresponse" type="text" name="Message" rows="4" cols="10" readonly> Upload the image and Click on Submit Image</textarea>									
 									<div class="progress w3-border">
-										<div class="progress-bar progress-bar-striped active w3-light-green" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="progress-bar">										  
-										</div>
 									</div>
 								</div>
 							</td>									
@@ -411,11 +409,9 @@ var jsonCode ={
 	}
 $("#AppToApp_startScan").on("change", function () {		
 		console.log("Start job entry");		
-		$('#AppToApp_report').prop('disabled',true);		
-		$('.progress-bar').removeClass('w3-hide').addClass('w3-show');
+		$('#AppToApp_report').prop('disabled',true);
 		//$('#startjob').empty();		
 		$('#retresponse').val("Processing the Image");		
-		move(1,20,0);
         var formData = new FormData($('#contactForm1')[0]);
         alert("Hey 1");
 $.ajax({
@@ -501,7 +497,7 @@ error: function(jqXhr, textStatus, errorMessage){
 		//$('.progress-bar').css('width', 0).attr('aria-valuenow', 0); 		
 		//$('#progress-bar').removeClass('w3-show').addClass('w3-hide')
 		
-		$('#progress-bar').css('width', 0).attr('aria-valuenow', 0); 		
+		//$('#progress-bar').css('width', 0).attr('aria-valuenow', 0); 		
 				
 		$('#AppToApp_report').prop('disabled',false);		
 		$('#AppToApp_startScan').prop('disabled',false);
@@ -510,13 +506,14 @@ error: function(jqXhr, textStatus, errorMessage){
 		// Empty the output contents
 		$('#output').empty()
 						
-		$('#progress-bar').removeClass('w3-hide').addClass('w3-show');
+		//$('#progress-bar').removeClass('w3-hide').addClass('w3-show');
 		//window.location="index.html"		
         $('#user_table > tbody').empty();
         $('#usertablelist').removeClass('w3-show').addClass('w3-hide');
         $('#popUpCloseButton2').css({'display':'none'});
         $('#popUpCloseButton1').removeAttr("style");
     }
+    /*(
 var move = function(width, interval, error) {
 	  var elem = document.getElementById("progress-bar");   
 	  //var width = 1;
@@ -544,6 +541,7 @@ var move = function(width, interval, error) {
 		  return true;
 	  }
 	};
+    */
 var showPopUp = function(){
 		console.log("showDialog::Entered showPopUp");
 		
@@ -565,15 +563,14 @@ var generateReport = function(action){
 		console.log("generateReport::Entered generateReport, action - "+action);
 		// Setting jobStatus as AppPrint
 		$('#retresponse').val("Querying the information from the database");		
-		move(1,15,0)
         currentAction = action;
         getUsers(1,action);    
 	}
 $("#AppToApp_report").on("click", function () {	
 		$('#AppToApp_startScan').prop('disabled',true);		
 		$('#AppToApp_report').prop('disabled',true);		
-		$('.progress-bar').removeClass('w3-hide').addClass('w3-show');	
-		$('#progress-bar').removeClass('w3-show').addClass('w3-hide');
+		//$('.progress-bar').removeClass('w3-hide').addClass('w3-show');	
+		//$('#progress-bar').removeClass('w3-show').addClass('w3-hide');
 		showPopUp()
 	/*	
 		$('#retresponse').val("Querying the information from the database");		
