@@ -424,12 +424,8 @@ success : function(data){
 showDialog("Success","Successfully Completed");
 _initialDisplay();
 },
-error: function(jqXhr, textStatus, errorMessage){
-        console.log(jqXhr);
-        data = JSON.parse(jqXhr);	
-		$('#retresponse').val(data);
-        
-        showDialog("error",data["statusreason"]);
+error: function(jqXhr, textStatus, errorMessage){ 
+        showDialog("error","User not found. Please try again!");
         _initialDisplay();
 }
 // ... Other options like success and etc
