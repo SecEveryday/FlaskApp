@@ -424,7 +424,8 @@ success : function(data){
 showDialog("Success","Successfully Completed");
 _initialDisplay();
 },
-error: function(jqXhr, textStatus, errorMessage){ 	
+error: function(jqXhr, textStatus, errorMessage){
+        console.log(jqXhr);
         data = JSON.parse(jqXhr);	
 		$('#retresponse').val(data);
         
