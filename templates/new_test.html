@@ -425,7 +425,7 @@ showDialog("Success","Successfully Completed");
 _initialDisplay();
 },
 error: function(jqXhr, textStatus, errorMessage){ 	
-        data = JSON.Parse(jqXhr);	
+        data = JSON.parse(jqXhr);	
 		$('#retresponse').val(data);
         
         showDialog("error",data["statusreason"]);
