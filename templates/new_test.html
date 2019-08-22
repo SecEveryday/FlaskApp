@@ -411,7 +411,7 @@ $("#AppToApp_startScan").on("change", function () {
 		//$('#startjob').empty();		
 		$('#retresponse').val("Processing the Image.Please wait!");		
         var formData = new FormData($('#contactForm1')[0]);
-        alert("Hey 1");
+        //alert("Hey 1");
 $.ajax({
 url: "{{url_for('do_ocr') }}",
 data: formData,
@@ -421,14 +421,14 @@ processData: false, // NEEDED, DON'T OMIT THIS
 success : function(data){
 //alert("Name: "+data["name"]+"department: " + data["department"]+"Building: "+data["building"]+"Division: "+data["division"]+"emailaddress :"+data["emailaddress"]);
 
-alert("Successfully Completed");
+showDialog("Success","Successfully Completed");
 _initialDisplay();
 },
 error: function(jqXhr, textStatus, errorMessage){ 	
-        data = JSON.stringify(jqXhr);	
+        data = JSON.Parse(jqXhr);	
 		$('#retresponse').val(data);
         
-        alert(data);
+        showDialog("error",data["statusreason"]);
         _initialDisplay();
 }
 // ... Other options like success and etc
@@ -690,10 +690,24 @@ $('#previousPage').on('click', function(){
                 },
                 error: function() {
                     // Failed the ajax call
-                    alert("Failed to connect.");
+                    showDialog("error","Failed to connect");
                 }
             });						
 		}
+        var showDialog = function(statusString, statusValue){
+		console.log("showDialog::Entered showDialog");
+        $('#userinfotable').removeClass('w3-show').addClass('w3-hide');	
+		if("error" == statusString){
+			$('#dialogHeading').removeClass('alert-success').addClass('alert-error').text("Error");							
+					
+        }
+        else{
+            $('#dialogHeading').removeClass('alert-success').addClass('alert-error').text("Success");							
+        }
+        $('#dialogContent').text(statusValue);
+		sleep(100);
+		$('#dialog').css('display','block');
+        }
         });
 </script>
 </html>
