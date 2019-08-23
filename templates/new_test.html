@@ -93,10 +93,7 @@
 										<td>Name</td>
 										<td>
 											<p type="text" id="Name"> </p>
-										</td>
-										<td  rowspan='6' class="w3-center">																		
-											<div id="output" class="w3-container w3-center w3-border w3-margin w3-padding-16"> </div>
-										</td>												
+										</td>											
 									</tr>
 									<tr>
 										<td>Division</td>
@@ -105,37 +102,16 @@
 										</td>
 									</tr>
 									<tr>
-										<td>Department</td>
+										<td>Code</td>
 										<td>
-											<p type="text" id="Department"> </p>
-										</td>
-									</tr>
-									<tr>
-										<td>Building</td>
-										<td>
-											<p type="text" id="Building"> </p>
+											<p type="text" id="Code"> </p>
 										</td>
 									</tr>
 									<tr>
 										<td>EmailID</td>
 										<td>
-											<p id="EmailID"> </p>
+											<p type="text" id="EmailID"> </p>
 										</td>
-									</tr>
-									<tr>
-										<td>Floor</td>
-										<td>
-											<p id="Floor"> </p>
-										</td>
-									</tr>
-									<tr>
-										<td>Cubicle</td>
-										<td>
-											<p id="Cubicle"> </p>
-										</td>
-										<td class='w3-center'>
-											<p id="ColorCode"> </p>
-										</td>									
 									</tr>								
 								</tbody>
 							</table>									
@@ -420,7 +396,11 @@ contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
 processData: false, // NEEDED, DON'T OMIT THIS
 success : function(data){
 //alert("Name: "+data["name"]+"department: " + data["department"]+"Building: "+data["building"]+"Division: "+data["division"]+"emailaddress :"+data["emailaddress"]);
-
+data = JSON.parse(data);
+$('#Name').text(data["name"]);
+$('#EmailID').text(data["email"]);
+$('#Division').text(data["division"]);
+$('#Code').text(data["code"]);
 showDialog("Success","Successfully Completed");
 _initialDisplay();
 },
@@ -694,13 +674,14 @@ $('#previousPage').on('click', function(){
 		}
         var showDialog = function(statusString, statusValue){
 		console.log("showDialog::Entered showDialog");
-        $('#userinfotable').removeClass('w3-show').addClass('w3-hide');	
+        
 		if("error" == statusString){
 			$('#dialogHeading').removeClass('alert-success').addClass('alert-error').text("Error");							
-					
+				$('#userinfotable').removeClass('w3-show').addClass('w3-hide');		
         }
         else{
-            $('#dialogHeading').removeClass('alert-success').addClass('alert-error').text("Success");							
+            $('#userinfotable').removeClass('w3-hide').addClass('w3-show');	
+            $('#dialogHeading').removeClass('alert-error').addClass('alert-success').text("Success");							
         }
         $('#dialogContent').text(statusValue);
 		sleep(100);
