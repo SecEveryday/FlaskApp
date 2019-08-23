@@ -256,7 +256,7 @@ def addEntry(jsonData,tags,autoThrashed):
         mydb.mltable.insert({"code":jsonData["code"],"tags": tags,"status":"Keep","user_id":1,"otherdbref":newDbref})#Test code to be removed
         #end_date = scan_date
     mydb.userMailInfo.insert({"code":jsonData["code"],"scan_date":scan_date,"end_date":end_date,"otherdbref":newDbref,"userDeleted":False,"user_id":1})
-    return json.dumps("code":jsonData["code"],"name":jsonData["name"],"email":jsonData["email"],"division":jsonData["division"])
+    return json.dumps({"code":jsonData["code"],"name":jsonData["name"],"email":jsonData["email"],"division":jsonData["division"]})
 def read_fromDB():
     new_list = list()
     for item in mydb.userMailInfo.find({},{"_id":0,"user_id":0}):
