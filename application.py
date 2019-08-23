@@ -7,7 +7,8 @@ import dbaccesslibUserMailInfo as dbaUMI
 import logging 
 import json
 from bson import json_util
-import datetime 
+import datetime
+import base64 
 #Create and configure logger 
 logging.basicConfig(filename="server.log", 
                     format='%(asctime)s %(message)s', 
@@ -73,6 +74,34 @@ def updateUserMailInfo():
 def do_ocr():
     logger.debug("Hey reached Start of OCR")
     file = request.files['filename']
+    logger.debug(file)
+    today = datetime.datetime.now()
+    dateTimeNow = ""+str(today.month)+str(today.day)+str(today.hour)+str(today.minute)+str(today.second)+str(today.microsecond)+".jpg";
+    file.save(os.path.join("./uploads", dateTimeNow))
+    import ocr as to
+    ocredText = to.execute(dateTimeNow)
+    logger.debug("Before Splitting:")
+    logger.debug(ocredText)
+    ocredText = ocredText.split()
+    logger.debug("After Splitting:")
+    logger.debug(ocredText)
+    response = dbaUI.read_fromDBSpecfic(ocredText)
+    response = json.loads(response)
+    if( not response):
+        logger.warning("Response is empty")
+        return json.dumps({"status" : "Failed","statusreason" : "user not found"},default=json_util.default),500
+    logger.debug(type(response))
+    tags = list()
+    for item in ocredText:
+        if(item.lower() in lookup_list):
+            tags.append(item.lower())
+    dbaUMI.generateqrcode(response,dateTimeNow,tags)
+    return json.dumps(response,default=json_util.default)
+@app.route("/do_ocr_mfp",methods=['POST'])
+def do_ocr_mfp():
+    logger.debug("Hey reached Start of OCR")
+    file = request.json['file']
+    file = base64.b64decode(file)
     logger.debug(file)
     today = datetime.datetime.now()
     dateTimeNow = ""+str(today.month)+str(today.day)+str(today.hour)+str(today.minute)+str(today.second)+str(today.microsecond)+".jpg";
