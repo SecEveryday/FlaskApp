@@ -397,6 +397,7 @@ processData: false, // NEEDED, DON'T OMIT THIS
 success : function(data){
 //alert("Name: "+data["name"]+"department: " + data["department"]+"Building: "+data["building"]+"Division: "+data["division"]+"emailaddress :"+data["emailaddress"]);
 data = JSON.parse(data);
+console.log(data)
 console.log(data["name"]);
 console.log(data["email"]);
 $('#Name').text(data["name"]);
