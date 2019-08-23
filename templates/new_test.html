@@ -398,12 +398,11 @@ success : function(data){
 //alert("Name: "+data["name"]+"department: " + data["department"]+"Building: "+data["building"]+"Division: "+data["division"]+"emailaddress :"+data["emailaddress"]);
 data = JSON.parse(data);
 console.log(data);
-$('#Name').text(data["name"]);
-$('#EmailID').text(data["email"]);
-$('#Division').text(data["division"]);
-$('#Code').text(data["code"]);
+$('#Name').value(data["name"]);
+$('#EmailID').value(data["email"]);
+$('#Division').value(data["division"]);
+$('#Code').value(data["code"]);
 showDialog("Success","Successfully Completed");
-_initialDisplay();
 },
 error: function(jqXhr, textStatus, errorMessage){ 
         showDialog("error","User not found. Please try again!");
@@ -477,7 +476,7 @@ error: function(jqXhr, textStatus, errorMessage){
 				
 		$('#AppToApp_report').prop('disabled',false);		
 		$('#AppToApp_startScan').prop('disabled',false);
-		$('#userinfotable').removeClass('w3-show').addClass('w3-hide');
+		//$('#userinfotable').removeClass('w3-show').addClass('w3-hide');
 		
 		// Empty the output contents
 		$('#output').empty()
