@@ -398,10 +398,10 @@ success : function(data){
 //alert("Name: "+data["name"]+"department: " + data["department"]+"Building: "+data["building"]+"Division: "+data["division"]+"emailaddress :"+data["emailaddress"]);
 data = JSON.parse(data);
 console.log(data);
-$('#Name').value(data["name"]);
-$('#EmailID').value(data["email"]);
-$('#Division').value(data["division"]);
-$('#Code').value(data["code"]);
+$('#Name').text(data["name"]);
+$('#EmailID').text(data["email"]);
+$('#Division').text(data["division"]);
+$('#Code').text(data["code"]);
 showDialog("Success","Successfully Completed");
 },
 error: function(jqXhr, textStatus, errorMessage){ 
