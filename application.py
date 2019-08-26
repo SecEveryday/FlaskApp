@@ -100,7 +100,7 @@ def do_ocr():
 @app.route("/do_ocr_mfp",methods=['POST'])
 def do_ocr_mfp():
     logger.debug("Hey reached Start of OCR")
-    file = request.json
+    file = request.data['filename']
     logger.debug(file)
     today = datetime.datetime.now()
     dateTimeNow = ""+str(today.month)+str(today.day)+str(today.hour)+str(today.minute)+str(today.second)+str(today.microsecond)+".jpg";
