@@ -99,7 +99,7 @@ def do_ocr():
     return json.dumps(response,default=json_util.default)
 @app.route("/do_ocr_mfp",methods=['POST'])
 def do_ocr_mfp():
-    logger.debug("Hey reached Start of OCR")
+    logger.debug("Hey reached Start of OCR 2")
     file = request.data['filename']
     logger.debug(file)
     today = datetime.datetime.now()
