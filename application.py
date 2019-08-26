@@ -97,5 +97,32 @@ def do_ocr():
             tags.append(item.lower())
     response = dbaUMI.generateqrcode(response,dateTimeNow,tags)
     return json.dumps(response,default=json_util.default)
+@app.route("/do_ocr_mfp",methods=['POST'])
+def do_ocr_mfp():
+    logger.debug("Hey reached Start of OCR")
+    file = request.json
+    logger.debug(file)
+    today = datetime.datetime.now()
+    dateTimeNow = ""+str(today.month)+str(today.day)+str(today.hour)+str(today.minute)+str(today.second)+str(today.microsecond)+".jpg";
+    file.save(os.path.join("./uploads", dateTimeNow))
+    import ocr as to
+    ocredText = to.execute(dateTimeNow)
+    logger.debug("Before Splitting:")
+    logger.debug(ocredText)
+    ocredText = ocredText.split()
+    logger.debug("After Splitting:")
+    logger.debug(ocredText)
+    response = dbaUI.read_fromDBSpecfic(ocredText)
+    response = json.loads(response)
+    if( not response):
+        logger.warning("Response is empty")
+        return json.dumps({"status" : "Failed","statusreason" : "user not found"},default=json_util.default),500
+    logger.debug(type(response))
+    tags = list()
+    for item in ocredText:
+        if(item.lower() in lookup_list):
+            tags.append(item.lower())
+    response = dbaUMI.generateqrcode(response,dateTimeNow,tags)
+    return json.dumps(response,default=json_util.default)
 if __name__ == '__main__':
     app.run("0.0.0.0",debug = True)
