@@ -102,14 +102,16 @@ def do_ocr():
 def do_ocr_mfp():
     logger.debug("Hey reached Start of OCR 2")
     file = request.get_data()
-    #logger.debug(file)
-    #file = file.decode("utf-8")
-    logger.debug(type(file))
-    logger.debug(file[9:])
-    fh = open("uploads/imageToSave.png", "wb")
-    fh.write(file[9:])
-    fh.close()
-    fromMFP = True
+    
+    logger.debug(file)
+    file = file.decode("base64")
+    logger.debug(file)
+    #logger.debug(type(file))
+    #logger.debug(file[9:])
+    #fh = open("uploads/imageToSave.png", "wb")
+    #fh.write(file[9:])
+    #fh.close()
+    #fromMFP = True
     #   file.save(os.path.join("./uploads", dateTimeNow))
     import ocr as to
     dateTimeNow = ""
