@@ -102,10 +102,12 @@ def do_ocr_mfp():
     logger.debug("Hey reached Start of OCR 2")
     file = request.get_data()
     #logger.debug(file)
-    file = file.decode("utf-8").replace('\0', '')
+    filename=
+    file = file.decode("utf-8")
     logger.debug(type(file))
-    file = json.loads(file)
-    file = file["filename"]
+    fh = open("uploads/imageToSave.jpg", "wb")
+    fh.write(file[9:])
+    fh.close()
     today = datetime.datetime.now()
     dateTimeNow = ""+str(today.month)+str(today.day)+str(today.hour)+str(today.minute)+str(today.second)+str(today.microsecond)+".jpg";
     file.save(os.path.join("./uploads", dateTimeNow))
