@@ -17,7 +17,7 @@ log_file = open("message.log","a")
 sys.stdout = log_file
 sys.stderr = log_file
 # Replace <Subscription Key> with your valid subscription key.
-def execute(filename):
+def execute(filename,fromMFP):
     subscription_key = "d72255025e3f4524bc768ef41b370249"
     assert subscription_key
 
@@ -33,8 +33,10 @@ def execute(filename):
     analyze_url = vision_base_url + "ocr"
 
     # Set image_path to the local path of an image that you want to analyze.
-    image_path = "uploads/"+str(filename)
-
+    if(not fromMFP):
+        image_path = "uploads/"+str(filename)
+    else:
+        image_path = "uploads/imageToSave.jpg"
     # Read the image into a byte array
     image_data = open(image_path, "rb").read()
     headers = {'Ocp-Apim-Subscription-Key': subscription_key,

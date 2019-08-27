@@ -78,8 +78,9 @@ def do_ocr():
     today = datetime.datetime.now()
     dateTimeNow = ""+str(today.month)+str(today.day)+str(today.hour)+str(today.minute)+str(today.second)+str(today.microsecond)+".jpg";
     file.save(os.path.join("./uploads", dateTimeNow))
+    fromMFP = False
     import ocr as to
-    ocredText = to.execute(dateTimeNow)
+    ocredText = to.execute(dateTimeNow,fromMFP)
     logger.debug("Before Splitting:")
     logger.debug(ocredText)
     ocredText = ocredText.split()
@@ -108,11 +109,10 @@ def do_ocr_mfp():
     fh = open("uploads/imageToSave.jpg", "wb")
     fh.write(file[9:])
     fh.close()
-    today = datetime.datetime.now()
-    dateTimeNow = ""+str(today.month)+str(today.day)+str(today.hour)+str(today.minute)+str(today.second)+str(today.microsecond)+".jpg";
-    file.save(os.path.join("./uploads", dateTimeNow))
+    fromMFP = True
+    #   file.save(os.path.join("./uploads", dateTimeNow))
     import ocr as to
-    ocredText = to.execute(dateTimeNow)
+    ocredText = to.execute(dateTimeNow,fromMFP)
     logger.debug("Before Splitting:")
     logger.debug(ocredText)
     ocredText = ocredText.split()
