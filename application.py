@@ -106,7 +106,7 @@ def do_ocr_mfp():
     #file = file.decode("utf-8")
     logger.debug(type(file))
     logger.debug(file[9:])
-    fh = open("uploads/imageToSave.jpg", "wb")
+    fh = open("uploads/imageToSave.png", "wb")
     fh.write(file[9:])
     fh.close()
     fromMFP = True

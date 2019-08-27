@@ -36,7 +36,7 @@ def execute(filename,fromMFP):
     if(not fromMFP):
         image_path = "uploads/"+str(filename)
     else:
-        image_path = "uploads/imageToSave.jpg"
+        image_path = "uploads/imageToSave.png"
     # Read the image into a byte array
     image_data = open(image_path, "rb").read()
     headers = {'Ocp-Apim-Subscription-Key': subscription_key,
