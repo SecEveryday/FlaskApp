@@ -45,17 +45,13 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
     
     
     
-    msgText = MIMEText('<h1><b>Scanned Image</b></h1><br><img src="cid:image1">', 'html')
+    msgText = MIMEText('<p>'+body+'</p><br><h6><b>Scanned Image</b></h6><br><img src="cid:image1"></img><br><h6><b> Qr code</b></h6><img src="cid:image2"></img>', 'html')
     msgAlternative.attach(msgText)
     fp = open(filename, 'rb')
     msgImage = MIMEImage(fp.read())
     fp.close()
     msgImage.add_header('Content-ID', '<image1>')
     msgRoot.attach(msgImage)
-    
-    
-    msgText1 = MIMEText('<h1><b>Qr Code</b></h1><br><img src="cid:image2">', 'html')
-    msgAlternative.attach(msgText1)
     #fp = open(filename1, 'rb')
     #msgImage1 = MIMEImage(fp.read())
     #fp.close()
