@@ -101,8 +101,9 @@ def do_ocr():
 def do_ocr_mfp():
     logger.debug("Hey reached Start of OCR 2")
     file = request.get_data()
-    logger.debug(file)
+    #logger.debug(file)
     file = file.decode("utf-8")
+    logger.debug(file)
     file = json.loads(file)
     file = file["filename"]
     today = datetime.datetime.now()
