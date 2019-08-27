@@ -45,7 +45,7 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
     
     
     
-    msgText = MIMEText('<p>'+body+'</p><br><h6><b>Scanned Image</b></h6><br><img src="cid:image1" style="width:60px;height:50px;"></img><br><h6><b> Qr code</b></h6><img src="cid:image2" style="width:60px;height:50px;"></img>', 'html')
+    msgText = MIMEText('<p>'+body+'</p><br><h6><b>Scanned Image</b></h6><br><img src="cid:image1" width=30 height=20></img><br><h6><b> Qr code</b></h6><img src="cid:image2" width=20 height=20></img>', 'html')
     msgAlternative.attach(msgText)
     fp = open(filename, 'rb')
     msgImage = MIMEImage(fp.read())
