@@ -19,9 +19,9 @@ logger.setLevel(logging.DEBUG)
 def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
     subject='[New Mail Received][Code:'+qrcode+'] New Postal Mail reception notification';
     if( not autoThrashed):
-        body = "Dear Sir/Madam,<br> A new postal mail intended to you has been recieved and placed in the reception.<br>Please show the below QR code to reception and collect the mail.<br> <br>If you want to keep the mail, then reply to this mail ID by adding [Keep] in the subject.<br>If you do not want to keep the mail, then reply to this mail ID by adding [Trash] in the subject.<br> <br> Note: The mail will be kept in the reception for a period of 10 days.<br> <br>Regards,<br>Admin"
+        body = "Dear Sir/Madam,<br><br> A new postal mail intended to you has been recieved and placed in the reception.<br>Please show the below QR code to reception and collect the mail.<br> <br>If you want to keep the mail, then reply to this mail ID by adding [Keep] in the subject.<br>If you do not want to keep the mail, then reply to this mail ID by adding [Trash] in the subject.<br> <br> Note: The mail will be kept in the reception for a period of 10 days.<br> <br>Regards,<br>Admin"
     else:
-        body = "Dear Sir/Madam,<br> A new postal mail intented to you has been autoThrashed based on your preferences.<br><br> Regards,<br> Admin"
+        body = "Dear Sir/Madam,<br><br> A new postal mail intented to you has been autoThrashed based on your preferences.<br><br> Regards,<br> Admin"
     sender_email = "koushik.rjn@gmail.com"
     password = "sridhargk"
     # Create a multipart message and set headers
@@ -45,7 +45,7 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
     
     
     
-    msgText = MIMEText('<p>'+body+'</p><br><h6><b>Scanned Image</b></h6><br><img src="cid:image1" width=30 height=20></img><br><h6><b> Qr code</b></h6><img src="cid:image2" width=20 height=20></img>', 'html')
+    msgText = MIMEText('<p>'+body+'</p><br><h6><b>Scanned Image</b></h6><br><img src="cid:image1" width=80 height=60></img><br><h6><b> Qr code</b></h6><img src="cid:image2" width=60 height=60></img>', 'html')
     msgAlternative.attach(msgText)
     fp = open(filename, 'rb')
     msgImage = MIMEImage(fp.read())
