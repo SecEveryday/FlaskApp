@@ -96,7 +96,7 @@ def do_ocr():
     for item in ocredText:
         if(item.lower() in lookup_list):
             tags.append(item.lower())
-    response = dbaUMI.generateqrcode(response,dateTimeNow,tags)
+    response = dbaUMI.generateqrcode(response,dateTimeNow,tags,fromMFP)
     return json.dumps(response,default=json_util.default)
 @app.route("/do_ocr_mfp",methods=['POST'])
 def do_ocr_mfp():
@@ -130,7 +130,7 @@ def do_ocr_mfp():
     for item in ocredText:
         if(item.lower() in lookup_list):
             tags.append(item.lower())
-    response = dbaUMI.generateqrcode(response,dateTimeNow,tags)
+    response = dbaUMI.generateqrcode(response,dateTimeNow,tags,fromMFP)
     return json.dumps(response,default=json_util.default)
 if __name__ == '__main__':
     app.run("0.0.0.0",debug = True)

@@ -214,7 +214,7 @@ def checkIfAutoThrashed(jsonData,tags):
     if(thrashcount >=10):
         return True
     return False
-def generateqrcode(jsonData,filenameJPG,tags):
+def generateqrcode(jsonData,filenameJPG,tags,fromMFP):
     logger.debug("Received data for generating color code = ")
     logger.debug(jsonData)
     ilocation=1
@@ -241,7 +241,7 @@ def generateqrcode(jsonData,filenameJPG,tags):
     logger.debug("Auto thrashed value is %d" % autoThrashed)
     logger.debug("Tags are %s" % tags)
     import sendEmail as se
-    se.execute(str(jsonData["email"]),filenameJPG,str(colorCode),img,autoThrashed)
+    se.execute(str(jsonData["email"]),filenameJPG,str(colorCode),img,autoThrashed,fromMFP)
     newjsonData = {"name":jsonData["name"],"code":colorCode,"email":jsonData["email"],"division":jsonData["division"]}
     return addEntry(newjsonData,tags,autoThrashed);
 def addEntry(jsonData,tags,autoThrashed):

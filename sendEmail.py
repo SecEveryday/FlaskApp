@@ -15,7 +15,7 @@ logger=logging.getLogger()
   
 #Setting the threshold of logger to DEBUG 
 logger.setLevel(logging.DEBUG) 
-def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed):
+def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
     subject='[New Mail Received][Code:'+qrcode+'] New Postal Mail reception notification';
     if( not autoThrashed):
         body = "Dear Sir/Madam,\n A new postal mail intended to you has been recieved and placed in the reception.\nPlease show the below QR code to reception and collect the mail.\n \nIf you want to keep the mail, then reply to this mail ID by adding [Keep] in the subject.\nIf you do not want to keep the mail, then reply to this mail ID by adding [Trash] in the subject.\n \n Note: The mail will be kept in the reception for a period of 10 days.\n \nRegards,\nAdmin"
@@ -24,7 +24,7 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed):
     sender_email = "koushik.rjn@gmail.com"
     password = "sridhargk"
     # Create a multipart message and set headers
-    message = MIMEMultipart()
+    message = MIMEMultipart('alternative')
     message["From"] = sender_email
     #message["To"] = emailAddress
     message["To"] = "Koushik.Sridhar@toshiba-tsip.com"
@@ -32,8 +32,10 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed):
 
     # Add body to email
     message.attach(MIMEText(body, "plain"))
-
-    filename = "uploads/"+str(filenameJPG)  # In same directory as script
+    if( not fromMFP):
+        filename = "uploads/"+str(filenameJPG)  # In same directory as script
+    else:
+        filename = "uploads/imageToSave.png"
     filename1 = "qrcode.jpg"
     # Open PDF file in binary mode
     with open(filename, "rb") as attachment:
@@ -68,6 +70,8 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed):
     # Add attachment to message and convert message to string
     message.attach(part)
     message.attach(part2)
+    message.attach(MIMEText('<html><body><h1>Scanned Image</h1>' +'<p><img src="cid:0"></p>' +'</body></html>', 'html', 'utf-8'))
+    message.attach(MIMEText('<html><body><h1>Qr code</h1>' +'<p><img src="cid:1"></p>' +'</body></html>', 'html', 'utf-8'))
     text = message.as_string()
 
     # Log in to server using secure context and send email
