@@ -102,7 +102,6 @@ def do_ocr_mfp():
     logger.debug("Hey reached Start of OCR 2")
     file = request.get_data()
     #logger.debug(file)
-    filename=
     file = file.decode("utf-8")
     logger.debug(type(file))
     fh = open("uploads/imageToSave.jpg", "wb")
