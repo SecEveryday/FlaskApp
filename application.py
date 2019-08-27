@@ -112,6 +112,7 @@ def do_ocr_mfp():
     fromMFP = True
     #   file.save(os.path.join("./uploads", dateTimeNow))
     import ocr as to
+    dateTimeNow = ""
     ocredText = to.execute(dateTimeNow,fromMFP)
     logger.debug("Before Splitting:")
     logger.debug(ocredText)
