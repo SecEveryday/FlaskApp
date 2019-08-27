@@ -24,55 +24,43 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
     sender_email = "koushik.rjn@gmail.com"
     password = "sridhargk"
     # Create a multipart message and set headers
-    message = MIMEMultipart('alternative')
-    message["From"] = sender_email
+    msgRoot = MIMEMultipart('related')
+    msgRoot["From"] = sender_email
     #message["To"] = emailAddress
-    message["To"] = "Koushik.Sridhar@toshiba-tsip.com"
-    message["Subject"] = subject
+    msgRoot["To"] = "Koushik.Sridhar@toshiba-tsip.com"
+    msgRoot["Subject"] = subject
 
     # Add body to email
-    message.attach(MIMEText(body, "plain"))
+    msgAlternative = MIMEMultipart('alternative')
+    msgRoot.attach(msgAlternative)
+    msgText = MIMEText(body)
+    msgAlternative.attach(msgText)
     if( not fromMFP):
         filename = "uploads/"+str(filenameJPG)  # In same directory as script
     else:
         filename = "uploads/imageToSave.png"
     filename1 = "qrcode.jpg"
     # Open PDF file in binary mode
-    with open(filename, "rb") as attachment:
-        # Add file as application/octet-stream
-        # Email client can usually download this automatically as attachment
-        part = MIMEBase("application", "octet-stream")
-        part.set_payload(attachment.read())
-
-    # Encode file in ASCII characters to send by email    
-    encoders.encode_base64(part)
-
-    # Add header as key/value pair to attachment part
-    part.add_header(
-        "Content-Disposition",
-        f"attachment; filename= {filename}",
-        
-    )
-    part2 = MIMEBase("application", "octet-stream")
-    logger.debug(type(img))
-    buf = BytesIO()
-    img.save(buf)
-    image_stream = buf.getvalue()
-    part2.set_payload(image_stream)
-    encoders.encode_base64(part2)
-
-    # Add header as key/value pair to attachment part
-    part2.add_header(
-        "Content-Disposition",
-        f"attachment; filename= {filename1}",
-        
-    )
-    # Add attachment to message and convert message to string
-    message.attach(part)
-    message.attach(part2)
-    message.attach(MIMEText('<html><body><h1>Scanned Image</h1>' +'<p><img src="cid:0"></p>' +'</body></html>', 'html', 'utf-8'))
-    message.attach(MIMEText('<html><body><h1>Qr code</h1>' +'<p><img src="cid:1"></p>' +'</body></html>', 'html', 'utf-8'))
-    text = message.as_string()
+    
+    
+    
+    msgText = MIMEText('<h1><b>Scanned Image</b></h1><br><img src="cid:image1">', 'html')
+    msgAlternative.attach(msgText)
+    fp = open(filename, 'rb')
+    msgImage = MIMEImage(fp.read())
+    fp.close()
+    msgImage.add_header('Content-ID', '<image1>')
+    msgRoot.attach(msgImage)
+    
+    
+    msgText1 = MIMEText('<h1><b>Qr Code</b></h1><br><img src="cid:image2">', 'html')
+    msgAlternative.attach(msgText1)
+    fp = open(filename1, 'rb')
+    msgImage1 = MIMEImage(fp.read())
+    fp.close()
+    msgImage1.add_header('Content-ID', '<image2>')
+    msgRoot.attach(msgImage1)
+    text = msgRoot.as_string()
 
     # Log in to server using secure context and send email
     context = ssl.create_default_context()
