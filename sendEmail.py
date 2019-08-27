@@ -5,6 +5,7 @@ from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.MIMEImage import MIMEImage
 import logging 
 #Create and configure logger 
 logging.basicConfig(filename="server.log", 
