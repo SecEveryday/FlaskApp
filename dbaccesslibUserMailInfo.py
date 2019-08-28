@@ -254,10 +254,11 @@ def generateqrcode(jsonData,filenameJPG,tags,fromMFP):
     #logger.debug(type(image_stream))
     newImage = base64.b64encode(image_stream)
     newImage = newImage.decode('utf-8')
+    
     #newImage = image_stream
     #logger.debug(newImage)
     #logger.debug(type(newImage))
-    newjsonData = {"name":jsonData["name"],"code":colorCode,"email":jsonData["email"],"division":jsonData["division"],"department":jsonData["department"],"floor":jsonData["floor"],"cubicle":jsonData["cubicle"],"building":jsonData["building"],"img":img}
+    newjsonData = {"name":jsonData["name"],"code":colorCode,"email":jsonData["email"],"division":jsonData["division"],"department":jsonData["department"],"floor":jsonData["floor"],"cubicle":jsonData["cubicle"],"building":jsonData["building"],"img":newImage}
     return addEntry(newjsonData,tags,autoThrashed);
 def addEntry(jsonData,tags,autoThrashed):
     a = mydb.userInfo.find_one({"name":jsonData["name"]})
