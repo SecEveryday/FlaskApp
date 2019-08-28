@@ -237,11 +237,15 @@ def generateqrcode(jsonData,filenameJPG,tags,fromMFP):
     logger.debug("generateColorCode:: ColorCode value ="+colorCode)
     import qrcode
     img = qrcode.make(colorCode)
+    logger.debug(type(img))
     autoThrashed = checkIfAutoThrashed(jsonData,tags)
     logger.debug("Auto thrashed value is %d" % autoThrashed)
     logger.debug("Tags are %s" % tags)
     import sendEmail as se
     se.execute(str(jsonData["email"]),filenameJPG,str(colorCode),img,autoThrashed,fromMFP)
+    img = qrcode.make(colorCode)
+    logger.debug(type(img))
+    img = base64.b64encode(img)
     newjsonData = {"name":jsonData["name"],"code":colorCode,"email":jsonData["email"],"division":jsonData["division"],"department":json["department"],"floor":jsonData["floor"],"cubicle":jsonData["cubicle"],"building":jsonData["building"],"img":img}
     return addEntry(newjsonData,tags,autoThrashed);
 def addEntry(jsonData,tags,autoThrashed):
