@@ -3,6 +3,7 @@ from bson.dbref import DBRef
 import datetime
 from bson import json_util
 import logging 
+import base64
 jsonCode ={
         "building":{
             "Essae Vaishnavi Solitaire": {
