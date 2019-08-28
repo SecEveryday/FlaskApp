@@ -1,4 +1,5 @@
 from io import BytesIO
+from io import StringIO
 import json
 from bson.dbref import DBRef
 import datetime
@@ -251,6 +252,9 @@ def generateqrcode(jsonData,filenameJPG,tags,fromMFP):
     img.save(buf)
     image_stream = buf.getvalue()
     newImage = base64.b64encode(image_stream)
+    buf = StringIO()
+    newImage.save(buf)
+    newImage = newImage.getvalue()
     #newImage = image_stream
     #logger.debug(newImage)
     logger.debug(type(newImage))
