@@ -132,5 +132,11 @@ def do_ocr_mfp():
             tags.append(item.lower())
     response = dbaUMI.generateqrcode(response,dateTimeNow,tags,fromMFP)
     return json.dumps(response,default=json_util.default)
+@app.route("/get_image",methods=['POST'])
+def get_image():
+    jsonData = request.json
+    filename = jsonData["filename"]
+    filename = str(filename)+".png"
+    return send_file(filename, mimetype='image/png;base64')    
 if __name__ == '__main__':
     app.run("0.0.0.0",debug = True)

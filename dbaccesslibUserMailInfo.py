@@ -247,17 +247,7 @@ def generateqrcode(jsonData,filenameJPG,tags,fromMFP):
     import sendEmail as se
     se.execute(str(jsonData["email"]),filenameJPG,str(colorCode),img,autoThrashed,fromMFP)
     img = qrcode.make(colorCode)
-    #logger.debug(type(img))
-    buf = BytesIO()
-    img.save(buf)
-    image_stream = buf.getvalue()
-    #logger.debug(type(image_stream))
-    #newImage = base64.b64encode(image_stream)
-    newImage = image_stream.encode('base64')
-    
-    #newImage = image_stream
-    #logger.debug(newImage)
-    #logger.debug(type(newImage))
+    img.save(colorCode+".png")
     newjsonData = {"name":jsonData["name"],"code":colorCode,"email":jsonData["email"],"division":jsonData["division"],"department":jsonData["department"],"floor":jsonData["floor"],"cubicle":jsonData["cubicle"],"building":jsonData["building"],"img":newImage}
     return addEntry(newjsonData,tags,autoThrashed);
 def addEntry(jsonData,tags,autoThrashed):
