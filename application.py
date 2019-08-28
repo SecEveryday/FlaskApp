@@ -135,6 +135,7 @@ def do_ocr_mfp():
 @app.route("/get_image",methods=['POST'])
 def get_image():
     jsonData = request.json
+    logger.debug(jsonData)
     filename = jsonData["filename"]
     filename = str(filename)+".png"
     return send_file(filename, mimetype='image/png;base64')    
