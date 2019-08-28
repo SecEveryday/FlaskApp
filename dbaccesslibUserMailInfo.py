@@ -1,3 +1,4 @@
+from io import BytesIO
 import json
 from bson.dbref import DBRef
 import datetime
@@ -246,7 +247,10 @@ def generateqrcode(jsonData,filenameJPG,tags,fromMFP):
     se.execute(str(jsonData["email"]),filenameJPG,str(colorCode),img,autoThrashed,fromMFP)
     img = qrcode.make(colorCode)
     logger.debug(type(img))
-    img = base64.b64encode(img)
+    buf = BytesIO()
+    img.save(buf)
+    image_stream = buf.getvalue()
+    img = base64.b64encode(image_stream)
     newjsonData = {"name":jsonData["name"],"code":colorCode,"email":jsonData["email"],"division":jsonData["division"],"department":json["department"],"floor":jsonData["floor"],"cubicle":jsonData["cubicle"],"building":jsonData["building"],"img":img}
     return addEntry(newjsonData,tags,autoThrashed);
 def addEntry(jsonData,tags,autoThrashed):
