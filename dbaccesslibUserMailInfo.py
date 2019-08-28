@@ -253,7 +253,7 @@ def generateqrcode(jsonData,filenameJPG,tags,fromMFP):
     image_stream = buf.getvalue()
     #logger.debug(type(image_stream))
     newImage = base64.b64encode(image_stream)
-    newImage = newImage.decode('utf-8')
+    newImage = newImage.decode('base64')
     
     #newImage = image_stream
     #logger.debug(newImage)
