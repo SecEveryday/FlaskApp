@@ -23,7 +23,7 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
     else:
         body = "Dear Sir/Madam,<br><br> A new postal mail intented to you has been autoThrashed based on your preferences.<br><br> Regards,<br> Admin"
     sender_email = "mfpipmse@gmail.com"
-    password = "tlrkvubzujrhbnbp"
+    password = "mfp123456"
     # Create a multipart message and set headers
     msgRoot = MIMEMultipart('related')
     msgRoot["From"] = sender_email
