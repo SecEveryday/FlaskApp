@@ -68,6 +68,7 @@ def generateReport():
     return dbaUMI.read_fromDB()
 @app.route("/updateUserMailInfo",methods=['POST'])
 def updateUserMailInfo():
+    logger.debug("Update UsermailInfo entry")
     jsondata = request.json
     return dbaUMI.update_DB(jsonData)
 @app.route("/do_ocr",methods=['POST'])
