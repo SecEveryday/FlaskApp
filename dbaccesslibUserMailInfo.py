@@ -288,9 +288,13 @@ def getspecificDate(jsonData):
         return json.dumps(list(mydb.userMailInfo.find({"userDeleted":False,"end_date":thrash_date},{'_id' : 0,'user_id':0}).skip(skips).limit(10)), default=json_util.default)
 def update_DB(jsonData):
     logger.debug("DBUMI::Update_db() entry")
+    logger.debug(jsonData["code"])
+    logger.debug(jsonData["end_date"])
     foundmail = mydb.userMailInfo.find_one({"code":jsonData["code"]},{"_id":1})
+    logger.debug(foundMail)
     foundMl = mydb.mltable.find_one({"code":jsonData["code"]},{"_id":1})
-    mydb.userInfo.update_many({"_id":foundmail["_id"],"user_id":1},{"$set":{'end_date':str(jsonData['end_date'])}})
+    logger.debug(foundMl)
+    mydb.userMailInfo.update_many({"_id":foundmail["_id"],"user_id":1},{"$set":{'end_date':str(jsonData['end_date'])}})
     mydb.mltable.update_many({"_id":foundMl["_id"],"user_id":1},{"$set":{"status":"Thrash"}})
     return json.dumps({"status": "Success","statusreason": "updateSucess"})
 #Clear DB only for testing
