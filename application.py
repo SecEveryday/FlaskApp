@@ -69,7 +69,7 @@ def generateReport():
 @app.route("/updateUserMailInfo",methods=['POST'])
 def updateUserMailInfo():
     jsondata = request.json
-    return dbaUI.update_DB(jsonData)
+    return dbaUMI.update_DB(jsonData)
 @app.route("/do_ocr",methods=['POST'])
 def do_ocr():
     logger.debug("Hey reached Start of OCR")
