@@ -202,8 +202,8 @@ def checkIfAutoThrashed(jsonData,tags):
         return False
     a = mydb.userInfo.find_one({"name":jsonData["name"]})
     newDbref = DBRef("mydb.userInfo",a["_id"])
-    foundMails = mydb.mltable.find({"otherdbref":newDbref,"status":"Thrash"})
-    foundMailsList = list(mydb.mltable.find({"otherdbref":newDbref,"status":"Thrash"}))
+    foundMails = mydb.mltable.find({"otherdbref":newDbref,"status":"trash"})
+    foundMailsList = list(mydb.mltable.find({"otherdbref":newDbref,"status":"trash"}))
     if(len(foundMailsList) < 10):
         return False
     tagcount = 0
@@ -295,7 +295,7 @@ def update_DB(jsonData):
     foundMl = mydb.mltable.find_one({"code":jsonData["code"]},{"_id":1})
     logger.debug(foundMl)
     mydb.userMailInfo.update_many({"_id":foundmail["_id"],"user_id":1},{"$set":{'end_date':str(jsonData['end_date'])}})
-    mydb.mltable.update_many({"_id":foundMl["_id"],"user_id":1},{"$set":{"status":"Thrash"}})
+    mydb.mltable.update_many({"_id":foundMl["_id"],"user_id":1},{"$set":{"status":"Trash"}})
     return json.dumps({"status": "Success","statusreason": "updateSucess"})
 #Clear DB only for testing
 def clear_db():

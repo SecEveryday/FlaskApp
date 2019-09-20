@@ -21,7 +21,7 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
     if( not autoThrashed):
         body = "Dear Sir/Madam,<br><br> A new postal mail intended to you has been recieved and placed in the reception.<br>Please show the above QR code to reception and collect the mail.<br><br><br><img src='cid:image1' width=500 height=200></img><br><br><br>If you want to keep the mail, then reply to this mail ID by adding [Keep] in the subject.<br>If you do not want to keep the mail, then reply to this mail ID by adding [Trash] in the subject.<br> <br> Note: The mail will be kept in the reception for a period of 10 days.<br> <br>Regards,<br>Admin"
     else:
-        body = "Dear Sir/Madam,<br><br> A new postal mail intented to you has been autoThrashed based on your preferences.<br><br> Regards,<br> Admin"
+        body = "Dear Sir/Madam,<br><br> A new postal mail intented to you has been autoTrashed based on your preferences.<br><br> Regards,<br> Admin"
     sender_email = "mfpipmse@gmail.com"
     password = "mfp123456"
     # Create a multipart message and set headers
