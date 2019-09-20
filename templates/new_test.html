@@ -414,15 +414,14 @@ $('#output').empty()
 						
 						// Convert to canvas and get the image url. Get the base64 encoded jpeg file and send to the server for saving the image
 						// Server needs to decode and save the image
-                                var canvas = $('#output canvas');				
+                                //var canvas = $('#output canvas');				
 					//	img = canvas.get(0).toDataURL("image/png");		
 					//	console.log("AppToApp_AnalyzeXML::Image path - "+img)
-                                img = canvas.get(0).toDataURL("image/jpeg").replace('data:image/jpeg;base64', '');	
+                                //img = canvas.get(0).toDataURL("image/jpeg").replace('data:image/jpeg;base64', '');	
 $('#Name').text(data.name);
 $('#EmailID').text(data.email);
 $('#Division').text(data.division);
 $('#Code').text(data.code);
-$("#output").attr('src',img);
 showDialog("Success","Successfully Completed");
 },
 error: function(jqXhr, textStatus, errorMessage){ 
