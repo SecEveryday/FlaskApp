@@ -18,7 +18,7 @@ logger=logging.getLogger()
   
 #Setting the threshold of logger to DEBUG 
 logger.setLevel(logging.DEBUG) 
-lookup_list={"credit","card","debit","confidential","vaishnavi","bluedart","toshiba"}
+lookup_list={"credit","card","debit","confidential","vaishnavi","bluedart","toshiba","insurance","hdfc","icici","citi","bajaj","axis"}
 from flask import Flask, flash, request, redirect, url_for, render_template,jsonify
 app = Flask(__name__)
 
