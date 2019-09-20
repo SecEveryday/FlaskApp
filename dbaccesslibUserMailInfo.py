@@ -329,10 +329,10 @@ def displayChart(jsonData):
     if(jsonData["user"] == "all"):
         cursor = mydb.userMailInfo.aggregate(
         [{
-            $group:
+            "$group":
             {
-                    _id:'$lookup_tag',
-                    count : {$sum:1}
+                    "_id":'$lookup_tag',
+                    "count" : {"$sum":1}
             }
         ])
     logger.debug(cursor)
