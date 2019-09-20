@@ -139,6 +139,12 @@ def get_image():
     logger.debug(jsonData)
     filename = jsonData["filename"]
     filename = str(filename)+".png"
-    return send_file(filename, mimetype='image/png;base64')    
+    return send_file(filename, mimetype='image/png;base64')
+@app.route("/get_chart",methods=['POST'])
+def get_chart():
+    jsonData = request.json
+    logger.debug(jsonData)
+    return dbaUMI.displayChart(jsonData)
+    
 if __name__ == '__main__':
     app.run("0.0.0.0",debug = True)

@@ -337,6 +337,6 @@ def displayChart(jsonData):
         ])
     logger.debug(cursor)
     for item in cursor:
-        logger.debug(cursor)
-        
+        logger.debug(item)
+    return json.dumps(list(cursor),default=json_util.default)    
      
