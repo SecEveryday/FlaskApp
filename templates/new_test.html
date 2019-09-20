@@ -93,10 +93,7 @@
 										<td>Name</td>
 										<td>
 											<p type="text" id="Name"> </p>
-										</td>
-                                        <td class="w3-center">																		
-											<div id="output" class="w3-container w3-center w3-border w3-margin w3-padding-16" > </div>
-										</td>                                        
+										</td>											
 									</tr>
 									<tr>
 										<td>Division</td>
@@ -205,7 +202,6 @@ $('#Contentdiv').html("<p>"+data+"</p>");
 
 });
 */
-var img="";
 var currentAction =""
 var CurrentPage = 1;
 var jsonCode ={
@@ -408,16 +404,7 @@ console.log(typeof data)
 console.log(data)
 console.log(data.name);
 console.log(data.email);
-$('#output').empty()
-                                // Generate the QR Code
-                                $('#output').qrcode({width: 25,height: 25,text: data.code});
-						
-						// Convert to canvas and get the image url. Get the base64 encoded jpeg file and send to the server for saving the image
-						// Server needs to decode and save the image
-                                //var canvas = $('#output canvas');				
-					//	img = canvas.get(0).toDataURL("image/png");		
-					//	console.log("AppToApp_AnalyzeXML::Image path - "+img)
-                                //img = canvas.get(0).toDataURL("image/jpeg").replace('data:image/jpeg;base64', '');	
+
 $('#Name').text(data.name);
 $('#EmailID').text(data.email);
 $('#Division').text(data.division);
