@@ -6,7 +6,6 @@ import datetime
 from bson import json_util
 import logging 
 import base64
-import matplotlib.pyplot as plt
 jsonCode ={
         "building":{
             "Essae Vaishnavi Solitaire": {
@@ -198,9 +197,6 @@ uri = "mongodb://77d0a41b-0ee0-4-231-b9ee:RTX3TcHmlrLDYhOs3Zizj0ek9uh7sdHsYbNlri
 client = pymongo.MongoClient(uri)
 print("Obtained the client")
 mydb = client.test
-primary_lookup={"hdfc","icici","citi","bajaj","axis"}
-secondary_lookup={"credit","debit","insurance"}
-tertiary_lookup={"confidential","vaishnavi","bluedart","toshiba"}
 def checkIfAutoThrashed(jsonData,tags):
     if(len(tags) < 3):
         return False
@@ -256,29 +252,6 @@ def generateqrcode(jsonData,filenameJPG,tags,fromMFP):
     return addEntry(newjsonData,tags,autoThrashed);
 def addEntry(jsonData,tags,autoThrashed):
     a = mydb.userInfo.find_one({"name":jsonData["name"]})
-    primary_lookup_tag = list()
-    secondary_lookup_tag = list()
-    tertiary_lookup_tag = list()
-    for item in tags:
-        if(item in primary_lookup):
-            primary_lookup_tag.append(item)
-            continue
-        if(item in secondary_lookup):
-            secondary_lookup_tag.append(item)
-            continue
-        if(item in tertiary_lookup):
-            tertiary_lookup_tag.append(item)
-    if primary_lookup_tag:
-        lookup_tag = primary_lookup_tag[0]
-    else:
-        if secondary_lookup_tag:
-            lookup_tag = secondary_lookup_tag[0]
-        else:
-            if tertiary_lookup_tag:
-                lookup_tag = tertiary_lookup_tag[0]
-            else:
-                lookup_tag = "others"
-    #newtags = {"primary":primary_lookup_tag,"secondary":secondary_lookup_tag,"tertiary":tertiary_lookup_tag}      
     newDbref = DBRef("mydb.userInfo",a["_id"])
     scan_date = datetime.datetime.today()
     end_date = scan_date + datetime.timedelta(days=10)
@@ -288,7 +261,7 @@ def addEntry(jsonData,tags,autoThrashed):
         #mydb.mltable.insert({"code":jsonData["code"],"tags": tags,"status":"Keep","user_id":1,"otherdbref":newDbref})  Actual Code
         mydb.mltable.insert({"code":jsonData["code"],"tags": tags,"status":"Keep","user_id":1,"otherdbref":newDbref})#Test code to be removed
         #end_date = scan_date
-    mydb.userMailInfo.insert({"code":jsonData["code"],"lookup_tag":lookup_tag,"scan_date":scan_date,"end_date":end_date,"otherdbref":newDbref,"userDeleted":False,"user_id":1})
+    mydb.userMailInfo.insert({"code":jsonData["code"],"scan_date":scan_date,"end_date":end_date,"otherdbref":newDbref,"userDeleted":False,"user_id":1})
     return json.dumps(jsonData)
 def read_fromDB():
     new_list = list()
@@ -324,19 +297,6 @@ def update_DB(jsonData):
     mydb.userMailInfo.update_many({"_id":foundmail["_id"],"user_id":1},{"$set":{'end_date':str(jsonData['end_date'])}})
     mydb.mltable.update_many({"_id":foundMl["_id"],"user_id":1},{"$set":{"status":"Thrash"}})
     return json.dumps({"status": "Success","statusreason": "updateSucess"})
-def displayChart(jsonData):
-    cursor = None
-    if(jsonData["user"] == "all"):
-        cursor = mydb.userMailInfo.aggregate(
-        [{
-            "$group":
-            {
-                    "_id":'$lookup_tag',
-                    "count" : {"$sum":1}
-            }
-        }])
-    logger.debug(cursor)
-    for item in cursor:
-        logger.debug(item)
-    return json.dumps(list(cursor),default=json_util.default)    
-     
+#Clear DB only for testing
+def clear_db():
+    mydb.userMailInfo.remove({})
