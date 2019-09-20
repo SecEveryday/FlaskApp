@@ -8,3 +8,4 @@ pymongo
 requests
 Pillow
 qrcode
+matplotlib

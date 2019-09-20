@@ -334,7 +334,7 @@ def displayChart(jsonData):
                     "_id":'$lookup_tag',
                     "count" : {"$sum":1}
             }
-        ])
+        }])
     logger.debug(cursor)
     for item in cursor:
         logger.debug(item)
