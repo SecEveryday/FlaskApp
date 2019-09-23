@@ -291,7 +291,7 @@ def update_DB(jsonData):
     logger.debug(jsonData["code"])
     logger.debug(jsonData["end_date"])
     foundmail = mydb.userMailInfo.find_one({"code":jsonData["code"]},{"_id":1})
-    logger.debug(foundMail)
+    logger.debug(foundmail)
     foundMl = mydb.mltable.find_one({"code":jsonData["code"]},{"_id":1})
     logger.debug(foundMl)
     mydb.userMailInfo.update_many({"_id":foundmail["_id"],"user_id":1},{"$set":{'end_date':str(jsonData['end_date'])}})
