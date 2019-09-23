@@ -280,6 +280,7 @@ def getspecificDate(jsonData):
     logger.debug(jsonData)
     num = int(jsonData['page'])
     skips = 10 * (num - 1)
+    allCursor = 
     if(jsonData["action"] == "all"):
         return json.dumps(list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}).skip(skips).limit(10)), default=json_util.default)
     else:
@@ -295,7 +296,8 @@ def update_DB(jsonData):
     foundMl = mydb.mltable.find_one({"code":jsonData["code"]},{"_id":1})
     logger.debug(foundMl)
     mydb.userMailInfo.update_many({"_id":foundmail["_id"],"user_id":1},{"$set":{'end_date':str(jsonData['end_date'])}})
-    mydb.mltable.update_many({"_id":foundMl["_id"],"user_id":1},{"$set":{"status":"Trash"}})
+    if(not jsonData['end_date'] == "DONT TRASH"):
+        mydb.mltable.update_many({"_id":foundMl["_id"],"user_id":1},{"$set":{"status":"trash"}})
     return json.dumps({"status": "Success","statusreason": "updateSucess"})
 #Clear DB only for testing
 def clear_db():
