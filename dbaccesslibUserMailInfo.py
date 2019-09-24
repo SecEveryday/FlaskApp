@@ -287,12 +287,12 @@ def getspecificDate(jsonData):
         
         thrash_date = datetime.datetime.today()
         thrash_date = str(thrash_date.day) + "-" +str(thrash_date.month)+"-" + str(thrash_date.year)
-        thrash_date = datetime.strptime(thrash_date, '%d-%m-%Y').date()
+        thrash_date = datetime.datetime.strptime(thrash_date, '%d-%m-%Y').date()
         new_list = list()
         for item in all_list:
             if(item['end_date'] == "DONT TRASH"):
                 continue
-            db_date = datetime.strptime(item['end_date'],'%d-%m-%Y').date()
+            db_date = datetime.datetime.strptime(item['end_date'],'%d-%m-%Y').date()
             if(db_date <= thrash_date):
                 new_list.append(item)
         new_list = new_list[skips:]
