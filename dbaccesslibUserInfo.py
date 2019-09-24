@@ -46,6 +46,8 @@ def delete_userfromDB(jsonData):
 def update_user(jsonData):
     founduser = mydb.userInfo.find_one({"userDeleted":False,"name":jsonData["name"]},{"_id":1})
     mydb.userInfo.update_many({"_id":founduser["_id"],"user_id":1},{"$set":{'department':jsonData['department'],'building':jsonData['building'],'division':jsonData['division'],'email':jsonData['emailaddress'],'floor':jsonData['floor'],'cubicle':jsonData['cubicle']}})
+    newDbref = DBRef("mydb.userInfo",founduser["_id"]) 
+    mydb.userMailInfo.update_many({"otherdbref":newDbref,"user_id":1},{"$set":{'userDeleted':True}})
     return json.dumps({"status": "Success","statusreason": "updateSucess"})
     #Production Level Testing code
 def clear_DB():
