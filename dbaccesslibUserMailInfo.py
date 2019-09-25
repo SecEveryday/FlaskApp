@@ -198,7 +198,10 @@ client = pymongo.MongoClient(uri)
 print("Obtained the client")
 mydb = client.test
 def sortingReq(item):
-    new_thrash_date = datetime.datetime.strptime(item["end_date"], '%d-%m-%Y').date()
+    if(item["end_date"] == "DONT TRASH"):
+        new_thrash_date = datetime.datetime.strptime("1-1-1900", '%d-%m-%Y').date()
+    else:
+        new_thrash_date = datetime.datetime.strptime(item["end_date"], '%d-%m-%Y').date()
     return new_thrash_date
 def checkIfAutoThrashed(jsonData,tags):
     if(len(tags) < 3):
