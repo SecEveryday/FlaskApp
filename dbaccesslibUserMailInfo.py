@@ -197,6 +197,9 @@ uri = "mongodb://77d0a41b-0ee0-4-231-b9ee:RTX3TcHmlrLDYhOs3Zizj0ek9uh7sdHsYbNlri
 client = pymongo.MongoClient(uri)
 print("Obtained the client")
 mydb = client.test
+def sortingReq(item):
+    new_thrash_date = datetime.datetime.strptime(item["thrash_date"], '%d-%m-%Y').date()
+    return new_thrash_date
 def checkIfAutoThrashed(jsonData,tags):
     if(len(tags) < 3):
         return False
@@ -275,13 +278,18 @@ def read_fromDB():
         dall.update(newjson)
         print(dall)
         new_list.append(dall)
+    new_list.sort(key=sortingReq)
     return json.dumps(new_list,default=json_util.default)
 def getspecificDate(jsonData):
     logger.debug(jsonData)
     num = int(jsonData['page'])
     skips = 10 * (num - 1) 
     if(jsonData["action"] == "all"):
-        return json.dumps(list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}).skip(skips).limit(10)), default=json_util.default)
+        all_list = list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}))
+        all_list.sort(key = sortingReq)
+        all_list = all_list[skips:]
+        all_list = all_list[:10]
+        return json.dumps(all_list, default=json_util.default)
     else:
         all_list = list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}))
         
@@ -295,6 +303,7 @@ def getspecificDate(jsonData):
             db_date = datetime.datetime.strptime(item['end_date'],'%d-%m-%Y').date()
             if(db_date <= thrash_date):
                 new_list.append(item)
+        new_list.sort(key=sortingReq)
         new_list = new_list[skips:]
         new_list = new_list[:10]
         return json.dumps(new_list, default=json_util.default)
