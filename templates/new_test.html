@@ -89,12 +89,12 @@ Scan solution with cloud service for better document management</title>
 						<p id='dialogContent' ></p>
 						<div class="w3-hide" id="userinfotable">							
 							<table class="w3-border w3-table-all custom-exclude">
-								<tbody>														
+                                <tbody>														
 									<tr>
 										<td>Name</td>
 										<td>
 											<p type="text" id="Name"> </p>
-										</td>											
+										</td>												
 									</tr>
 									<tr>
 										<td>Division</td>
@@ -103,17 +103,41 @@ Scan solution with cloud service for better document management</title>
 										</td>
 									</tr>
 									<tr>
-										<td>Code</td>
+										<td>Department</td>
 										<td>
-											<p type="text" id="Code"> </p>
+											<p type="text" id="Department"> </p>
+										</td>
+									</tr>
+									<tr>
+										<td>Building</td>
+										<td>
+											<p type="text" id="Building"> </p>
 										</td>
 									</tr>
 									<tr>
 										<td>EmailID</td>
 										<td>
-											<p type="text" id="EmailID"> </p>
+											<p id="EmailID"> </p>
 										</td>
+									</tr>
+									<tr>
+										<td>Floor</td>
+										<td>
+											<p id="Floor"> </p>
+										</td>
+									</tr>
+									<tr>
+										<td>Cubicle</td>
+										<td>
+											<p id="Cubicle"> </p>
+										</td>									
 									</tr>								
+									<tr>
+										<td>Code</td>
+										<td>
+											<p type="text" id="Code"> </p>
+										</td>
+									</tr>							
 								</tbody>
 							</table>									
 						</div>	
@@ -409,6 +433,10 @@ $('#Name').text(data.name);
 $('#EmailID').text(data.email);
 $('#Division').text(data.division);
 $('#Code').text(data.code);
+$('#Department').text(data.department);
+$('#Building').text(data.building);
+$('#Floor').text(data.floor);
+$('#Cubicle').text(data.cubicle);                
 showDialog("Success","Successfully Completed");
 },
 error: function(jqXhr, textStatus, errorMessage){ 
