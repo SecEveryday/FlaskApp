@@ -26,23 +26,24 @@ def read_fromDBSpecfic(jsonData):
     logger.debug("This is the JsonData")
     logger.debug(jsonData)
     allList = list(mydb.userInfo.find({"userDeleted":False},{'name':1}))
-    maxFound = 90
+    newList = [ d["name"] for in allList]
+    maxFound = 95
     obtainedName = ""
-    for item in allList:
-        highest = process.extractOne(item["name"],jsonData)
+    for item in jsonData:
+        highest = process.extractOne(item,newList)
         logger.debug(highest)
         if(highest[1] == 100):
             maxFound = highest[1]
-            obtainedName = item["name"]
+            obtainedName = highest[0]
             break
         if(highest[1]>maxFound):
             maxFound = highest[1]
-            obtainedName = item["name"]
+            obtainedName = highest[0]
     logger.debug("Obtained Name is")
     logger.debug(obtainedName)
     logger.debug("Max Ratio found for Obtained Name")
     logger.debug(maxFound)
-    if(maxFound == 90):
+    if(maxFound == 95):
         logger.debug("Could not find any user")
         return json.dumps({},default = json_util.default)
     foundUser = dict(mydb.userInfo.find_one({'name':obtainedName,"userDeleted":False},{'_id' : 0,'user_id':0}))
