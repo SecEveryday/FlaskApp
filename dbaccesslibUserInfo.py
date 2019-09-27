@@ -27,6 +27,7 @@ def read_fromDBSpecfic(jsonData):
     logger.debug(jsonData)
     allList = list(mydb.userInfo.find({"userDeleted":False},{'name':1}))
     maxFound = 95
+    obtainedName = ""
     for item in allList:
         highest = process.extractOne(item["name"],jsonData)
         if(highest[1] == 100):
