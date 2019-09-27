@@ -139,7 +139,8 @@ Scan solution with cloud service for better document management</title>
 										</td>
 									</tr>							
 								</tbody>
-							</table>									
+							</table>
+                        <h4 id="autoThrashDisplay" class="w3-hide" style="color:red;">The above mail has been autoTrashed.</h4>
 						</div>	
 						<button class="w3-button w3-border w3-margin-top w3-white w3-round-large w3-margin-bottom" id="dialogCloseButton">Close</button>
 					</div>
@@ -436,7 +437,11 @@ $('#Code').text(data.code);
 $('#Department').text(data.department);
 $('#Building').text(data.building);
 $('#Floor').text(data.floor);
-$('#Cubicle').text(data.cubicle);                
+$('#Cubicle').text(data.cubicle);
+if(data.autoThrashed == true)
+{
+    $('#autoThrashDisplay').removeClass('w3-hide').addClass('w3-show');
+}                
 showDialog("Success","Successfully Completed");
 },
 error: function(jqXhr, textStatus, errorMessage){ 
@@ -522,6 +527,7 @@ error: function(jqXhr, textStatus, errorMessage){
         $('#usertablelist').removeClass('w3-show').addClass('w3-hide');
         $('#popUpCloseButton2').css({'display':'none'});
         $('#popUpCloseButton1').removeAttr("style");
+        $('#autoThrashDisplay').removeClass('w3-show').addClass('w3-hide');
     }
     /*(
 var move = function(width, interval, error) {
