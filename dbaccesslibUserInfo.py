@@ -4,7 +4,7 @@ from bson import json_util
 import sys
 import pymongo
 import logging 
-  
+from fuzzywuzzy import process 
 #Create and configure logger 
 logging.basicConfig(filename="server.log", 
                     format='%(asctime)s %(message)s', 
@@ -25,16 +25,23 @@ def read_fromDB(jsonData):
 def read_fromDBSpecfic(jsonData):
     logger.debug("This is the JsonData")
     logger.debug(jsonData)
-    for item in jsonData:
-        logger.debug("Item name is:")
-        logger.debug(item)
-        try:
-            foundUser = dict(mydb.userInfo.find_one({'name':{'$regex':str(item)+"\s.*",'$options':'i'},"userDeleted":False},{'_id' : 0,'user_id':0}))
-        except TypeError:
-            continue
-        if(len(foundUser) >= 1):
-            return json.dumps(foundUser,default=json_util.default)
-    return json.dumps({},default = json_util.default)
+    allList = list(mydb.userInfo.find({"userDeleted":False},{'name':1}))
+    maxFound = 95
+    for item in allList:
+        highest = process.extractOne(item,jsonData)
+        if(highest[1] == 100):
+            maxFound = highest[1]
+            obtainedName = item
+            break
+        if(highest[1]>maxFound):
+            maxFound = highest[1]
+            obtainedName = item
+    logger.debug("Obtained Name is")
+    logger.debug(obtainedName)
+    logger.debug("Max Ratio found for Obtained Name")
+    logger.debug(maxFound)
+    foundUser = dict(mydb.userInfo.find_one({'name':obtainedName,"userDeleted":False},{'_id' : 0,'user_id':0}))
+    return json.dumps(foundUser,default = json_util.default)
 def add_usertoDB(jsonData):
     mydb.userInfo.insert({'name':jsonData['name'],'department':jsonData['department'],'building':jsonData['building'],'division':jsonData['division'],'email':jsonData['emailaddress'],'floor':jsonData['floor'],'cubicle':jsonData['cubicle'],"user_id":jsonData["user_id"],"userDeleted":False})
     logger.debug("Sucessfully added")
