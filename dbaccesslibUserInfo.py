@@ -26,7 +26,7 @@ def read_fromDBSpecfic(jsonData):
     logger.debug("This is the JsonData")
     logger.debug(jsonData)
     allList = list(mydb.userInfo.find({"userDeleted":False},{'name':1}))
-    newList = [ d["name"] for in allList]
+    newList = [ d["name"] for d in allList]
     maxFound = 95
     obtainedName = ""
     for item in jsonData:
