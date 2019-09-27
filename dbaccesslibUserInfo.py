@@ -30,6 +30,7 @@ def read_fromDBSpecfic(jsonData):
     obtainedName = ""
     for item in allList:
         highest = process.extractOne(item["name"],jsonData)
+        logger.debug(highest)
         if(highest[1] == 100):
             maxFound = highest[1]
             obtainedName = item["name"]
