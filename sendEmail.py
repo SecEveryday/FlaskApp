@@ -6,7 +6,8 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
-import logging 
+import logging
+from datetime import datetime as dt 
 #Create and configure logger 
 logging.basicConfig(filename="server.log", 
                     format='%(asctime)s %(message)s', 
@@ -39,7 +40,7 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
     if( not fromMFP):
         filename = "uploads/"+str(filenameJPG)  # In same directory as script
     else:
-        filename = "uploads/imageToSave.png"
+        filename = "uploads/imageToSave.png?"+str(dt.timestamp(now))
     filename1 = "qrcode.jpg"
     # Open PDF file in binary mode
     
