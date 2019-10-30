@@ -43,7 +43,7 @@ def execute(filename,fromMFP):
                'Content-Type': 'application/octet-stream'}
     params = {
         # Request parameters
-        'language': 'en',
+        'language': 'unk',
         'detectOrientation ': 'true',
     }
     response = requests.post(
