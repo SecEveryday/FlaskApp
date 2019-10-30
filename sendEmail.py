@@ -7,7 +7,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 import logging
-from datetime import datetime as dt 
+from datetime import datetime as dt
+import shutil 
 #Create and configure logger 
 logging.basicConfig(filename="server.log", 
                     format='%(asctime)s %(message)s', 
@@ -41,12 +42,16 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
         filename = "uploads/"+str(filenameJPG)  # In same directory as script
     else:
         filename = "uploads/imageToSave.png"
+        timestamp1 = "uploads/"+str(dt.timestamp(dt.now()))+".png"
+        shutil.copyfile(filename, timestamp1)
+        filename = timestamp1
+        
     filename1 = "qrcode.jpg"
     # Open PDF file in binary mode
     
     
-    timestamp1 = str(dt.timestamp(dt.now()))
-    msgText = MIMEText('<img src="cid:image2?'+str(timestamp1)+'"width=90 height=90></img><br><br>'+body, 'html')
+    
+    msgText = MIMEText('<img src="cid:image2" width=90 height=90></img><br><br>'+body, 'html')
     msgAlternative.attach(msgText)
     fp = open(filename, 'rb')
     msgImage = MIMEImage(fp.read())
@@ -70,3 +75,4 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
         server.login(sender_email, password)
         server.sendmail(sender_email, [emailAddress,"Koushik.Sridhar@toshiba-tsip.com",], text)
     os.remove(filename)
+    os.remove("uploads/imageToSave.png")
