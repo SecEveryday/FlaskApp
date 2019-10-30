@@ -40,13 +40,13 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
     if( not fromMFP):
         filename = "uploads/"+str(filenameJPG)  # In same directory as script
     else:
-        filename = "uploads/imageToSave.png?"+str(dt.timestamp(dt.now()))
+        filename = "uploads/imageToSave.png"
     filename1 = "qrcode.jpg"
     # Open PDF file in binary mode
     
     
-    
-    msgText = MIMEText('<img src="cid:image2" width=90 height=90></img><br><br>'+body, 'html')
+    timestamp1 = str(dt.timestamp(dt.now()))
+    msgText = MIMEText('<img src="cid:image2'+str(timestamp1)+'"width=90 height=90></img><br><br>'+body, 'html')
     msgAlternative.attach(msgText)
     fp = open(filename, 'rb')
     msgImage = MIMEImage(fp.read())
@@ -60,7 +60,7 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
     img.save(buf)
     image_stream = buf.getvalue()
     msgImage1 = MIMEImage(image_stream)
-    msgImage1.add_header('Content-ID', '<image2>')
+    msgImage1.add_header('Content-ID', '<image2'+str(timestamp1)+'>')
     msgRoot.attach(msgImage1)
     text = msgRoot.as_string()
 
