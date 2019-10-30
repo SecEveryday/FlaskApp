@@ -7,8 +7,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 import logging
-from datetime import datetime as dt
-import shutil 
+from datetime import datetime as dt 
 #Create and configure logger 
 logging.basicConfig(filename="server.log", 
                     format='%(asctime)s %(message)s', 
@@ -19,11 +18,12 @@ logger=logging.getLogger()
 #Setting the threshold of logger to DEBUG 
 logger.setLevel(logging.DEBUG) 
 def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
+    timestamp1 = str(dt.timestamp(dt.now()))
     subject='[New Mail Received][Code:'+qrcode+'] New Postal Mail reception notification';
     if( not autoThrashed):
         body = "Dear Sir/Madam,<br><br> A new postal mail intended to you has been recieved and placed in the reception.<br>Please show the above QR code to reception and collect the mail.<br><br><br><img src='cid:image1' width=500 height=200></img><br><br><br>If you want to keep the mail, then reply to this mail ID by adding [Keep] in the subject.<br>If you do not want to keep the mail, then reply to this mail ID by adding [Trash] in the subject.<br> <br> Note: The mail will be kept in the reception for a period of 10 days.<br> <br>Regards,<br>Admin"
     else:
-        body = "Dear Sir/Madam,<br><br> A new postal mail intented to you has been autoTrashed based on your preferences.<br><br><br><img src='cid:image1' width=500 height=200></img><br><br><br> Regards,<br> Admin"
+        body = "Dear Sir/Madam,<br><br> A new postal mail intented to you has been autoTrashed based on your preferences.<br><br><br><img src='cid:image1"+str(timestamp1)+"' width=500 height=200></img><br><br><br> Regards,<br> Admin"
     sender_email = "mfpipmse@gmail.com"
     password = "mfp123456"
     # Create a multipart message and set headers
@@ -42,21 +42,17 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
         filename = "uploads/"+str(filenameJPG)  # In same directory as script
     else:
         filename = "uploads/imageToSave.png"
-        timestamp1 = "uploads/"+str(dt.timestamp(dt.now()))+".png"
-        shutil.copyfile(filename, timestamp1)
-        filename = timestamp1
-        
     filename1 = "qrcode.jpg"
     # Open PDF file in binary mode
     
     
     
-    msgText = MIMEText('<img src="cid:image2" width=90 height=90></img><br><br>'+body, 'html')
+    msgText = MIMEText('<img src="cid:image2'+str(timestamp1)+'"width=90 height=90></img><br><br>'+body, 'html')
     msgAlternative.attach(msgText)
     fp = open(filename, 'rb')
     msgImage = MIMEImage(fp.read())
     fp.close()
-    msgImage.add_header('Content-ID', '<image1>')
+    msgImage.add_header('Content-ID', '<image1'+str(timestamp1)+'>')
     msgRoot.attach(msgImage)
     #fp = open(filename1, 'rb')
     #msgImage1 = MIMEImage(fp.read())
@@ -65,7 +61,7 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
     img.save(buf)
     image_stream = buf.getvalue()
     msgImage1 = MIMEImage(image_stream)
-    msgImage1.add_header('Content-ID', '<image2>')
+    msgImage1.add_header('Content-ID', '<image2'+str(timestamp1)+'>')
     msgRoot.attach(msgImage1)
     text = msgRoot.as_string()
 
@@ -75,4 +71,3 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
         server.login(sender_email, password)
         server.sendmail(sender_email, [emailAddress,"Koushik.Sridhar@toshiba-tsip.com",], text)
     os.remove(filename)
-    os.remove("uploads/imageToSave.png")
