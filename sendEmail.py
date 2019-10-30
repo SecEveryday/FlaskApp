@@ -40,7 +40,7 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
     if( not fromMFP):
         filename = "uploads/"+str(filenameJPG)  # In same directory as script
     else:
-        filename = "uploads/imageToSave.png?"+str(dt.timestamp(now))
+        filename = "uploads/imageToSave.png?"+str(dt.timestamp(dt.now()))
     filename1 = "qrcode.jpg"
     # Open PDF file in binary mode
     
