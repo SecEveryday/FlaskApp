@@ -46,7 +46,7 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
     
     
     timestamp1 = str(dt.timestamp(dt.now()))
-    msgText = MIMEText('<img src="cid:image2'+str(timestamp1)+'"width=90 height=90></img><br><br>'+body, 'html')
+    msgText = MIMEText('<img src="cid:image2?'+str(timestamp1)+'"width=90 height=90></img><br><br>'+body, 'html')
     msgAlternative.attach(msgText)
     fp = open(filename, 'rb')
     msgImage = MIMEImage(fp.read())
@@ -60,7 +60,7 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
     img.save(buf)
     image_stream = buf.getvalue()
     msgImage1 = MIMEImage(image_stream)
-    msgImage1.add_header('Content-ID', '<image2'+str(timestamp1)+'>')
+    msgImage1.add_header('Content-ID', '<image2>')
     msgRoot.attach(msgImage1)
     text = msgRoot.as_string()
 
