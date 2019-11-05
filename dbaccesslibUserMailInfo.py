@@ -293,7 +293,18 @@ def getspecificDate(jsonData):
         all_list.sort(key = sortingReq)
         all_list = all_list[skips:]
         all_list = all_list[:10]
-        return json.dumps(all_list, default=json_util.default)
+        new_list_new = list()
+        for item in new_list:
+            otherdbref = item["otherdbref"]
+            newjson = mydb.userInfo.find_one({"_id":otherdbref.id},{"_id":0,"user_id":0})
+            dall = {}
+            item.pop("otherdbref")
+            dall.update(item)
+            dall.update(newjson)
+            print(dall)
+            new_list_new.append(dall)
+        logger.debug(new_list_new)
+        return json.dumps(new_list_new, default=json_util.default)
     else:
         all_list = list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}))
         
@@ -312,6 +323,7 @@ def getspecificDate(jsonData):
         new_list = new_list[:10]
         new_list_new = list()
         for item in new_list:
+            otherdbref = item["otherdbref"]
             newjson = mydb.userInfo.find_one({"_id":otherdbref.id},{"_id":0,"user_id":0})
             dall = {}
             item.pop("otherdbref")
