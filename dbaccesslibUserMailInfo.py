@@ -319,6 +319,7 @@ def getspecificDate(jsonData):
             dall.update(newjson)
             print(dall)
             new_list_new.append(dall)
+        logger.debug(new_list_new)
         return json.dumps(new_list_new, default=json_util.default)
 def update_DB(jsonData):
     logger.debug("DBUMI::Update_db() entry")
