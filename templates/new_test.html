@@ -184,6 +184,7 @@ Scan solution with cloud service for better document management</title>
 									<table id="user_table" class="w3-border w3-table-all w3-hoverable custom-exclude" style="width:100%">
 										<thead class = "custom-exclude">						
 											<th>Code</th>
+                                            <th>Name</th>
 											<th>Scan_date</th>
 											<th>Thrash_date</th>                          
 										</thead>
@@ -713,7 +714,7 @@ $('#previousPage').on('click', function(){
 						});
 						$.each(jsonData, function (index, value) {
                             $('#user_table > tbody').addClass("custom-exclude");
-							$('#user_table > tbody').append('<tr><td>' + value.code + '</td><td>' + value.scan_date + '</td><td>' + value.end_date);				
+							$('#user_table > tbody').append('<tr><td>' + value.code +'</td><td>' + value.name+ '</td><td>' + value.scan_date + '</td><td>' + value.end_date);				
 							$('#homePage').text(currPage);											
 						});
 						$('#homePage').text(currPage);	

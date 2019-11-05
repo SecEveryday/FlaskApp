@@ -310,7 +310,16 @@ def getspecificDate(jsonData):
         new_list.sort(key=sortingReq)
         new_list = new_list[skips:]
         new_list = new_list[:10]
-        return json.dumps(new_list, default=json_util.default)
+        new_list_new = list()
+        for item in new_list:
+            newjson = mydb.userInfo.find_one({"_id":otherdbref.id},{"_id":0,"user_id":0})
+            dall = {}
+            item.pop("otherdbref")
+            dall.update(item)
+            dall.update(newjson)
+            print(dall)
+            new_list_new.append(dall)
+        return json.dumps(new_list_new, default=json_util.default)
 def update_DB(jsonData):
     logger.debug("DBUMI::Update_db() entry")
     logger.debug(jsonData["code"])
