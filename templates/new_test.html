@@ -421,12 +421,24 @@ var jsonCode ={
 				}				
 			}
 		}
-	}
+	};
+messagecount = 0;
+messages = ["Uploading the Image","Processing the Image","Matching User in UserDatabase","Match Found, Sending Email"]; 
+var generateColorCode = function()
+{
+    $('#retresponse').val(messages[messagecount]);
+    myVar = ""
+    if(messagecount <3)
+    {
+        messagecount++;
+        window.setTimeout(generateColorCode,5000);
+    }
+}    
 $("#AppToApp_startScan").on("change", function () {		
 		console.log("Start job entry");		
 		$('#AppToApp_report').prop('disabled',true);
 		//$('#startjob').empty();		
-		$('#retresponse').val("Processing the Image.Please wait!");		
+				
         var formData = new FormData($('#contactForm1')[0]);
         //alert("Hey 1");
 $.ajax({
