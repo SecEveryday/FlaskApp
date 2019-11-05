@@ -82,7 +82,7 @@ def do_ocr():
     file.save(os.path.join("./uploads", dateTimeNow))
     logger.debug("File Size Before")
     logger.debug(os.path.getsize(str("uploads/"+dateTimeNow)))
-    basewidth = 1024
+    basewidth = 1536
     img = Image.open("uploads/"+dateTimeNow)
     wpercent = (basewidth/float(img.size[0]))
     hsize = int((float(img.size[1])*float(wpercent)))
