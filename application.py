@@ -79,6 +79,7 @@ def do_ocr():
     today = datetime.datetime.now()
     dateTimeNow = ""+str(today.month)+str(today.day)+str(today.hour)+str(today.minute)+str(today.second)+str(today.microsecond)+".jpg";
     file.save(os.path.join("./uploads", dateTimeNow))
+    logger.debug(os.path.getsize(str("uploads/"+dateTimeNow)))
     fromMFP = False
     import ocr as to
     ocredText = to.execute(dateTimeNow,fromMFP)
@@ -106,6 +107,7 @@ def do_ocr_mfp():
     logger.debug(file)
     with open("uploads/imageToSave.png", "wb") as fh:
         fh.write(base64.decodebytes(file))
+    logger.debug(os.path.getsize("uploads/imageToSave.png"))
     #logger.debug(type(file))
     #logger.debug(file[9:])
     #fh = open("uploads/imageToSave.png", "wb")
