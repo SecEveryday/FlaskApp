@@ -228,11 +228,11 @@ def generateqrcode(jsonData,filenameJPG,tags,fromMFP):
     logger.debug(jsonData)
     ilocation=1
     today = datetime.datetime.now()
-    date = str(today.year)+':'+str(today.month)+':'+str(today.day);
-    time = str(today.hour) + ":" + str(today.minute) + ":" + str(today.second)+":"+str(today.microsecond);
-    dateTimeNow = date+':'+time;
+    date = str(today.day)
+    time = str(today.hour) + ":" + str(today.minute) + ":" + str(today.second)+":"+str(today.microsecond)
+    dateTimeNow = date+':'+time
     logger.debug("Current Datetime - "+dateTimeNow)
-    dateTimeNow = ""+str(today.month)+str(today.day)+str(today.hour)+str(today.minute)+str(today.second)+str(today.microsecond)[:3];
+    dateTimeNow = ""+str(today.month)+str(today.day)+str(today.hour)+str(today.minute)+str(today.second)+str(today.microsecond)[:3]
     logger.debug("Unique Code - "+dateTimeNow)
     if(int(jsonData["cubicle"])>25 and int(jsonData["cubicle"])<=50):
         ilocation=2
