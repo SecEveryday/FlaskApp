@@ -8,7 +8,8 @@ import logging
 import json
 from bson import json_util
 import datetime
-import base64 
+import base64
+from PIL import Image 
 #Create and configure logger 
 logging.basicConfig(filename="server.log", 
                     format='%(asctime)s %(message)s', 
@@ -79,6 +80,15 @@ def do_ocr():
     today = datetime.datetime.now()
     dateTimeNow = ""+str(today.month)+str(today.day)+str(today.hour)+str(today.minute)+str(today.second)+str(today.microsecond)+".jpg";
     file.save(os.path.join("./uploads", dateTimeNow))
+    logger.debug("File Size Before")
+    logger.debug(os.path.getsize(str("uploads/"+dateTimeNow)))
+    basewidth = 1024
+    img = Image.open("uploads/"+dateTimeNow)
+    wpercent = (basewidth/float(img.size[0]))
+    hsize = int((float(img.size[1])*float(wpercent)))
+    img = img.resize((basewidth,hsize), Image.ANTIALIAS)
+    img.save("uploads/"+dateTimeNow)
+    logger.debug("File size after")    
     logger.debug(os.path.getsize(str("uploads/"+dateTimeNow)))
     fromMFP = False
     import ocr as to
