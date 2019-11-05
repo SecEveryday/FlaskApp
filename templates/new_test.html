@@ -423,14 +423,15 @@ var jsonCode ={
 		}
 	};
 messagecount = 0;
-messages = ["Uploading the Image","Processing the Image","Matching User in UserDatabase","Match Found, Sending Email"]; 
+messages = ["Uploading the Image","Processing the Image","Matching User in UserDatabase","Match Found, Sending Email"];
+myVar=""; 
 var newMessageDisplay = function()
 {
     $('#retresponse').val(messages[messagecount]);
     if(messagecount <3)
     {
         messagecount++;
-        window.setTimeout(newMessageDisplay,5000);
+        myVar = window.setTimeout(newMessageDisplay,5000);
     }
 }    
 $("#AppToApp_startScan").on("change", function () {		
@@ -533,6 +534,7 @@ error: function(jqXhr, textStatus, errorMessage){
 		img="";
         currentAction="";
 		messagecount = 0
+        clearTimeout(myVar);
 		$('#retresponse').val('To Upload the image please Click on Submit Image');
 		
 		//$('.progress-bar').css('width', 0).attr('aria-valuenow', 0); 		
