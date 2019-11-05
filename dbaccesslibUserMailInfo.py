@@ -294,7 +294,7 @@ def getspecificDate(jsonData):
         all_list = all_list[skips:]
         all_list = all_list[:10]
         new_list_new = list()
-        for item in new_list:
+        for item in all_list:
             otherdbref = item["otherdbref"]
             newjson = mydb.userInfo.find_one({"_id":otherdbref.id},{"_id":0,"user_id":0})
             dall = {}
