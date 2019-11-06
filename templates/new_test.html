@@ -668,6 +668,18 @@ $('#previousPage').on('click', function(){
 		
 		$('#nextPage').on('click', function(){
 			CurrentPage++;
+            if(CurrentPage == $('#homePage2').text())
+            {
+                $('#homePage').removeClass('w3-blue');
+                $('#homePage3').removeClass('w3-blue');
+                $('#homePage2').addClass('w3-blue');
+            }
+            if(CurrentPage == $('#homePage3').text())
+            {
+                $('#homePage').removeClass('w3-blue');
+                $('#homePage2').removeClass('w3-blue');
+                $('#homePage3').addClass('w3-blue');
+            }
 			console.log("Current Page ="+CurrentPage);			
 			getUsers(CurrentPage,currentAction);
 		});		
