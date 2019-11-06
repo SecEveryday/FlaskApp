@@ -186,7 +186,7 @@ Scan solution with cloud service for better document management</title>
 											<th>Code</th>
                                             <th>Name</th>
 											<th>Scan_date</th>
-											<th>Thrash_date</th>
+											<th>Trash_date</th>
                                             <th>Source</th>
 										</thead>
 										<tbody>													
@@ -610,7 +610,8 @@ var generateReport = function(action){
 		// Setting jobStatus as AppPrint
 		$('#retresponse').val("Querying the information from the database");		
         currentAction = action;
-        getUsers(1,action);    
+        CurrentPage = 1;
+        getUsers(CurrentPage,action);    
 	}
 $("#AppToApp_report").on("click", function () {	
 		$('#AppToApp_startScan').prop('disabled',true);		
