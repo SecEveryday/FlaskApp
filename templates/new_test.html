@@ -732,7 +732,19 @@ $('#previousPage').on('click', function(){
 			
 			
 			// Disable the Update/Delete User
-			
+			$('#reportheading').empty();
+                       if( currentAction == "today")
+                       {
+                            $('#reportheading').append("<b> Trash Report </b>");
+                       }
+                       else if (currentAction == "scantoday")
+                       {
+                            $('#reportheading').append("<b> Today's Report </b>");
+                       }
+                        else
+                        {
+                            $('#reportheading').append("<b> All Report </b>");
+                        }
 			$('#user_table > tbody').empty();
 			
 		//	$('#user_table > tbody').append('<tr><td>' + "Arvind" + '</td><td>' + "TTEC" + '</td><td>' + "TTEC-SL" + '</td><td>'+ "Essae Vaishnavi Solitaire" + '</td><td>'+ "arvind@toshiba.com" + '</td><td>'+ "3" + '</td><td>'+ "85" + '</td></tr>');
@@ -752,19 +764,6 @@ $('#previousPage').on('click', function(){
                 processData: false, // NEEDED, DON'T OMIT THIS   	
 				data:JSON.stringify(jsonGetData),                     
                 success: function(jsonData){
-                       $('#reportheading').empty();
-                       if( currentAction == "today")
-                       {
-                            $('#reportheading').append("<b> Trash Report </b>");
-                       }
-                       else if (currentAction == "scantoday")
-                       {
-                            $('#reportheading').append("<b> Today's Report </b>");
-                       }
-                        else
-                        {
-                            $('#reportheading').append("<b> All Report </b>");
-                        }
                     jsonData = JSON.parse(jsonData);
                     console.log(jsonData);
                     if(typeof jsonData != "undefined"){
