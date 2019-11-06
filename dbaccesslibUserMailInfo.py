@@ -293,6 +293,7 @@ def getspecificDate(jsonData):
     if(jsonData["action"] == "all"):
         all_list = list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}))
         all_list.sort(key = sortingReq)
+        totalsize = len(all_list)
         all_list = all_list[skips:]
         all_list = all_list[:10]
         new_list_new = list()
@@ -305,8 +306,10 @@ def getspecificDate(jsonData):
             dall.update(newjson)
             print(dall)
             new_list_new.append(dall)
+        new_list_new.append({"totalsize":totalsize})
         logger.debug(new_list_new)
         #new_list_new.sort(key = lambda x : x["name"])
+        
         return json.dumps(new_list_new, default=json_util.default)
     elif(jsonData["action"] == "today"):
         all_list = list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}))
@@ -323,6 +326,7 @@ def getspecificDate(jsonData):
             if(db_date <= thrash_date):
                 new_list.append(item)
         new_list.sort(key=sortingReq)
+        totalsize = len(new_list)
         new_list = new_list[skips:]
         new_list = new_list[:10]
         new_list_new = list()
@@ -335,8 +339,10 @@ def getspecificDate(jsonData):
             dall.update(newjson)
             print(dall)
             new_list_new.append(dall)
+        new_list_new.append({"totalsize":totalsize}) 
         logger.debug(new_list_new)
         #new_list_new.sort(key = lambda x : x["name"])
+        
         return json.dumps(new_list_new, default=json_util.default)
     else:
         all_list = list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}))
@@ -349,6 +355,7 @@ def getspecificDate(jsonData):
             db_date = datetime.datetime.strptime(item['scan_date'],'%d-%m-%Y').date()
             if(db_date == thrash_date):
                 new_list.append(item)
+        totalsize = len(new_list)
         new_list = new_list[skips:]
         new_list = new_list[:10]
         new_list_new = list()
@@ -361,6 +368,7 @@ def getspecificDate(jsonData):
             dall.update(newjson)
             print(dall)
             new_list_new.append(dall)
+        new_list_new.append({"totalsize":totalsize})
         logger.debug(new_list_new)
         return json.dumps(new_list_new, default=json_util.default)
 def update_DB(jsonData):

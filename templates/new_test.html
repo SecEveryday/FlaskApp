@@ -760,6 +760,15 @@ $('#previousPage').on('click', function(){
                     console.log(jsonData);
                     if(typeof jsonData != "undefined"){
 						console.log("Received User Info ="+jsonData)
+                        totalSize = jsonData[jsonData.length-1]["totalsize"]
+                        if(totalSize <=20)
+                        {
+                            ('#homePage3').addClass('w3-hide');
+                        }
+                        if(totalSize <=10)
+                        {
+                            ('#homePage2').addClass('w3-hide');
+                        }
 						if(jsonData.length == 0){
 							CurrentPage--;
                             
