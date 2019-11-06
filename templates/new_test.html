@@ -737,7 +737,7 @@ $('#previousPage').on('click', function(){
 			
 		//	$('#user_table > tbody').append('<tr><td>' + "Arvind" + '</td><td>' + "TTEC" + '</td><td>' + "TTEC-SL" + '</td><td>'+ "Essae Vaishnavi Solitaire" + '</td><td>'+ "arvind@toshiba.com" + '</td><td>'+ "3" + '</td><td>'+ "85" + '</td></tr>');
 
-			
+			$('#usertablelist').removeClass('w3-hide').addClass('w3-show');
 			var jsonGetData = {
 			  "page": currPage,
               "action": currentAction
@@ -841,7 +841,7 @@ $('#previousPage').on('click', function(){
                         }
                         );
                     }
-                $('#usertablelist').removeClass('w3-hide').addClass('w3-show');
+                
                 $('#popUpCloseButton1').css({'display':'none'});
                 $('#popUpCloseButton2').removeAttr("style");
                 },
