@@ -668,28 +668,10 @@ $('#previousPage').on('click', function(){
 		
 		$('#nextPage').on('click', function(){
 			CurrentPage++;
-            if(CurrentPage == $('#homePage2').text())
-            {
-                $('#homePage').removeClass('w3-blue');
-                $('#homePage3').removeClass('w3-blue');
-                $('#homePage2').addClass('w3-blue');
-            }
-            if(CurrentPage == $('#homePage3').text())
-            {
-                $('#homePage').removeClass('w3-blue');
-                $('#homePage2').removeClass('w3-blue');
-                $('#homePage3').addClass('w3-blue');
-            }
+            
 			console.log("Current Page ="+CurrentPage);
-            i = 1
            
-            if( (CurrentPage-1)%3 == 0 && CurrentPage != 1 )
-            {
-             $('#homePage').text(CurrentPage)
-             $('#homePage2').text(CurrentPage+1)
-             $('#homePage3').text(CurrentPage+1)
-               break;
-             }
+            
                
        
 			getUsers(CurrentPage,currentAction);
@@ -770,6 +752,7 @@ $('#previousPage').on('click', function(){
 						console.log("Received User Info ="+jsonData)
 						if(jsonData.length == 0){
 							CurrentPage--;
+                            
                             if(CurrentPage > 0)
                             {
                             getUsers(CurrentPage,currentAction);
@@ -785,9 +768,30 @@ $('#previousPage').on('click', function(){
                         console.log(value)
                             $('#user_table > tbody').addClass("custom-exclude");
 							$('#user_table > tbody').append('<tr><td>' + value.code +'</td><td>' + value.name+ '</td><td>' + value.scan_date + '</td><td>' + value.end_date+ '</td><td>' + value.source+"</td>");				
-							if(currPage > 3)
+							if(CurrentPage == $('#homePage2').text())
                             {
-                            $('#homePage3').text(currPage);											
+                                    $('#homePage').removeClass('w3-blue');
+                                    $('#homePage3').removeClass('w3-blue');
+                                    $('#homePage2').addClass('w3-blue');
+                            }
+                            if(CurrentPage == $('#homePage3').text())
+                            {
+                                $('#homePage').removeClass('w3-blue');
+                                $('#homePage2').removeClass('w3-blue');
+                                $('#homePage3').addClass('w3-blue');
+                            }
+                            if(CurrentPage == $('#homePage').text())
+                            {
+                                $('#homePage3').removeClass('w3-blue');
+                                $('#homePage2').removeClass('w3-blue');
+                                $('#homePage').addClass('w3-blue');
+                            }
+                            if(CurrentPage >=3)
+                            {
+                                    $('#homePage').text(CurrentPage-2)
+                                    $('#homePage2').text(CurrentPage-1)
+                                    $('#homePage3').text(CurrentPage)
+                                    break;
                             }
 						});
                         if(currPage > 3)
