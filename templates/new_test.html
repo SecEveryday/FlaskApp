@@ -590,6 +590,11 @@ var move = function(width, interval, error) {
 	  }
 	};
     */
+var initialize_paginationValues = function (){
+    $('#homePage').text("1");
+                                    $('#homePage2').text("2");
+                                    $('#homePage3').text("3");
+}   
 var showPopUp = function(){
 		console.log("showDialog::Entered showPopUp");
 		
@@ -599,15 +604,18 @@ var showPopUp = function(){
 		$('#popUp').css('display','block');		
 	}
 $("#todayreport").on("click", function () {
-		console.log("todayreport click");	
+		console.log("todayreport click");
+        initialize_paginationValues();    
 		generateReport("today")
 	});
 $("#allreport").on("click", function () {	
 		console.log("allreport click");
+        initialize_paginationValues():
 		generateReport("all")
 	});
 $("#scantodayreport").on("click", function () {	
 		console.log("scantodayreport click");
+        initialize_paginationValues();
 		generateReport("scantoday")
 	});
 var generateReport = function(action){
