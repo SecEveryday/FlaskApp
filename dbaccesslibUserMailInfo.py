@@ -304,6 +304,7 @@ def getspecificDate(jsonData):
             print(dall)
             new_list_new.append(dall)
         logger.debug(new_list_new)
+        new_list_new.sort(key = lambda x : x["name"])
         return json.dumps(new_list_new, default=json_util.default)
     else:
         all_list = list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}))
@@ -332,6 +333,7 @@ def getspecificDate(jsonData):
             print(dall)
             new_list_new.append(dall)
         logger.debug(new_list_new)
+        new_list_new.sort(key = lambda x : x["name"])
         return json.dumps(new_list_new, default=json_util.default)
 def update_DB(jsonData):
     logger.debug("DBUMI::Update_db() entry")
