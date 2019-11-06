@@ -308,7 +308,7 @@ def getspecificDate(jsonData):
         logger.debug(new_list_new)
         #new_list_new.sort(key = lambda x : x["name"])
         return json.dumps(new_list_new, default=json_util.default)
-    elif(jsondata["action"] == "today"):
+    elif(jsonData["action"] == "today"):
         all_list = list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}))
         
         thrash_date = datetime.datetime.today()
