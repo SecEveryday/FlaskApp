@@ -786,7 +786,7 @@ $('#previousPage').on('click', function(){
                                 $('#homePage2').removeClass('w3-blue');
                                 $('#homePage').addClass('w3-blue');
                             }
-                            if(CurrentPage >=3)
+                            if(CurrentPage > $('#homePage3').text())
                             {
                                     $('#homePage').text(CurrentPage-2);
                                     $('#homePage2').text(CurrentPage-1);
