@@ -711,15 +711,27 @@ $('#previousPage').on('click', function(){
 				data:JSON.stringify(jsonGetData),                     
                 success: function(jsonData){
                        $('#reportheading').empty();
-                     $('#reportheading').append("<b>"+capitalizeFirstLetter(currentAction) + " Report </b>");                 
+                       if( currentAction == "today")
+                       {
+                            $('#reportheading').append("<b> Trash Report </b>");
+                       }
+                       else
+                       {
+                            $('#reportheading').append("<b> All Report </b>");
+                       }                
                     jsonData = JSON.parse(jsonData);
                     console.log(jsonData);
                     if(typeof jsonData != "undefined"){
 						console.log("Received User Info ="+jsonData)
 						if(jsonData.length == 0){
 							CurrentPage--;
+                            if(CurrentPage > 0)
+                            {
                             getUsers(CurrentPage,currentAction);
 							return;
+                            }
+                            else
+                                return;
 						}
 						jsonData.forEach(function(obj) { 
 							console.log("Code = "+obj.code+",scan_date = "+obj.scan_date+"thrash_date = "+ obj.end_date); 
