@@ -197,8 +197,8 @@ Scan solution with cloud service for better document management</title>
 										<div class="w3-bar" id="paginationInfo">						  
 											<a href="#" class="w3-bar-item w3-button" id='previousPage'><<</a>
 											<a href="#" class="w3-bar-item w3-button w3-blue" id="homePage">1</a>
-                                            <a href="#" class="w3-bar-item w3-button w3-blue" id="homePage2">2</a>
-                                            <a href="#" class="w3-bar-item w3-button w3-blue" id="homePage3">3</a>
+                                            <a href="#" class="w3-bar-item w3-button" id="homePage2">2</a>
+                                            <a href="#" class="w3-bar-item w3-button" id="homePage3">3</a>
 											<a href="#" class="w3-bar-item w3-button" id='nextPage'>>></a>
 										</div>
 									</div>	
@@ -674,16 +674,25 @@ $('#previousPage').on('click', function(){
 		
 		$('#homePage').on('click', function(){
 			CurrentPage=$(this).text();
+            ('#homePage2').removeClass('w3-blue');
+            ('#homePage3').removeClass('w3-blue');
+            $(this).addClass('w3-blue');
 			console.log("Current Page ="+CurrentPage);		
 			getUsers(CurrentPage,currentAction);
 		});
         $('#homePage2').on('click', function(){
 			CurrentPage=$(this).text();
+            ('#homePage').removeClass('w3-blue');
+            ('#homePage3').removeClass('w3-blue');
+            $(this).addClass('w3-blue');
 			console.log("Current Page ="+CurrentPage);		
 			getUsers(CurrentPage,currentAction);
 		});
         $('#homePage3').on('click', function(){
 			CurrentPage=$(this).text();
+            ('#homePage').removeClass('w3-blue');
+            ('#homePage2').removeClass('w3-blue');
+            $(this).addClass('w3-blue');
 			console.log("Current Page ="+CurrentPage);		
 			getUsers(CurrentPage,currentAction);
 		});
@@ -753,9 +762,15 @@ $('#previousPage').on('click', function(){
                         console.log(value)
                             $('#user_table > tbody').addClass("custom-exclude");
 							$('#user_table > tbody').append('<tr><td>' + value.code +'</td><td>' + value.name+ '</td><td>' + value.scan_date + '</td><td>' + value.end_date+ '</td><td>' + value.source+"</td>");				
-							$('#homePage3').text(currPage);											
+							if(currPage > 3)
+                            {
+                            $('#homePage3').text(currPage);											
+                            }
 						});
-						$('#homePage3').text(currPage);	
+                        if(currPage > 3)
+                            {
+                            $('#homePage3').text(currPage);											
+                            }	
                     }
                 $('#usertablelist').removeClass('w3-hide').addClass('w3-show');
                 $('#popUpCloseButton1').css({'display':'none'});
