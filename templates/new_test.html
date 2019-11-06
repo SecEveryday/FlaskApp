@@ -736,7 +736,6 @@ $('#previousPage').on('click', function(){
 			};			
 		   console.log("Test 123456789"); 
             console.log(jsonGetData);
-            $('#homePage').text(currPage)
             $.ajax({
                 type: "POST",                            
                 url: "{{url_for('getUserMailInfo') }}",    
