@@ -253,8 +253,12 @@ def generateqrcode(jsonData,filenameJPG,tags,fromMFP):
     import sendEmail as se
     se.execute(str(jsonData["email"]),filenameJPG,str(colorCode),img,autoThrashed,fromMFP)
     #img = qrcode.make(colorCode)
-    #img.save(colorCode+".png")
+    #img.save(colorCode+".png")   
     newjsonData = {"name":jsonData["name"],"code":colorCode,"email":jsonData["email"],"division":jsonData["division"],"department":jsonData["department"],"floor":jsonData["floor"],"cubicle":jsonData["cubicle"],"building":jsonData["building"]}
+    if(fromMFP):
+        newjsonData["source"] = "MFP"
+    else:
+        newjsonData["source"] = "Mobile" 
     return addEntry(newjsonData,tags,autoThrashed);
 def addEntry(jsonData,tags,autoThrashed):
     a = mydb.userInfo.find_one({"name":jsonData["name"]})
@@ -267,7 +271,7 @@ def addEntry(jsonData,tags,autoThrashed):
         #mydb.mltable.insert({"code":jsonData["code"],"tags": tags,"status":"Keep","user_id":1,"otherdbref":newDbref})  Actual Code
         mydb.mltable.insert({"code":jsonData["code"],"tags": tags,"status":"Keep","user_id":1,"otherdbref":newDbref})#Test code to be removed
         #end_date = scan_date
-    mydb.userMailInfo.insert({"code":jsonData["code"],"scan_date":scan_date,"end_date":end_date,"otherdbref":newDbref,"userDeleted":False,"user_id":1})
+    mydb.userMailInfo.insert({"code":jsonData["code"],"scan_date":scan_date,"end_date":end_date,"otherdbref":newDbref,"userDeleted":False,"user_id":1,"source":jsonData["source"]})
     jsonData["autoThrashed"] = autoThrashed
     return json.dumps(jsonData)
 def read_fromDB():
@@ -304,7 +308,7 @@ def getspecificDate(jsonData):
             print(dall)
             new_list_new.append(dall)
         logger.debug(new_list_new)
-        new_list_new.sort(key = lambda x : x["name"])
+        #new_list_new.sort(key = lambda x : x["name"])
         return json.dumps(new_list_new, default=json_util.default)
     else:
         all_list = list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}))
@@ -333,7 +337,7 @@ def getspecificDate(jsonData):
             print(dall)
             new_list_new.append(dall)
         logger.debug(new_list_new)
-        new_list_new.sort(key = lambda x : x["name"])
+        #new_list_new.sort(key = lambda x : x["name"])
         return json.dumps(new_list_new, default=json_util.default)
 def update_DB(jsonData):
     logger.debug("DBUMI::Update_db() entry")

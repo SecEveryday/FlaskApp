@@ -186,7 +186,8 @@ Scan solution with cloud service for better document management</title>
 											<th>Code</th>
                                             <th>Name</th>
 											<th>Scan_date</th>
-											<th>Thrash_date</th>                          
+											<th>Thrash_date</th>
+                                            <th>Source</th>
 										</thead>
 										<tbody>													
 										</tbody>
@@ -739,7 +740,7 @@ $('#previousPage').on('click', function(){
 						$.each(jsonData, function (index, value) {
                         console.log(value)
                             $('#user_table > tbody').addClass("custom-exclude");
-							$('#user_table > tbody').append('<tr><td>' + value.code +'</td><td>' + value.name+ '</td><td>' + value.scan_date + '</td><td>' + value.end_date);				
+							$('#user_table > tbody').append('<tr><td>' + value.code +'</td><td>' + value.name+ '</td><td>' + value.scan_date + '</td><td>' + value.end_date+ '</td><td>' + value.source+"</td>");				
 							$('#homePage').text(currPage);											
 						});
 						$('#homePage').text(currPage);	
