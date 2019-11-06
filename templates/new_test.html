@@ -680,7 +680,18 @@ $('#previousPage').on('click', function(){
                 $('#homePage2').removeClass('w3-blue');
                 $('#homePage3').addClass('w3-blue');
             }
-			console.log("Current Page ="+CurrentPage);			
+			console.log("Current Page ="+CurrentPage);
+            i = 1
+           
+            if( (CurrentPage-1)%3 == 0 && CurrentPage != 1 )
+            {
+             $('#homePage').text(CurrentPage)
+             $('#homePage2').text(CurrentPage+1)
+             $('#homePage3').text(CurrentPage+1)
+               break;
+             }
+               
+       
 			getUsers(CurrentPage,currentAction);
 		});		
 		
