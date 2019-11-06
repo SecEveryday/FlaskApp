@@ -769,6 +769,14 @@ $('#previousPage').on('click', function(){
                         {
                             $('#homePage2').addClass('w3-hide');
                         }
+                        if(totalSize >20)
+                        {
+                            $('#homePage3').removeClass('w3-hide');
+                        }
+                        if(totalSize > 10)
+                        {
+                            $('#homePage2').removeClass('w3-hide');
+                        }
 						if(jsonData.length == 0){
 							CurrentPage--;
                             
@@ -784,7 +792,7 @@ $('#previousPage').on('click', function(){
 							console.log("Code = "+obj.code+",scan_date = "+obj.scan_date+"thrash_date = "+ obj.end_date); 
 						});
 						$.each(jsonData, function (index, value) {
-                        if(value.code !="undefined")
+                        if(typeof value.code !="undefined")
                         {
                         console.log(value)
                             $('#user_table > tbody').addClass("custom-exclude");
