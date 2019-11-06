@@ -171,7 +171,8 @@ Scan solution with cloud service for better document management</title>
 								<tr class="w3-center">
 									<td class="w3-center">
 										<button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="todayreport" >Trash Report</button>
-										<button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="allreport" >All Report</button>
+										<button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="scantodayreport" >Today's Report</button>
+                                        <button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="allreport" >All Report</button>
 									</td>									
 								</tr>															
 							</tbody>
@@ -605,6 +606,10 @@ $("#allreport").on("click", function () {
 		console.log("allreport click");
 		generateReport("all")
 	});
+$("#scantodayreport").on("click", function () {	
+		console.log("scantodayreport click");
+		generateReport("scantoday")
+	});
 var generateReport = function(action){
 		console.log("generateReport::Entered generateReport, action - "+action);
 		// Setting jobStatus as AppPrint
@@ -743,10 +748,14 @@ $('#previousPage').on('click', function(){
                        {
                             $('#reportheading').append("<b> Trash Report </b>");
                        }
-                       else
+                       else if (currentAction == "scantoday ")
                        {
+                            $('#reportheading').append("<b> Today's Report </b>");
+                       }
+                        else
+                        {
                             $('#reportheading').append("<b> All Report </b>");
-                       }                
+                        }
                     jsonData = JSON.parse(jsonData);
                     console.log(jsonData);
                     if(typeof jsonData != "undefined"){

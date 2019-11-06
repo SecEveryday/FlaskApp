@@ -338,6 +338,31 @@ def getspecificDate(jsonData):
         logger.debug(new_list_new)
         #new_list_new.sort(key = lambda x : x["name"])
         return json.dumps(new_list_new, default=json_util.default)
+    else:
+        all_list = list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}))
+        thrash_date = datetime.datetime.today()
+        thrash_date = thrash_date + datetime.timedelta(hours=14)        
+        thrash_date = str(thrash_date.day) + "-" +str(thrash_date.month)+"-" + str(thrash_date.year)
+        thrash_date = datetime.datetime.strptime(thrash_date, '%d-%m-%Y').date()
+        new_list = list()
+        for item in all_list:
+            db_date = datetime.datetime.strptime(item['scan_date'],'%d-%m-%Y').date()
+            if(db_date == thrash_date):
+                new_list.append(item)
+        new_list = new_list[skips:]
+        new_list = new_list[:10]
+        new_list_new = list()
+        for item in new_list:
+            otherdbref = item["otherdbref"]
+            newjson = mydb.userInfo.find_one({"_id":otherdbref.id},{"_id":0,"user_id":0})
+            dall = {}
+            item.pop("otherdbref")
+            dall.update(item)
+            dall.update(newjson)
+            print(dall)
+            new_list_new.append(dall)
+        logger.debug(new_list_new)
+        return json.dumps(new_list_new, default=json_util.default)
 def update_DB(jsonData):
     logger.debug("DBUMI::Update_db() entry")
     logger.debug(jsonData["code"])
