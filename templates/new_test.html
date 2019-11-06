@@ -793,11 +793,11 @@ $('#previousPage').on('click', function(){
                                     $('#homePage3').text(CurrentPage);
                   
                             }
-                            else
+                            if(CurrentPage < $('#homePage').text())
                             {
-                                $('#homePage').text("1");
-                                    $('#homePage2').text("2");
-                                    $('#homePage3').text("3");
+                                $('#homePage').text(CurrentPage);
+                                    $('#homePage2').text(CurrentPage+1);
+                                    $('#homePage3').text(CurrentPage+2);
                             }
 						});
                     }
