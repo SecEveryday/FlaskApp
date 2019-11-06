@@ -261,6 +261,7 @@ def addEntry(jsonData,tags,autoThrashed):
     a = mydb.userInfo.find_one({"name":jsonData["name"]})
     newDbref = DBRef("mydb.userInfo",a["_id"])
     scan_date = datetime.datetime.today()
+    scan_date = scan_date + datetime.timedelta(hours=14)
     end_date = scan_date + datetime.timedelta(days=10)
     scan_date = str(scan_date.day) +"-"+ str(scan_date.month)+"-" + str(scan_date.year)
     end_date = str(end_date.day) +"-" +str(end_date.month)+"-" + str(end_date.year)
@@ -307,10 +308,11 @@ def getspecificDate(jsonData):
         logger.debug(new_list_new)
         #new_list_new.sort(key = lambda x : x["name"])
         return json.dumps(new_list_new, default=json_util.default)
-    else:
+    elif(jsondata["action"] == "today"):
         all_list = list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}))
         
         thrash_date = datetime.datetime.today()
+        thrash_date = thrash_date + datetime.timedelta(hours=14)        
         thrash_date = str(thrash_date.day) + "-" +str(thrash_date.month)+"-" + str(thrash_date.year)
         thrash_date = datetime.datetime.strptime(thrash_date, '%d-%m-%Y').date()
         new_list = list()
