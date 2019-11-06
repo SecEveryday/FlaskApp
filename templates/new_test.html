@@ -674,24 +674,24 @@ $('#previousPage').on('click', function(){
 		
 		$('#homePage').on('click', function(){
 			CurrentPage=$(this).text();
-            ('#homePage2').removeClass('w3-blue');
-            ('#homePage3').removeClass('w3-blue');
+            $('#homePage2').removeClass('w3-blue');
+            $('#homePage3').removeClass('w3-blue');
             $(this).addClass('w3-blue');
 			console.log("Current Page ="+CurrentPage);		
 			getUsers(CurrentPage,currentAction);
 		});
         $('#homePage2').on('click', function(){
 			CurrentPage=$(this).text();
-            ('#homePage').removeClass('w3-blue');
-            ('#homePage3').removeClass('w3-blue');
+            $('#homePage').removeClass('w3-blue');
+            $('#homePage3').removeClass('w3-blue');
             $(this).addClass('w3-blue');
 			console.log("Current Page ="+CurrentPage);		
 			getUsers(CurrentPage,currentAction);
 		});
         $('#homePage3').on('click', function(){
 			CurrentPage=$(this).text();
-            ('#homePage').removeClass('w3-blue');
-            ('#homePage2').removeClass('w3-blue');
+            $('#homePage').removeClass('w3-blue');
+            $('#homePage2').removeClass('w3-blue');
             $(this).addClass('w3-blue');
 			console.log("Current Page ="+CurrentPage);		
 			getUsers(CurrentPage,currentAction);
