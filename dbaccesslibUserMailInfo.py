@@ -284,7 +284,7 @@ def read_fromDB():
         dall.update(newjson)
         print(dall)
         new_list.append(dall)
-    new_list.sort(key=sortingReq)
+    new_list = new_list.reverse()
     return json.dumps(new_list,default=json_util.default)
 def getspecificDate(jsonData):
     logger.debug(jsonData)
@@ -292,7 +292,7 @@ def getspecificDate(jsonData):
     skips = 10 * (num - 1) 
     if(jsonData["action"] == "all"):
         all_list = list(mydb.userMailInfo.find({"userDeleted":False},{'_id' : 0,'user_id':0}))
-        all_list.sort(key = sortingReq)
+        all_list = all_list.reverse()
         totalsize = len(all_list)
         all_list = all_list[skips:]
         all_list = all_list[:10]
@@ -325,7 +325,7 @@ def getspecificDate(jsonData):
             db_date = datetime.datetime.strptime(item['end_date'],'%d-%m-%Y').date()
             if(db_date <= thrash_date):
                 new_list.append(item)
-        new_list.sort(key=sortingReq)
+        new_list = new_list.reverse()
         totalsize = len(new_list)
         new_list = new_list[skips:]
         new_list = new_list[:10]
