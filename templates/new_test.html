@@ -756,6 +756,7 @@ $('#previousPage').on('click', function(){
                 {
                     $(this).closest('tr').removeClass('row-selected');
                     codeId.splice(index, 1);
+                    delete codeId[index]
                 }
 				console.log("Code Array="+codeId);				
 				
