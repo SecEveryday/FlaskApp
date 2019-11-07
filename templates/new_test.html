@@ -738,7 +738,14 @@ $('#previousPage').on('click', function(){
 				// Store the Index and UserID for the item which is clicked
                 
 				tempuserId = $(this).closest('tr').children('td:first').text();
-                var index = userId.findIndex(x => x.code==tempuserId);
+                var index = -1;
+                for(var i=0; i < userId.length; i++) {
+                    if( userId[i]["code"] == tempuserId)
+                    {
+                        index = i;
+                        return;
+                    }
+                }
                 if(index === -1)
                 {
                     userId.push({"code":tempuserId});
