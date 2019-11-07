@@ -622,13 +622,15 @@ $("#trashIcon").on("click", function () {
         console.log("User ID to Trash"+userId);
         if(userId != "")
         {
-        var formData = {"code":userId};
+        var formData234 = {"code":userId};
+        console.log(formData234);
         userId = "";
+        
         $.ajax({
                     url: "{{url_for('delete_mail_info') }}",
                     datatype:"json",
                 contentType: 'application/json', // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
-                    data:JSON.stringify(formData),
+                    data:JSON.stringify(formData234),
                     type: 'POST',
                     contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
                     processData: false, // NEEDED, DON'T OMIT THIS
