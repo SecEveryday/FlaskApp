@@ -918,6 +918,7 @@ $('#previousPage').on('click', function(){
                     jsonData = JSON.parse(jsonData);
                     console.log(jsonData);
                     if(typeof jsonData != "undefined"){
+                        $('#user_table > tbody').empty();
 						console.log("Received User Info ="+jsonData)
                         totalSize = jsonData[jsonData.length-1]["totalsize"]
                         if(totalSize <=20)
