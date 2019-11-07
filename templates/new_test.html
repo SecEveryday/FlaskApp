@@ -623,9 +623,8 @@ $("#trashIcon").on("click", function () {
         if(userId != "")
         {
         var formData234 = {"code":userId};
-        console.log(formData234);
         userId = "";
-        
+        console.log(formData234)
         $.ajax({
                     url: "{{url_for('delete_mail_info') }}",
                     datatype:"json",
