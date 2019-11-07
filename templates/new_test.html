@@ -574,6 +574,7 @@ error: function(jqXhr, textStatus, errorMessage){
         $('#popUpCloseButton2').css({'display':'none'});
         $('#popUpCloseButton1').removeAttr("style");
         $('#autoThrashDisplay').removeClass('w3-show').addClass('w3-hide');
+        $("#trashIcon").removeClass("w3-show").addClass("w3-hide");
     }
     /*(
 var move = function(width, interval, error) {
@@ -631,7 +632,6 @@ $("#trashIcon").on("click", function () {
                 contentType: 'application/json', // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
                     data:JSON.stringify(formData234),
                     type: 'POST',
-                    contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
                     processData: false, // NEEDED, DON'T OMIT THIS
                     success : function(data){
                         console.log("Successfully Deleted");
