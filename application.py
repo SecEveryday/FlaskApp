@@ -151,6 +151,11 @@ def get_image():
     logger.debug(jsonData)
     filename = jsonData["filename"]
     filename = str(filename)+".png"
-    return send_file(filename, mimetype='image/png;base64')    
+    return send_file(filename, mimetype='image/png;base64')
+@app.route("/delete_mail_info",methods=['POST'])
+def delete_mail_info():
+    jsonData = request.json
+    logger.debug(jsonData)
+    return dbaUMI.delete_entry(jsonData)
 if __name__ == '__main__':
     app.run("0.0.0.0",debug = True)

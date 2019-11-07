@@ -55,7 +55,6 @@ Scan solution with cloud service for better document management</title>
     padding : 0px;
 }
 .custom-size{width:128px;height:128px;position:relative;}
-.row-selected{background-color:#ddd;}
 	</style>
 </head>
 
@@ -184,6 +183,8 @@ Scan solution with cloud service for better document management</title>
                                 <tr class="w3-center">
 									<td class="w3-center">
 										<button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="todayreport" >Trash Report</button>
+                                        <a href="#"  id="trashIcon" class="w3-hide" ><img src="{{
+		url_for('static', filename='img/trash.jpg')}}" width="5px" height="5px"/></a> 
 									</td>									
 								</tr>        
 							</tbody>
@@ -441,7 +442,7 @@ messagecount = 0;
 messages = ["Uploading the Image","Processing the Image","Matching User in UserDatabase","Match Found, Sending Email"];
 myVar="";
 selectedUserIndex = 0;
-var codeId = []; 
+userId = ""; 
 var newMessageDisplay = function()
 {
     $('#retresponse').val(messages[messagecount]);
@@ -616,17 +617,45 @@ var showPopUp = function(){
 		sleep(100);
 		$('#popUp').css('display','block');		
 	}
+$("#trashIcon").on("click", function () {
+		console.log("trashIcon click");
+        console.log("User ID to Trash"+userId);
+        if(userId != "")
+        {
+        formdata = {"code":userId};
+        userId = "";
+        $.ajax({
+                    url: "{{url_for('delete_mail_info') }}",
+                    data: formData,
+                    type: 'POST',
+                    contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+                    processData: false, // NEEDED, DON'T OMIT THIS
+                    success : function(data){
+                        console.log("Successfully Deleted");
+                        getUsers(CurrentPage,currentAction);
+                    },
+                    error: function(jqXhr, textStatus, errorMessage){ 
+                            console.log("Could not delete");
+                            getUsers(CurrentPage,currentAction);
+                    }
+                    // ... Other options like success and etc
+               });
+         }
+	});
 $("#todayreport").on("click", function () {
+$("#trashIcon").removeClass("w3-show").addClass("w3-hide");
 		console.log("todayreport click");
         initialize_paginationValues();    
 		generateReport("today")
 	});
-$("#allreport").on("click", function () {	
+$("#allreport").on("click", function () {
+$("#trashIcon").removeClass("w3-show").addClass("w3-hide");	
 		console.log("allreport click");
         initialize_paginationValues();
 		generateReport("all")
 	});
-$("#scantodayreport").on("click", function () {	
+$("#scantodayreport").on("click", function () {
+        $("#trashIcon").removeClass("w3-hide").addClass("w3-show");
 		console.log("scantodayreport click");
         initialize_paginationValues();
 		generateReport("scantoday")
@@ -731,38 +760,9 @@ $('#previousPage').on('click', function(){
     $("#user_table > tbody").on('click','tr',function() {						
 			console.log($(this));
 			var index = Number($(this).index() + 1);
-			console.log("Row Number = "+index);
-			console.log("Previous Index ="+selectedUserIndex);
-				
-				// Disable the Update and Delete User buttons
-				
-				// Store the Index and UserID for the item which is clicked
-                
-				tempuserId = $(this).closest('tr').children('td:first').text();
-                var index = -1;
-                for(var i=0; i < codeId.length; i++) {
-                    if( codeId[i]["code"] == tempuserId)
-                    {
-                        index = i;
-                        return;
-                    }
-                }
-                if(index === -1)
-                {
-                    codeId.push({"code":tempuserId});
-                    $(this).closest('tr').addClass('row-selected');
-                }
-                else
-                {
-                    $(this).closest('tr').removeClass('row-selected');
-                    codeId.splice(index, 1);
-                    delete codeId[index]
-                }
-				console.log("Code Array="+codeId);				
-				
-				// Hightlight the row
-				
-				// Show only the tables	ID			
+			console.log("Row Number = "+index);			
+			userId = $(this).closest('tr').children('td:first').text();
+			console.log("USERID="+userId);
 			
 				// Get the Quota settings for the particular User and append the same in the user_quota table.
 				/*App.Util.serverRequest(App.URL.webAPI.getUsers + '/' + userId + '/quota', 'GET', true, function (response) {
@@ -863,8 +863,7 @@ $('#previousPage').on('click', function(){
 						$('#updateUser').prop('disabled',false);
 						$('#deleteUser').prop('disabled',false);
 					}
-				}); */
-		
+				}); */			
 		});	
     function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);

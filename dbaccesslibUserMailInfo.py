@@ -384,5 +384,10 @@ def update_DB(jsonData):
         mydb.mltable.update_many({"_id":foundMl["_id"],"user_id":1},{"$set":{"status":"trash"}})
     return json.dumps({"status": "Success","statusreason": "updateSucess"})
 #Clear DB only for testing
+def delete_entry(jsonData):
+    logger.debug("DBUMI::delete_entry() entry")
+    logger.debug(jsonData["code"])
+    mydb.userMailInfo.delete_one({"code":jsonData["code"],"user_id":1})
+    return json.dumps({"status": "Success","statusreason": "updateSucess"})
 def clear_db():
     mydb.userMailInfo.remove({})
