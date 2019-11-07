@@ -741,7 +741,7 @@ $('#previousPage').on('click', function(){
                 var index = userId.findIndex(x => x.code==tempuserId);
                 if(index === -1)
                 {
-                    userId.push({"code":tempuserId};
+                    userId.push({"code":tempuserId});
                     $(this).closest('tr').addClass('row-selected');
                 }
                 else
