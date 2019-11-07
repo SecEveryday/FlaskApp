@@ -440,7 +440,7 @@ messagecount = 0;
 messages = ["Uploading the Image","Processing the Image","Matching User in UserDatabase","Match Found, Sending Email"];
 myVar="";
 selectedUserIndex = 0;
-userId = ""; 
+userId = []; 
 var newMessageDisplay = function()
 {
     $('#retresponse').val(messages[messagecount]);
@@ -731,26 +731,29 @@ $('#previousPage').on('click', function(){
 			console.log($(this));
 			var index = Number($(this).index() + 1);
 			console.log("Row Number = "+index);
-			
-			if (selectedUserIndex !== index) {
+			console.log("Previous Index ="+selectedUserIndex);
 				
 				// Disable the Update and Delete User buttons
-				$('#updateUser').prop('disabled',true);
-				$('#deleteUser').prop('disabled',true);
 				
 				// Store the Index and UserID for the item which is clicked
-				selectedUserIndex = index;				
-				userId = $(this).closest('tr').children('td:first').text();
-				name = $(this).closest('tr').children(':eq(1)').text();
-				console.log("USERID="+userId+",USERNAME="+name);				
+                
+				tempuserId = $(this).closest('tr').children('td:first').text();
+                var index = userId.findIndex(x => x.code==tempuserId);
+                if(index === -1)
+                {
+                    userId.push({"code":tempuserId};
+                    $(this).closest('tr').addClass('row-selected');
+                }
+                else
+                {
+                    $(this).closest('tr').removeClass('row-selected');
+                    array.splice(index, 1);
+                }
+				console.log("Code Array="+userId);				
 				
 				// Hightlight the row
-				$(this).closest('tr').addClass('row-selected');
-				$(this).closest('tr').siblings('.row-selected').removeClass('row-selected');
 				
 				// Show only the tables	ID			
-				$('#addUserTable').removeClass('my-show');
-				$('#updateUserTable').removeClass('my-show');
 			
 				// Get the Quota settings for the particular User and append the same in the user_quota table.
 				/*App.Util.serverRequest(App.URL.webAPI.getUsers + '/' + userId + '/quota', 'GET', true, function (response) {
@@ -852,23 +855,7 @@ $('#previousPage').on('click', function(){
 						$('#deleteUser').prop('disabled',false);
 					}
 				}); */
-			}
-			else {
-				// Same file is selected. Resetting!!!				
-				selectedUserIndex = 0;
-				userId = '';
-				// Reset the selection
-				$(this).closest('tr').removeClass('row-selected');	
-				
-				$('#role_quota > tbody').empty();
-				$('#user_quota > tbody').empty();
-				
-				$('#tables').removeClass('my-show');							
-				$('#updateUserTable').removeClass('my-show');
-				
-				$('#updateUser').prop('disabled',true);
-				$('#deleteUser').prop('disabled',true);
-			}			
+		
 		});	
     function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
