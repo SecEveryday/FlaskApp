@@ -440,7 +440,7 @@ messagecount = 0;
 messages = ["Uploading the Image","Processing the Image","Matching User in UserDatabase","Match Found, Sending Email"];
 myVar="";
 selectedUserIndex = 0;
-var userId = []; 
+var codeID = []; 
 var newMessageDisplay = function()
 {
     $('#retresponse').val(messages[messagecount]);
@@ -739,8 +739,8 @@ $('#previousPage').on('click', function(){
                 
 				tempuserId = $(this).closest('tr').children('td:first').text();
                 var index = -1;
-                for(var i=0; i < userId.length; i++) {
-                    if( userId[i]["code"] == tempuserId)
+                for(var i=0; i < codeId.length; i++) {
+                    if( codeId[i]["code"] == tempuserId)
                     {
                         index = i;
                         return;
@@ -748,7 +748,7 @@ $('#previousPage').on('click', function(){
                 }
                 if(index === -1)
                 {
-                    userId.push({"code":tempuserId});
+                    codeId.push({"code":tempuserId});
                     $(this).closest('tr').addClass('row-selected');
                 }
                 else
@@ -756,7 +756,7 @@ $('#previousPage').on('click', function(){
                     $(this).closest('tr').removeClass('row-selected');
                     array.splice(index, 1);
                 }
-				console.log("Code Array="+userId);				
+				console.log("Code Array="+codeId);				
 				
 				// Hightlight the row
 				
