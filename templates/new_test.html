@@ -55,6 +55,7 @@ Scan solution with cloud service for better document management</title>
     padding : 0px;
 }
 .custom-size{width:128px;height:128px;position:relative;}
+.image-opacity{ opacity: 0.5; }
 	</style>
 </head>
 
@@ -184,7 +185,7 @@ Scan solution with cloud service for better document management</title>
 									<td class="w3-center">
 										<button class="w3-section w3-button w3-border w3-medium w3-padding w3-center w3-margin w3-round-xlarge w3-light-green"  id="todayreport" >Trash Report</button>
                                         <a href="#"  id="trashIcon" class="w3-hide" ><img src="{{
-		url_for('static', filename='img/trash.jpg')}}" width="=20px" height="20px"/></a> 
+		url_for('static', filename='img/trash.jpg')}}" width="=20px" height="20px" id="trashIconImg"/></a> 
 									</td>									
 								</tr>        
 							</tbody>
@@ -619,6 +620,7 @@ var showPopUp = function(){
 		$('#popUp').css('display','block');		
 	}
 $("#trashIcon").on("click", function () {
+        $("#trashIconImg").addClass('image-opacity');   
 		console.log("trashIcon click");
         console.log("User ID to Trash"+userId);
         if(userId != "")
@@ -636,10 +638,12 @@ $("#trashIcon").on("click", function () {
                     success : function(data){
                         console.log("Successfully Deleted");
                         getUsers(CurrentPage,currentAction);
+                        $("#trashIconImg").removeClass('image-opacity');
                     },
                     error: function(jqXhr, textStatus, errorMessage){ 
                             console.log("Could not delete");
                             getUsers(CurrentPage,currentAction);
+                            $("#trashIconImg").removeClass('image-opacity');
                     }
                     // ... Other options like success and etc
                });
