@@ -355,6 +355,7 @@ def getspecificDate(jsonData):
             db_date = datetime.datetime.strptime(item['scan_date'],'%d-%m-%Y').date()
             if(db_date == thrash_date):
                 new_list.append(item)
+        new_list.reverse()
         totalsize = len(new_list)
         new_list = new_list[skips:]
         new_list = new_list[:10]
