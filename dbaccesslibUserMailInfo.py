@@ -267,7 +267,7 @@ def addEntry(jsonData,tags,autoThrashed):
     end_date = str(end_date.day) +"-" +str(end_date.month)+"-" + str(end_date.year)
     if( not autoThrashed and len(tags) >= 3):
         #mydb.mltable.insert({"code":jsonData["code"],"tags": tags,"status":"Keep","user_id":1,"otherdbref":newDbref})  Actual Code
-        mydb.mltable.insert({"code":jsonData["code"],"tags": tags,"status":"Keep","user_id":1,"otherdbref":newDbref})#Test code to be removed
+        mydb.mltable.insert({"code":jsonData["code"],"tags": tags,"status":"trash","user_id":1,"otherdbref":newDbref})#Test code to be removed
         #end_date = scan_date
     mydb.userMailInfo.insert({"code":jsonData["code"],"scan_date":scan_date,"end_date":end_date,"otherdbref":newDbref,"userDeleted":False,"user_id":1,"source":jsonData["source"]})
     jsonData["autoThrashed"] = autoThrashed
