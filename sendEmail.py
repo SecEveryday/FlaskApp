@@ -67,7 +67,7 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
 
     # Log in to server using secure context and send email
     context = ssl.create_default_context()
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+    with smtplib.SMTP_SSL("smtp.office365.com", 587, context=context) as server:
         server.login(sender_email, password)
         server.sendmail(sender_email, [emailAddress,"Koushik.Sridhar@toshiba-tsip.com",], text)
     os.remove(filename)
