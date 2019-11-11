@@ -24,7 +24,7 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
         body = "Dear Sir/Madam,<br><br> A new postal mail intended to you has been recieved and placed in the reception.<br>Please show the above QR code to reception and collect the mail.<br><br><br><img src='cid:image1"+str(timestamp1)+"' width=500 height=200></img><br><br><br>If you want to keep the mail, then reply to this mail ID by adding [Keep] in the subject.<br>If you do not want to keep the mail, then reply to this mail ID by adding [Trash] in the subject.<br> <br> Note: The mail will be kept in the reception for a period of 10 days.<br> <br>Regards,<br>Admin"
     else:
         body = "Dear Sir/Madam,<br><br> A new postal mail intented to you has been autoTrashed based on your preferences.<br><br><br><img src='cid:image1"+str(timestamp1)+"' width=500 height=200></img><br><br><br> Regards,<br> Admin"
-    sender_email = "mfpipmse@outlook.com"
+    sender_email = "mfpipmse@gmail.com"
     password = "mfp123456"
     # Create a multipart message and set headers
     msgRoot = MIMEMultipart('related')
@@ -66,9 +66,8 @@ def execute(emailAddress,filenameJPG,qrcode,img,autoThrashed,fromMFP):
     text = msgRoot.as_string()
 
     # Log in to server using secure context and send email
-    context = ssl.SSLContext(ssl.PROTOCOL_TLS)
-    with smtplib.SMTP("smtp.office365.com", 587) as server:
-        server.starttls(context)
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(sender_email, password)
         server.sendmail(sender_email, [emailAddress,"Koushik.Sridhar@toshiba-tsip.com",], text)
     os.remove(filename)
