@@ -265,6 +265,8 @@ def addEntry(jsonData,tags,autoThrashed):
     end_date = scan_date + datetime.timedelta(days=10)
     scan_date = str(scan_date.day) +"-"+ str(scan_date.month)+"-" + str(scan_date.year)
     end_date = str(end_date.day) +"-" +str(end_date.month)+"-" + str(end_date.year)
+    if(autoThrashed):
+        end_date = scan_date
     if( not autoThrashed and len(tags) >= 3):
         #mydb.mltable.insert({"code":jsonData["code"],"tags": tags,"status":"Keep","user_id":1,"otherdbref":newDbref})  Actual Code
         mydb.mltable.insert({"code":jsonData["code"],"tags": tags,"status":"Keep","user_id":1,"otherdbref":newDbref})#Test code to be removed
